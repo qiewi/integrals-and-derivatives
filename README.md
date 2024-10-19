@@ -1,2 +1,2 @@
-# snakes-and-ladder
-🐍 Integral &amp; Derivatives - Snake &amp; Ladders Parody
+# ludo-game
+🧩 Ludo-Game using only HTML, CSS, and JavaScript
