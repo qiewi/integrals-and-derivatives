@@ -1,7 +1,7 @@
-import { BASE_POSITIONS, HOME_ENTRANCE, HOME_POSITIONS, PLAYERS, SAFE_POSITIONS, START_POSITIONS, STATE, TURNING_POINTS } from './constants.js';
+import { BASE_POSITIONS, HOME_ENTRANCE, HOME_POSITIONS, PLAYERS, SAFE_POSITIONS, START_POSITIONS, STATE, TURNING_POINTS, LADDERS, SNAKES } from './constants.js';
 import { UI } from './UI.js';
 
-export class Ludo {
+export class InD {
     currentPositions = {
         P1: [],
         P2: []
@@ -89,10 +89,10 @@ export class Ludo {
     }
 
     getEligiblePieces(player) {
-        return [0, 1, 2, 3].filter(piece => {
+        return [0].filter(piece => {
             const currentPosition = this.currentPositions[player][piece];
 
-            if(currentPosition === HOME_POSITIONS[player]) {
+            if(currentPosition + this.diceValue > HOME_POSITIONS[player]) {
                 return false;
             }
 
@@ -123,7 +123,7 @@ export class Ludo {
         this.currentPositions = structuredClone(BASE_POSITIONS);
 
         PLAYERS.forEach(player => {
-            [0, 1, 2, 3].forEach(piece => {
+            [0].forEach(piece => {
                 this.setPiecePosition(player, piece, this.currentPositions[player][piece])
             })
         });
@@ -169,32 +169,69 @@ export class Ludo {
     }
 
     movePiece(player, piece, moveBy) {
-        // this.setPiecePosition(player, piece, this.currentPositions[player][piece] + moveBy)
+        const pieceElement = document.querySelector(`.player-piece[player-id="${player}"][piece="${piece}"]`);
+    
+        let moveSteps = moveBy;
+    
         const interval = setInterval(() => {
-            this.incrementPiecePosition(player, piece);
-            moveBy--;
-
-            if(moveBy === 0) {
+            const currentPosition = this.currentPositions[player][piece];
+    
+            // Prevent the piece from moving beyond 100
+            if (currentPosition + moveSteps > 100) {
                 clearInterval(interval);
-
-                // check if player won
-                if(this.hasPlayerWon(player)) {
-                    alert(`Player: ${player} has won!`);
-                    this.resetGame();
-                    return;
-                }
-
-                const isKill = this.checkForKill(player, piece);
-
-                if(isKill || this.diceValue === 6) {
-                    this.state = STATE.DICE_NOT_ROLLED;
-                    return;
-                }
-
+                alert(`Player: ${player} cannot move beyond 100! Stay at ${currentPosition}`);
                 this.incrementTurn();
+                return;
+            }
+    
+            // Move the piece incrementally
+            this.incrementPiecePosition(player, piece);
+            moveSteps--;
+    
+            if (moveSteps === 0) {
+                clearInterval(interval);
+    
+                // Wait for the CSS transition to complete before checking for ladders or snakes
+                pieceElement.addEventListener('transitionend', () => {
+                    const finalPosition = this.currentPositions[player][piece];
+    
+                    // After the full move is made, check for ladders or snakes
+                    if (LADDERS.hasOwnProperty(finalPosition)) {
+                        const ladderPosition = LADDERS[finalPosition];
+                        console.log(`Ladder! Moving from ${finalPosition} to ${ladderPosition}`);
+                        this.setPiecePosition(player, piece, ladderPosition);
+                        this.currentPositions[player][piece] = ladderPosition; // Update position
+                    }
+    
+                    if (SNAKES.hasOwnProperty(finalPosition)) {
+                        const snakePosition = SNAKES[finalPosition];
+                        console.log(`Snake! Moving from ${finalPosition} to ${snakePosition}`);
+                        this.setPiecePosition(player, piece, snakePosition);
+                        this.currentPositions[player][piece] = snakePosition; // Update position
+                    }
+    
+                    // Check if the player has won
+                    if (this.currentPositions[player][piece] === 100) {
+                        if (this.hasPlayerWon(player)) {
+                            alert(`Player: ${player} has won!`);
+                            this.resetGame();
+                            return;
+                        }
+                    }
+    
+                    // Check for a "kill" (opponent's piece in the same position)
+                    const isKill = this.checkForKill(player, piece);
+                    if (isKill || this.diceValue === 6) {
+                        this.state = STATE.DICE_NOT_ROLLED;
+                        return;
+                    }
+    
+                    this.incrementTurn();
+                }, { once: true });
             }
         }, 200);
     }
+    
 
     checkForKill(player, piece) {
         const currentPosition = this.currentPositions[player][piece];
@@ -202,7 +239,7 @@ export class Ludo {
 
         let kill = false;
 
-        [0, 1, 2, 3].forEach(piece => {
+        [0].forEach(piece => {
             const opponentPosition = this.currentPositions[opponent][piece];
 
             if(currentPosition === opponentPosition && !SAFE_POSITIONS.includes(currentPosition)) {
@@ -215,7 +252,7 @@ export class Ludo {
     }
 
     hasPlayerWon(player) {
-        return [0, 1, 2, 3].every(piece => this.currentPositions[player][piece] === HOME_POSITIONS[player])
+        return [0].every(piece => this.currentPositions[player][piece] === HOME_POSITIONS[player])
     }
 
     incrementPiecePosition(player, piece) {
@@ -228,8 +265,8 @@ export class Ludo {
         if(currentPosition === TURNING_POINTS[player]) {
             return HOME_ENTRANCE[player][0];
         }
-        else if(currentPosition === 51) {
-            return 0;
+        else if(currentPosition === 100) {
+            return currentPosition + 1;
         }
         return currentPosition + 1;
     }

@@ -1,3 +1,3 @@
-import { Ludo } from "./InD/Ludo.js";
+import { InD } from "./InD/InD.js";
 
-const ludo = new Ludo();
+const ind = new InD();

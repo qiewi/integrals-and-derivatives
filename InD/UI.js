@@ -8,7 +8,12 @@ const playerPiecesElements = {
 
 export class UI {
     static listenDiceClick(callback) {
-        diceButtonElement.addEventListener('click', callback);
+        const audio = document.getElementById('dice-roll-sound'); // Select the audio element
+
+        diceButtonElement.addEventListener('click', () => {
+            audio.play()
+            callback();  
+        });
     }
 
     static listenResetClick(callback) {
