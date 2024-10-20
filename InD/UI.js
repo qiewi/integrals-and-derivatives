@@ -7,8 +7,13 @@ const playerPiecesElements = {
 }
 
 export class UI {
+
+    static listenStartClick(callback) {
+        document.querySelector('button#start-btn').addEventListener('click', callback)
+    }
+
     static listenDiceClick(callback) {
-        const audio = document.getElementById('dice-roll-sound'); // Select the audio element
+        const audio = document.getElementById('dice-roll-sound'); 
 
         diceButtonElement.addEventListener('click', () => {
             audio.play()

@@ -47,8 +47,18 @@ export class InD {
         this.listenDiceClick();
         this.listenResetClick();
         this.listenPieceClick();
+        this.listenStartClick();
 
         this.resetGame();
+    }
+
+    listenStartClick() {
+        UI.listenStartClick(this.onStartClick.bind(this))
+    }
+
+    onStartClick() {
+        document.querySelector('.menu-screen').classList.add("hide");
+        document.querySelector('.outer-container').classList.remove("hide"); 
     }
 
     listenDiceClick() {
@@ -114,6 +124,7 @@ export class InD {
         });
 
         this.turn = 0;
+        this.diceValue = '';
         this.state = STATE.DICE_NOT_ROLLED;
     }
 
