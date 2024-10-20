@@ -48,6 +48,7 @@ export class InD {
         this.listenResetClick();
         this.listenPieceClick();
         this.listenStartClick();
+        this.listenCloseClick();
 
         this.resetGame();
     }
@@ -59,6 +60,15 @@ export class InD {
     onStartClick() {
         document.querySelector('.menu-screen').classList.add("hide");
         document.querySelector('.outer-container').classList.remove("hide"); 
+    }
+
+    listenCloseClick() {
+        UI.listenCloseClick(this.onCloseClick.bind(this))
+    }
+
+    onCloseClick() {
+        document.querySelector('.menu-screen').classList.remove("hide");
+        document.querySelector('.outer-container').classList.add("hide"); 
     }
 
     listenDiceClick() {

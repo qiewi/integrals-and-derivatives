@@ -12,6 +12,10 @@ export class UI {
         document.querySelector('button#start-btn').addEventListener('click', callback)
     }
 
+    static listenCloseClick(callback) {
+        document.querySelector('button#close-btn').addEventListener('click', callback)
+    }
+
     static listenDiceClick(callback) {
         const audio = document.getElementById('dice-roll-sound'); 
 
@@ -57,7 +61,15 @@ export class UI {
         const player = PLAYERS[index];
 
         // Display player ID
-        document.querySelector('.active-player span').innerText = player;
+        if (player === 'P1') {
+            document.querySelector('.active-player').classList.remove('green');
+            document.querySelector('.active-player').classList.add('blue');
+            document.querySelector('.active-player span').innerText = "Blue";
+        } else {
+            document.querySelector('.active-player').classList.remove('blue');
+            document.querySelector('.active-player').classList.add('green');
+            document.querySelector('.active-player span').innerText = "Green";
+        }
 
         const activePlayerBase = document.querySelector('.player-base.highlight');
         if(activePlayerBase) {
