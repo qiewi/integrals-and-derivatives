@@ -1,5 +1,4 @@
 export const COORDINATES_MAP = {
-    // 0: [2, 13.6],
     1: [0.6, 13.6],
     2: [2.05, 13.6],
     3: [3.5, 13.6],
@@ -99,42 +98,21 @@ export const COORDINATES_MAP = {
     97: [4.95, 0.55],
     98: [3.5, 0.55],
     99: [2.05, 0.55],
-    
-    
 
-   
-
-    // HOME ENTRANCE
+    // HOME POSITIONS
 
     // P1 & P2
     100: [0.6, 0.55],
-    // 101: [7, 12],
-    // 102: [7, 11],
-    // 103: [7, 10],
-    // 104: [7, 9],
-    // 105: [7, 8],
 
-    // P2
-    // 200: [7, 1],
-    // 201: [7, 2],
-    // 202: [7, 3],
-    // 203: [7, 4],
-    // 204: [7, 5],
-    // 205: [7, 6],
 
     // BASE POSITIONS
 
     // P1
-    0.1: [2.5, 15.5],
-    // 501: [3.57, 10.58],
-    // 502: [1.5, 12.43],
-    // 503: [3.57, 12.43],
+    0.1: [5, 15.7],
 
     // P2
-    0.2: [3.1, 16], // todolist dibikin lebih oke
-    // 601: [12.54, 1.58],
-    // 602: [10.5, 3.45],
-    // 603: [12.54, 3.45],
+    0.2: [5, 16.5], // todolist dibikin lebih oke
+
 };
 
 export const LADDERS = {
@@ -163,8 +141,8 @@ export const STEP_LENGTH = 6.66;
 export const PLAYERS = ['P1', 'P2'];
 
 export const BASE_POSITIONS = {
-    P1: [0.1, 501, 502, 503],
-    P2: [0.2, 601, 602, 603],
+    P1: [0.1],
+    P2: [0.2],
 }
 
 export const START_POSITIONS = {
@@ -172,22 +150,10 @@ export const START_POSITIONS = {
     P2: 1
 }
 
-export const HOME_ENTRANCE = {
-    P1: [100, 101, 102, 103, 104],
-    P2: [200, 201, 202, 203, 204]
-}
-
 export const HOME_POSITIONS = {
     P1: 100,
     P2: 100
 }
-
-export const TURNING_POINTS = {
-    P1: 50,
-    P2: 24
-}
-
-export const SAFE_POSITIONS = [0, 8, 13, 21, 26, 34, 39, 47];
 
 export const STATE = {
     DICE_NOT_ROLLED: 'DICE_NOT_ROLLED',

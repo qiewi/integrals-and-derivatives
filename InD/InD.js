@@ -1,4 +1,4 @@
-import { BASE_POSITIONS, HOME_ENTRANCE, HOME_POSITIONS, PLAYERS, SAFE_POSITIONS, START_POSITIONS, STATE, TURNING_POINTS, LADDERS, SNAKES } from './constants.js';
+import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants.js';
 import { UI } from './UI.js';
 
 export class InD {
@@ -44,19 +44,11 @@ export class InD {
     constructor() {
         console.log('Hello World! Lets play Ludo!');
 
-        // this.diceValue = 4;
-        // this.turn = 0;
-        // this.state = STATE.DICE_ROLLED;
         this.listenDiceClick();
         this.listenResetClick();
         this.listenPieceClick();
 
         this.resetGame();
-        // this.setPiecePosition('P1', 0, 0);
-        // this.setPiecePosition('P2', 0, 1);
-        // this.diceValue = 6;
-        // console.log(this.getEligiblePieces('P1'))
-        
     }
 
     listenDiceClick() {
@@ -100,13 +92,6 @@ export class InD {
                 BASE_POSITIONS[player].includes(currentPosition)
                 && this.diceValue !== 6
             ){
-                return false;
-            }
-
-            if(
-                HOME_ENTRANCE[player].includes(currentPosition)
-                && this.diceValue > HOME_POSITIONS[player] - currentPosition
-                ) {
                 return false;
             }
 
@@ -191,26 +176,24 @@ export class InD {
             if (moveSteps === 0) {
                 clearInterval(interval);
     
-                // Wait for the CSS transition to complete before checking for ladders or snakes
+                // Wait for the CSS transition to complete 
                 pieceElement.addEventListener('transitionend', () => {
                     const finalPosition = this.currentPositions[player][piece];
     
-                    // After the full move is made, check for ladders or snakes
                     if (LADDERS.hasOwnProperty(finalPosition)) {
                         const ladderPosition = LADDERS[finalPosition];
                         console.log(`Ladder! Moving from ${finalPosition} to ${ladderPosition}`);
                         this.setPiecePosition(player, piece, ladderPosition);
-                        this.currentPositions[player][piece] = ladderPosition; // Update position
+                        this.currentPositions[player][piece] = ladderPosition; 
                     }
     
                     if (SNAKES.hasOwnProperty(finalPosition)) {
                         const snakePosition = SNAKES[finalPosition];
                         console.log(`Snake! Moving from ${finalPosition} to ${snakePosition}`);
                         this.setPiecePosition(player, piece, snakePosition);
-                        this.currentPositions[player][piece] = snakePosition; // Update position
+                        this.currentPositions[player][piece] = snakePosition; 
                     }
     
-                    // Check if the player has won
                     if (this.currentPositions[player][piece] === 100) {
                         if (this.hasPlayerWon(player)) {
                             alert(`Player: ${player} has won!`);
@@ -219,7 +202,6 @@ export class InD {
                         }
                     }
     
-                    // Check for a "kill" (opponent's piece in the same position)
                     const isKill = this.checkForKill(player, piece);
                     if (isKill || this.diceValue === 6) {
                         this.state = STATE.DICE_NOT_ROLLED;
@@ -242,7 +224,7 @@ export class InD {
         [0].forEach(piece => {
             const opponentPosition = this.currentPositions[opponent][piece];
 
-            if(currentPosition === opponentPosition && !SAFE_POSITIONS.includes(currentPosition)) {
+            if(currentPosition === opponentPosition) {
                 this.setPiecePosition(opponent, piece, BASE_POSITIONS[opponent][piece]);
                 kill = true
             }
@@ -270,16 +252,9 @@ export class InD {
     
         if (currentPosition === undefined) {
             console.error(`Invalid currentPosition for player ${player}, piece ${piece}`);
-            return currentPosition;  // Return the current position or a safe fallback
+            return currentPosition; 
         }
     
-        // Ensure we increment the position properly, handle turning points or home entrance
-        if(currentPosition === TURNING_POINTS[player]) {
-            return HOME_ENTRANCE[player][0];
-        }
-        else if(currentPosition >= 100) {  // Ensure we don't move past 100
-            return 100;
-        }
         return currentPosition + 1;
     }
 }

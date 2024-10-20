@@ -15,11 +15,11 @@ body{
 }
 
 .outer-container {
-    padding: 20px; /* Adjust as needed */
-    background: #fff; /* White background for padding space */
-    border-radius: 10px; /* Optional, for rounded edges */
+    padding: 20px; 
+    background: #fff; 
+    border-radius: 10px; 
     border: 5px solid #000;
-    box-shadow: 0px 8px rgba(0, 0, 0); /* Optional for depth */
+    box-shadow: 0px 8px rgba(0, 0, 0); 
 }
 
 .ludo-container {
@@ -54,8 +54,6 @@ body{
 
     z-index: 1;
 
-    /* top: 15%;
-    left: 50%; */
 }
 .player-piece.highlight {
     cursor: pointer;
@@ -86,30 +84,6 @@ body{
     color: #2eafff;
 }
 
-
-/* .player-base {
-    width: 40%;
-    height: 40%;
-    border: 30px solid;
-    position: absolute;
-}
-
-.player-bases [player-id="P1"].player-base {
-    bottom: 0;
-    left: 0;
-    border-color: #1295e7;
-}
-
-.player-bases [player-id="P2"].player-base {
-    top: 0;
-    right: 0;
-    border-color: #049645;
-} */
-
-/* .player-base.highlight {
-    animation: border-blink .7s infinite ease-in-out;
-} */
-
 @keyframes border-blink {
     50% {
         border-color: rgba(255, 255, 255, 0.8);
@@ -128,14 +102,18 @@ body{
 }
 
 .btn-dice {
+    height: 60px;
     background-color: #009d60;
     color: white;
     border-radius: 10px;
     border: 2px solid #000;
     box-shadow: 0 3px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-dice:hover {
+.btn-dice:not(:disabled):hover {
     background-color: #00824f;
     box-shadow: none;
     transform: translateY(3px);
@@ -169,4 +147,29 @@ body{
     font-size: 25px;
     font-weight: 600;
     margin-top: 20px;
+}
+
+.roll-dice-container {
+    display: flex;
+    align-items: center;
+}
+
+.dice-cube {
+    width: 60px; 
+    height: 60px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px rgba(0, 0, 0); 
+    margin-left: 10px; 
+}
+
+.dice-value {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
 }

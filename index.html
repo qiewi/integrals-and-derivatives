@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Game</title>
+    <title>Snakes & Ladders Game</title>
     <link rel="stylesheet" href="./InD/style.css">
 </head>
 <body>
@@ -12,14 +12,8 @@
             <div class="ludo">
                 <div class="player-pieces">
                     <div class="player-piece" player-id="P1" piece="0"></div>
-                    <!-- <div class="player-piece" player-id="P1" piece="1"></div>
-                    <div class="player-piece" player-id="P1" piece="2"></div>
-                    <div class="player-piece" player-id="P1" piece="3"></div> -->
     
                     <div class="player-piece" player-id="P2" piece="0"></div>
-                    <!-- <div class="player-piece" player-id="P2" piece="1"></div>
-                    <div class="player-piece" player-id="P2" piece="2"></div>
-                    <div class="player-piece" player-id="P2" piece="3"></div> -->
                 </div>
     
                 <div class="player-bases">
@@ -30,9 +24,13 @@
     
             <div class="footer">
                 <div class="row">
-                    <audio id="dice-roll-sound" src="InD/dice-roll.mp3"></audio>
-                    <button id="dice-btn" class="btn btn-dice">Roll</button>
-                    <div class="dice-value"></div>
+                    <div class="roll-dice-container">
+                        <audio id="dice-roll-sound" src="InD/dice-roll.mp3"></audio>
+                        <button id="dice-btn" class="btn btn-dice">Roll</button>
+                        <div class="dice-cube">
+                            <div class="dice-value"></div>
+                        </div>
+                    </div>
                     <button id="reset-btn" class="btn btn-reset">Reset</button>
                 </div>
                 <h2 class="active-player">Now it's <span></span>'s turn!</h2>
