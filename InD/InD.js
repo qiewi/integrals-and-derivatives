@@ -179,7 +179,7 @@ export class InD {
             // Prevent the piece from moving beyond 100
             if (currentPosition + moveSteps > 100) {
                 clearInterval(interval);
-                alert(`Player: ${player} cannot move beyond 100! Stay at ${currentPosition}`);
+                console.log(`Cannot move beyond 100: ${currentPosition} + ${moveSteps}`);
                 this.incrementTurn();
                 return;
             }
@@ -256,17 +256,29 @@ export class InD {
     }
 
     incrementPiecePosition(player, piece) {
-        this.setPiecePosition(player, piece, this.getIncrementedPosition(player, piece));
+        const newPosition = this.getIncrementedPosition(player, piece);
+        
+        if (newPosition !== undefined) {
+            this.setPiecePosition(player, piece, newPosition);
+        } else {
+            console.error(`Failed to increment position for player ${player}, piece ${piece}`);
+        }
     }
     
     getIncrementedPosition(player, piece) {
         const currentPosition = this.currentPositions[player][piece];
-
+    
+        if (currentPosition === undefined) {
+            console.error(`Invalid currentPosition for player ${player}, piece ${piece}`);
+            return currentPosition;  // Return the current position or a safe fallback
+        }
+    
+        // Ensure we increment the position properly, handle turning points or home entrance
         if(currentPosition === TURNING_POINTS[player]) {
             return HOME_ENTRANCE[player][0];
         }
-        else if(currentPosition === 100) {
-            return currentPosition + 1;
+        else if(currentPosition >= 100) {  // Ensure we don't move past 100
+            return 100;
         }
         return currentPosition + 1;
     }
