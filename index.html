@@ -9,16 +9,19 @@
 </head>
 <body>
     <div class="overlay hide"></div>
+    <button id="sound-btn" class="btn-sound">🔊</button>
     
     <div class="menu-screen">
         <div class="menu">
             <img src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h1 id="animated-text">Integrals & Derivatives</h1>
-            <button id="start-btn" class="btn btn-start">Start Game</button>
+            <button id="menu-btn" class="btn btn-start">Start Game</button>
+            <button id="menu-btn" class="btn btn-about">Learn Some</button>
         </div>
     </div>
 
     <div class="outer-container hide">
+        <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio>
         <div class="header">
             <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h2 class="active-player"><span></span>'s turn!</h2>
@@ -73,5 +76,6 @@
     <script src="./main.js" type="module"></script>
     <script src="./InD/challenge.js" defer></script>
     <script src="./InD/question.js" defer></script>
+    <script src="./InD/sound.js" defer></script>
 </body>
 </html>

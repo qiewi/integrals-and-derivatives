@@ -34,6 +34,27 @@ body {
     background: #00b550;
 }
 
+button#sound-btn {
+    position: fixed;
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 20px;
+    background: #febf1d;
+    border: 3px solid #000;
+    border-radius: 10px;
+    box-shadow: #000 0px 3px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+button#sound-btn:hover {
+    background: #ebae13;
+    box-shadow: none;
+    transform: translateY(3px);
+}
+
 img {
     width: 300px;
     height: 300px;
@@ -225,9 +246,10 @@ h1#animated-text {
     transform: translateY(3px);
 }
 
-.btn-start {
+.btn#menu-btn {
     background-color: #009d60;
     color: white;
+    width: 150px;
     border-radius: 10px;
     border: 2px solid #000;
     box-shadow: 0 3px #000;
@@ -238,7 +260,7 @@ h1#animated-text {
     margin-top: 20px;
 }
 
-.btn-start:not(:disabled):hover {
+.btn#menu-btn:not(:disabled):hover {
     background-color: #00824f;
     box-shadow: none;
     transform: translateY(3px);
