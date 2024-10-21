@@ -109,15 +109,17 @@ export class UI {
         document.querySelector('.dice-value').innerText = value;
     }
 
-    static showWordScramble() {
+    
+    static showWordScramble(type) {
         document.querySelector('.container').classList.remove('hide');
-        initGame();  // Start the word scramble game
+        initGame(type);  // Start the word scramble game
     }
 
     static listenForScrambleResult(callback) {
         const checkBtn = document.querySelector('button#check-btn');
         const surrendBtn = document.querySelector('button#surrend-btn');
         const timeDisplay = document.querySelector('.time b');
+
         let maxTime = 30; // Example time limit of 30 seconds
 
         // Reset and start the timer

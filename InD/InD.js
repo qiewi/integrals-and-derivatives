@@ -75,7 +75,7 @@ export class InD {
 
     onDiceClick() {
         console.log('dice clicked!');
-        this.diceValue = 1 + Math.floor(Math.random() * 6);
+        this.diceValue = 6 //1 + Math.floor(Math.random() * 6);
         this.state = STATE.DICE_ROLLED;
         
         this.checkForEligiblePieces();
@@ -224,16 +224,16 @@ export class InD {
                     const isKill = this.checkForKill(player, piece);
 
                     if (isKill || this.diceValue === 6) {
-                        if (this.checkEvent(finalPosition)) {
-                            this.triggerWordScramble(player, piece, finalPosition);
+                        if (this.checkEvent(finalPosition) !== 'pass') {
+                            this.triggerWordScramble(player, piece, finalPosition, this.checkEvent(finalPosition));
                         }
 
                         this.state = STATE.DICE_NOT_ROLLED;
                         return;
                     }
 
-                    if (this.checkEvent(finalPosition)) {
-                        this.triggerWordScramble(player, piece, finalPosition);
+                    if (this.checkEvent(finalPosition) !== 'pass') {
+                        this.triggerWordScramble(player, piece, finalPosition, this.checkEvent(finalPosition));
 
                         this.incrementTurn();
                         return;
@@ -246,17 +246,19 @@ export class InD {
     }
 
     checkEvent(currentPosition) {
-        if (LADDERS.hasOwnProperty(currentPosition) || SNAKES.hasOwnProperty(currentPosition)) {
-            return true;
+        if (LADDERS.hasOwnProperty(currentPosition)) {
+            return 'LADDERS';
+        } else if (SNAKES.hasOwnProperty(currentPosition)) {
+            return 'SNAKES'
         } else {
-            return false;
+            return 'pass';
         }
     }
     
 
-    triggerWordScramble(player, piece, currentPosition) {
+    triggerWordScramble(player, piece, currentPosition, type) {
         // Pause the game and show the word scramble challenge
-        UI.showWordScramble();
+        UI.showWordScramble(type);
     
         // Wait for the result of the word scramble
         UI.listenForScrambleResult((isCorrect) => {
