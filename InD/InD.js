@@ -222,13 +222,20 @@ export class InD {
                     }
     
                     const isKill = this.checkForKill(player, piece);
-                    if (isKill || this.diceValue === 6) { // TODOLIST
+
+                    if (isKill || this.diceValue === 6) {
+                        if (this.checkEvent(finalPosition)) {
+                            this.triggerWordScramble(player, piece, finalPosition);
+                        }
+
                         this.state = STATE.DICE_NOT_ROLLED;
                         return;
                     }
 
-                    if (LADDERS.hasOwnProperty(finalPosition) || SNAKES.hasOwnProperty(finalPosition)) {
+                    if (this.checkEvent(finalPosition)) {
                         this.triggerWordScramble(player, piece, finalPosition);
+
+                        this.incrementTurn();
                         return;
                     } 
     
@@ -237,6 +244,15 @@ export class InD {
             }
         }, 200);
     }
+
+    checkEvent(currentPosition) {
+        if (LADDERS.hasOwnProperty(currentPosition) || SNAKES.hasOwnProperty(currentPosition)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
     triggerWordScramble(player, piece, currentPosition) {
         // Pause the game and show the word scramble challenge
@@ -265,8 +281,6 @@ export class InD {
                     console.log("Player solved scramble! Staying on current tile.");
                 }
             }
-
-            this.incrementTurn();
         });
     }
     

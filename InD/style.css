@@ -6,10 +6,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 40px;
     min-height: 100vh;
     background: #00b550;
 }
