@@ -222,13 +222,14 @@ export class InD {
                     }
     
                     const isKill = this.checkForKill(player, piece);
-                    if (isKill || this.diceValue === 6) {
+                    if (isKill || this.diceValue === 6) { // TODOLIST
                         this.state = STATE.DICE_NOT_ROLLED;
                         return;
                     }
 
                     if (LADDERS.hasOwnProperty(finalPosition) || SNAKES.hasOwnProperty(finalPosition)) {
                         this.triggerWordScramble(player, piece, finalPosition);
+                        return;
                     } 
     
                     this.incrementTurn();
@@ -250,6 +251,7 @@ export class InD {
                     this.currentPositions[player][piece] = newPosition;
                     console.log(`Player solved scramble! Moving to ${newPosition}`);
                 } else {
+                    this.currentPositions[player][piece] =  currentPosition;
                     console.log("Player failed scramble! Staying on current tile.");
                 }
             } else if (SNAKES.hasOwnProperty(currentPosition)) {
@@ -259,9 +261,12 @@ export class InD {
                     this.currentPositions[player][piece] = newPosition;
                     console.log(`Player failed scramble! Moving to ${newPosition}`);
                 } else {
+                    this.currentPositions[player][piece] =  currentPosition;
                     console.log("Player solved scramble! Staying on current tile.");
                 }
             }
+
+            this.incrementTurn();
         });
     }
     
