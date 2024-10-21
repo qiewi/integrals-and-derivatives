@@ -109,53 +109,86 @@ export class UI {
         document.querySelector('.dice-value').innerText = value;
     }
 
-    
-    static showWordScramble(type) {
-        document.querySelector('.container').classList.remove('hide');
-        initGame(type);  // Start the word scramble game
+    static showChallengePopup() {
+        const container = document.querySelector('.container');
+        const overlay = document.querySelector('.overlay');
+
+        // Ensure the popup is hidden first
+        container.style.display = 'none';
+        container.classList.remove('show-popup');
+        overlay.style.display = 'none';
+        overlay.classList.remove('show-overlay');
+
+        // Show after a delay 
+        setTimeout(() => {
+            overlay.style.display = 'block';
+            container.style.display = 'block';
+            setTimeout(() => {
+                overlay.classList.add('show-overlay');
+                container.classList.add('show-popup');
+            }, 100); 
+        }, 800);  
     }
 
-    static listenForScrambleResult(callback) {
+    static hideChallengePopup() {
+        const container = document.querySelector('.container');
+        const overlay = document.querySelector('.overlay');
+
+        // Hide both popup and overlay
+        container.classList.remove('show-popup');
+        container.style.display = 'none';
+        overlay.classList.remove('show-overlay');
+        overlay.style.display = 'none';
+    }
+
+    static showChallenge(type) {
+        UI.showChallengePopup();  
+        initGame(type);  
+    }
+
+    
+    // static showWordScramble(type) {
+    //     document.querySelector('.container').classList.remove('hide');
+    //     initGame(type);  // Start the word scramble game
+    // }
+
+    static listenForResult(callback) {
         const checkBtn = document.querySelector('button#check-btn');
         const surrendBtn = document.querySelector('button#surrend-btn');
         const timeDisplay = document.querySelector('.time b');
+        let maxTime = 30;
 
-        let maxTime = 30; // Example time limit of 30 seconds
-
-        // Reset and start the timer
         timeDisplay.innerText = maxTime;
         let timer = setInterval(() => {
             if (maxTime > 0) {
                 maxTime--;
                 timeDisplay.innerText = maxTime;
             } else {
-                clearInterval(timer); // Timer ends
-                callback(false);  // Timer expired, so challenge is failed
-                document.querySelector('.container').classList.add('hide');  // Hide scramble UI
+                clearInterval(timer); 
+                callback(false);
+                UI.hideChallengePopup();  
             }
-        }, 1000);  // Update every second
+        }, 1000);
 
-        // Listen for player's word submission
         checkBtn.addEventListener('click', () => {
             const inputField = document.querySelector('.input-field');
-            const scrambledWord = inputField.value.trim().toLowerCase();
+            const userAnswer = inputField.value.toLowerCase();
 
-            if (scrambledWord === correctWord.toLowerCase()) {
-                clearInterval(timer); // Stop the timer on correct submission
-                callback(true);  // Success
+            if (userAnswer === correctAnswer) {
+                clearInterval(timer);  
+                callback(true); 
             } else {
-                clearInterval(timer); // Stop the timer on incorrect submission
-                callback(false);  // Failure
+                clearInterval(timer);  
+                callback(false);  
             }
 
-            document.querySelector('.container').classList.add('hide'); // Hide scramble UI
+            UI.hideChallengePopup(); 
         });
 
-        // Handle surrender (if applicable)
         surrendBtn.addEventListener('click', () => {
-            clearInterval(timer);  // Stop the timer
-            callback(false);  // Player gave up, failure callback
-            document.querySelector('.container').classList.add('hide');
+            clearInterval(timer);  
+            callback(false);  
+            UI.hideChallengePopup();  
         });
     }
 }

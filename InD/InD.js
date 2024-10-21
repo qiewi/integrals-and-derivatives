@@ -225,7 +225,7 @@ export class InD {
 
                     if (isKill || this.diceValue === 6) {
                         if (this.checkEvent(finalPosition) !== 'pass') {
-                            this.triggerWordScramble(player, piece, finalPosition, this.checkEvent(finalPosition));
+                            this.triggerChallenge(player, piece, finalPosition, this.checkEvent(finalPosition));
                         }
 
                         this.state = STATE.DICE_NOT_ROLLED;
@@ -233,7 +233,7 @@ export class InD {
                     }
 
                     if (this.checkEvent(finalPosition) !== 'pass') {
-                        this.triggerWordScramble(player, piece, finalPosition, this.checkEvent(finalPosition));
+                        this.triggerChallenge(player, piece, finalPosition, this.checkEvent(finalPosition));
 
                         this.incrementTurn();
                         return;
@@ -256,12 +256,12 @@ export class InD {
     }
     
 
-    triggerWordScramble(player, piece, currentPosition, type) {
+    triggerChallenge(player, piece, currentPosition, type) {
         // Pause the game and show the word scramble challenge
-        UI.showWordScramble(type);
+        UI.showChallenge(type);
     
         // Wait for the result of the word scramble
-        UI.listenForScrambleResult((isCorrect) => {
+        UI.listenForResult((isCorrect) => {
             if (LADDERS.hasOwnProperty(currentPosition)) {
                 if (isCorrect) {
                     const newPosition = LADDERS[currentPosition];

@@ -6,7 +6,7 @@ inputField = document.querySelector("input"),
 refreshBtn = document.querySelector(".refresh-word"),
 checkBtn = document.querySelector(".check-word");
 
-let correctWord;
+let correctAnswer;
 
 const initGame = (type) => {
     if (type === 'LADDERS') {
@@ -14,15 +14,15 @@ const initGame = (type) => {
         let wordArray = randomObj.question;
         wordText.innerText = wordArray;
         titleText.innerText = "A Ladder Fell from the Sky!"
-        correctWord = randomObj.answer.toLowerCase();
+        correctAnswer = randomObj.answer.toLowerCase();
     } else {
         let randomObj = derivatives[Math.floor(Math.random() * derivatives.length)];
         let wordArray = randomObj.question;
         wordText.innerText = wordArray;
         titleText.innerText = "A Wild Snake Appeared!"
-        correctWord = randomObj.answer.toLowerCase();
+        correctAnswer = randomObj.answer.toLowerCase();
     }
     
     inputField.value = "";
-    inputField.setAttribute("maxlength", correctWord.length);
+    inputField.setAttribute("maxlength", correctAnswer.length);
 }
