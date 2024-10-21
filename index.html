@@ -11,18 +11,19 @@
     <div class="menu-screen">
         <div class="menu">
             <img src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
-            <h1>Snakes & Ladders</h1>
+            <h1 id="animated-text">Integrals & Derivatives</h1>
             <button id="start-btn" class="btn btn-start">Start Game</button>
         </div>
     </div>
+
     <div class="outer-container hide">
         <div class="header">
             <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h2 class="active-player"><span></span>'s turn!</h2>
             <button id="close-btn" class="btn btn-close">X</button>
         </div>
-        <div class="ludo-container">
-            <div class="ludo">
+        <div class="ind-container">
+            <div class="ind">
                 <div class="player-pieces">
                     <div class="player-piece" player-id="P1" piece="0"></div>
     
@@ -51,6 +52,24 @@
         </div>
     </div>
 
+    <div class="container hide">
+        <h2>Integrals & Derivatives!</h2>
+        <div class="content">
+            <p class="word">enaxpnios</p>
+            <div class="details">
+                <p class="hint">Hint: <span></span></p>
+                <p class="time">Time Left: <span><b>30</b>s</span></p>
+            </div>
+            <input type="text" class="input-field" placeholder="Enter a valid word">
+            <div class="buttons">
+                <button id="surrend-btn" class="surrender">Surrender</button>
+                <button id="check-btn" class="check">Check</button>
+            </div>
+        </div>
+    </div>
+
     <script src="./main.js" type="module"></script>
+    <script src="./InD/challenge.js" defer></script>
+    <script src="./InD/words.js" defer></script>
 </body>
 </html>

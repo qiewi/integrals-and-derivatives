@@ -1,2 +1,2 @@
-# ludo-game
-🧩 Ludo-Game using only HTML, CSS, and JavaScript
+# ind-game
+🧩 ind-Game using only HTML, CSS, and JavaScript

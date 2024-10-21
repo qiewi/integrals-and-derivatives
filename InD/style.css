@@ -55,6 +55,35 @@ img {
     text-align: center; 
 }
 
+h1#animated-text {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    white-space: nowrap; 
+    overflow: hidden;
+    border-right: 2px solid; 
+    width: 0; 
+    animation: typing 4s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%; 
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: black;
+    }
+}
+
 .hide {
     display: none;
 }
@@ -74,14 +103,14 @@ img {
     margin-bottom: 20px;
 }
 
-.ludo-container {
+.ind-container {
     width: 450px;
     margin: 20px auto;
     border-radius: 7px;
     background: #fff;
 }
 
-.ludo-container .ludo {
+.ind-container .ind {
 
     height: 450px;
     width: 100%;
@@ -218,14 +247,15 @@ img {
 }
 
 .btn-reset{
-    color: black;
+    color: white;
+    background-color: #f7ca15;
     border-radius: 10px;
     border: 2px solid #000;
     box-shadow: 0 3px #000;
 }
 
 .btn-reset:hover {
-    background-color: #b7bfbc;
+    background-color: #e5b700;
     box-shadow: none;
     transform: translateY(3px);
 }
@@ -272,3 +302,109 @@ img {
     line-height: 1;
 }
 
+/* */
+
+.container {
+    width: 450px;
+    background: #fff;
+    border-radius: 10px; 
+    border: 5px solid #000;
+    box-shadow: 0px 8px rgba(0, 0, 0); 
+}
+
+.container h2{
+    font-size: 25px;
+    font-weight: 600;
+    padding: 18px 25px;
+    border-bottom: 5px solid #000;
+    text-align: center;
+}
+
+.container .content{
+    margin: 25px 20px 35px;
+}
+
+.content .word{
+    font-size: 33px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 24px;
+    margin-right: -24px;
+    text-transform: uppercase;
+}
+
+.content .details{
+    margin: 25px 0 20px;
+}
+
+.details p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.details p b{
+    font-weight: 500;
+}
+
+.content input{
+    width: 100%;
+    height: 60px;
+    outline: none;
+    font-size: 18px;;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 3px solid #000;
+}
+
+.content .buttons{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.buttons button{
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 0;
+    font-size: 17px;
+    border-radius: 5px;
+    width: calc(100% / 2 - 8px);
+}
+
+.buttons .surrender{
+    height: 60px;
+    background-color: #f1492b; 
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    box-shadow: 0 3px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons .surrender:hover {
+    background-color: #d13c20;
+    box-shadow: none;
+    transform: translateY(3px);
+}
+
+.buttons .check{
+    height: 60px;
+    background-color: #009d60;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    box-shadow: 0 3px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons .check:hover {
+    background-color: #00824f;
+    box-shadow: none;
+    transform: translateY(3px);
+}

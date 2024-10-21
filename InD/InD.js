@@ -1,4 +1,4 @@
-import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants.js';
+import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constant/constants.js';
 import { UI } from './UI.js';
 
 export class InD {
@@ -42,8 +42,6 @@ export class InD {
     }
 
     constructor() {
-        console.log('Hello World! Lets play Ludo!');
-
         this.listenDiceClick();
         this.listenResetClick();
         this.listenPieceClick();
@@ -201,19 +199,19 @@ export class InD {
                 pieceElement.addEventListener('transitionend', () => {
                     const finalPosition = this.currentPositions[player][piece];
     
-                    if (LADDERS.hasOwnProperty(finalPosition)) {
-                        const ladderPosition = LADDERS[finalPosition];
-                        console.log(`Ladder! Moving from ${finalPosition} to ${ladderPosition}`);
-                        this.setPiecePosition(player, piece, ladderPosition);
-                        this.currentPositions[player][piece] = ladderPosition; 
-                    }
+                    // if (LADDERS.hasOwnProperty(finalPosition)) {
+                    //     const ladderPosition = LADDERS[finalPosition];
+                    //     console.log(`Ladder! Moving from ${finalPosition} to ${ladderPosition}`);
+                    //     this.setPiecePosition(player, piece, ladderPosition);
+                    //     this.currentPositions[player][piece] = ladderPosition; 
+                    // }
     
-                    if (SNAKES.hasOwnProperty(finalPosition)) {
-                        const snakePosition = SNAKES[finalPosition];
-                        console.log(`Snake! Moving from ${finalPosition} to ${snakePosition}`);
-                        this.setPiecePosition(player, piece, snakePosition);
-                        this.currentPositions[player][piece] = snakePosition; 
-                    }
+                    // if (SNAKES.hasOwnProperty(finalPosition)) {
+                    //     const snakePosition = SNAKES[finalPosition];
+                    //     console.log(`Snake! Moving from ${finalPosition} to ${snakePosition}`);
+                    //     this.setPiecePosition(player, piece, snakePosition);
+                    //     this.currentPositions[player][piece] = snakePosition; 
+                    // }
     
                     if (this.currentPositions[player][piece] === 100) {
                         if (this.hasPlayerWon(player)) {
@@ -228,11 +226,43 @@ export class InD {
                         this.state = STATE.DICE_NOT_ROLLED;
                         return;
                     }
+
+                    if (LADDERS.hasOwnProperty(finalPosition) || SNAKES.hasOwnProperty(finalPosition)) {
+                        this.triggerWordScramble(player, piece, finalPosition);
+                    } 
     
                     this.incrementTurn();
                 }, { once: true });
             }
         }, 200);
+    }
+
+    triggerWordScramble(player, piece, currentPosition) {
+        // Pause the game and show the word scramble challenge
+        UI.showWordScramble();
+    
+        // Wait for the result of the word scramble
+        UI.listenForScrambleResult((isCorrect) => {
+            if (LADDERS.hasOwnProperty(currentPosition)) {
+                if (isCorrect) {
+                    const newPosition = LADDERS[currentPosition];
+                    this.setPiecePosition(player, piece, newPosition);
+                    this.currentPositions[player][piece] = newPosition;
+                    console.log(`Player solved scramble! Moving to ${newPosition}`);
+                } else {
+                    console.log("Player failed scramble! Staying on current tile.");
+                }
+            } else if (SNAKES.hasOwnProperty(currentPosition)) {
+                if (!isCorrect) {
+                    const newPosition = SNAKES[currentPosition];
+                    this.setPiecePosition(player, piece, newPosition);
+                    this.currentPositions[player][piece] = newPosition;
+                    console.log(`Player failed scramble! Moving to ${newPosition}`);
+                } else {
+                    console.log("Player solved scramble! Staying on current tile.");
+                }
+            }
+        });
     }
     
 
