@@ -1,10 +1,7 @@
 const wordText = document.querySelector(".word"),
 titleText = document.querySelector(".container h2"),
-hintText = document.querySelector(".hint span"),
 timeText = document.querySelector(".time b"),
-inputField = document.querySelector("input"),
-refreshBtn = document.querySelector(".refresh-word"),
-checkBtn = document.querySelector(".check-word");
+inputField = document.querySelector("input");
 
 let correctAnswer;
 

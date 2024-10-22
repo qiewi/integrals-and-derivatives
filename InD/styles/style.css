@@ -55,7 +55,7 @@ button#sound-btn:hover {
     transform: translateY(3px);
 }
 
-img {
+img#logo {
     width: 300px;
     height: 300px;
     animation: scaleImage 2s ease-in-out infinite;

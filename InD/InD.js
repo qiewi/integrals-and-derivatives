@@ -1,4 +1,4 @@
-import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constant/constants.js';
+import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants/constants.js';
 import { UI } from './UI.js';
 
 export class InD {

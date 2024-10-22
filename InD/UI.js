@@ -1,4 +1,4 @@
-import { COORDINATES_MAP, PLAYERS, STEP_LENGTH } from './constant/constants.js';
+import { COORDINATES_MAP, PLAYERS, STEP_LENGTH } from './constants/constants.js';
 
 const diceButtonElement = document.querySelector('#dice-btn');
 const playerPiecesElements = {
