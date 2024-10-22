@@ -182,6 +182,7 @@ h1#animated-text {
     border: 2px dashed;
     animation: spin 1s infinite linear;
 }
+
 @keyframes spin {
     0% {
         transform: translate(50%, 50%) rotate(0deg);
@@ -476,3 +477,112 @@ h1#animated-text {
     box-shadow: none;
     transform: translateY(3px);
 }
+
+@media (max-width: 426px) {
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        min-height: 100vh;
+        background: #00b550;
+    }    
+
+    .outer-container {
+        padding: 20px; 
+        background: #fff; 
+        border-radius: 10px; 
+        border: 5px solid #000;
+        box-shadow: 0px 8px rgba(0, 0, 0); 
+    }
+
+    /* Adjust the board size */
+    .ind-container {
+        width: 350px;
+        margin: 20px auto;
+        border-radius: 7px;
+        background: #fff;
+    }
+
+    .ind-container .ind {
+        height: 350px;
+        width: 100%;
+        background-image: url('./../assets/map.png');
+        background-size: contain;
+        position: relative;
+    }
+
+    .player-piece {
+        width: 5%;
+        height: 5%;
+        border: 2px solid;
+        border-radius: 10px;
+        position: absolute;
+        transform: translate(50%, 50%);
+        transition: all .2s;
+    
+        z-index: 1;
+    }
+
+    .player-pieces {
+        overflow: visible;  /* Ensure the pieces are not clipped */
+        position: relative;  /* Ensure proper positioning */
+    }
+
+    /* Footer and button adjustments */
+    .footer {
+        padding: 3px;
+    }
+
+    .btn-dice {
+        height: 48px;
+        width: 48px;
+        font-size: small;
+        background-color: #009d60;
+        color: white;
+        border-radius: 10px;
+        border: 2px solid #000;
+        box-shadow: 0 3px #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dice-cube {
+        width: 48px; 
+        height: 48px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 2px rgba(0, 0, 0); 
+        margin-left: 10px; 
+    }
+    
+    .dice-value {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+    }
+
+    .btn-reset{
+        color: white;
+        width: 48px; 
+        height: 48px;
+        font-size: small;
+        background-color: #f7ca15;
+        border-radius: 10px;
+        border: 2px solid #000;
+        box-shadow: 0 3px #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+
+

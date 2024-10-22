@@ -1,4 +1,4 @@
-import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants/constants.js';
+import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants/position.js';
 import { UI } from './UI.js';
 
 export class InD {
@@ -144,6 +144,7 @@ export class InD {
         const target = event.target;
 
         if(!target.classList.contains('player-piece') || !target.classList.contains('highlight')) {
+            console.log('piece not clicked')
             return;
         }
         console.log('piece clicked')

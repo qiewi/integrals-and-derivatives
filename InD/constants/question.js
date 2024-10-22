@@ -1,5 +1,5 @@
 const integrals = [
-    { question: "∫ 1 dx", answer: "1" },
+    { question: "∫ 1 dx", answer: "x" },
     { question: "∫ 2 dx", answer: "2x" },
     { question: "∫ 5 dx", answer: "5x" },
     { question: "∫ 10 dx", answer: "10x" },
