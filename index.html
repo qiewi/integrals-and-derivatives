@@ -21,7 +21,7 @@
     </div>
 
     <div class="game-container hide">
-        <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio>
+        <!-- <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio> -->
         <div class="header">
             <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h2 class="active-player"><span></span>'s turn!</h2>
@@ -43,7 +43,7 @@
             <div class="footer">
                 <div class="row">
                     <div class="roll-dice-container">
-                        <!-- <audio id="dice-roll-sound" src="InD/assets/dice-roll.mp3"></audio> -->
+                        <audio id="dice-roll-sound" src="InD/assets/dice-roll.mp3"></audio>
                         <button id="dice-btn" class="btn btn-dice">Roll</button>
                         <div class="dice-cube">
                             <div class="dice-value"></div>
@@ -73,6 +73,6 @@
     <script src="./main.js" type="module"></script>
     <script src="./InD/challenge.js" defer></script>
     <script src="./InD/constants/question.js" defer></script>
-    <script src="./InD/sound.js" defer></script>
+    <script src="./InD/interfaces/sound.js" defer></script>
 </body>
 </html>

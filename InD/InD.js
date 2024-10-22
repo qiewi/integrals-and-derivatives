@@ -1,5 +1,5 @@
 import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants/position.js';
-import { UI } from './UI.js';
+import { UI } from './interfaces/UI.js';
 
 export class InD {
     currentPositions = {
