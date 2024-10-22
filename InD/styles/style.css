@@ -155,7 +155,7 @@ h1#animated-text {
 
     height: 450px;
     width: 100%;
-    background-image: url('./assets/map.png');
+    background-image: url('./../assets/map.png');
     background-size: contain;
     position: relative;
 }
@@ -246,7 +246,7 @@ h1#animated-text {
     transform: translateY(3px);
 }
 
-.btn#menu-btn {
+.btn-menu {
     background-color: #009d60;
     color: white;
     width: 150px;
@@ -260,7 +260,7 @@ h1#animated-text {
     margin-top: 20px;
 }
 
-.btn#menu-btn:not(:disabled):hover {
+.btn-menu:not(:disabled):hover {
     background-color: #00824f;
     box-shadow: none;
     transform: translateY(3px);
