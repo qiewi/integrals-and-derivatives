@@ -110,7 +110,7 @@ export class UI {
     }
 
     static showChallengePopup() {
-        const container = document.querySelector('.container');
+        const container = document.querySelector('.challenge-container');
         const overlay = document.querySelector('.overlay');
 
         // Ensure the popup is hidden first
@@ -131,7 +131,7 @@ export class UI {
     }
 
     static hideChallengePopup() {
-        const container = document.querySelector('.container');
+        const container = document.querySelector('.challenge-container');
         const overlay = document.querySelector('.overlay');
 
         // Hide both popup and overlay

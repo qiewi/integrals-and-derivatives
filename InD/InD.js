@@ -57,7 +57,7 @@ export class InD {
 
     onStartClick() {
         document.querySelector('.menu-screen').classList.add("hide");
-        document.querySelector('.outer-container').classList.remove("hide"); 
+        document.querySelector('.game-container').classList.remove("hide"); 
     }
 
     listenCloseClick() {
@@ -66,7 +66,7 @@ export class InD {
 
     onCloseClick() {
         document.querySelector('.menu-screen').classList.remove("hide");
-        document.querySelector('.outer-container').classList.add("hide"); 
+        document.querySelector('.game-container').classList.add("hide"); 
     }
 
     listenDiceClick() {

@@ -129,7 +129,7 @@ h1#animated-text {
     display: none;
 }
 
-.outer-container {
+.game-container {
     padding: 20px; 
     background: #fff; 
     border-radius: 10px; 
@@ -357,7 +357,7 @@ h1#animated-text {
     }
 }
 
-.container {
+.challenge-container {
     position: fixed; 
     top: 50%; 
     left: 50%; 
@@ -381,7 +381,7 @@ h1#animated-text {
     transform: translate(-50%, -50%) scale(1); 
 }
 
-.container h2{
+.challenge-container h2{
     font-size: 25px;
     font-weight: 600;
     padding: 18px 25px;
@@ -389,7 +389,7 @@ h1#animated-text {
     text-align: center;
 }
 
-.container .content{
+.challenge-container .content{
     margin: 25px 20px 35px;
 }
 
@@ -488,7 +488,7 @@ h1#animated-text {
         background: #00b550;
     }    
 
-    .outer-container {
+    .game-container {
         padding: 20px; 
         background: #fff; 
         border-radius: 10px; 

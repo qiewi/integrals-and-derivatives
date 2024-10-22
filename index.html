@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="outer-container hide">
+    <div class="game-container hide">
         <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio>
         <div class="header">
             <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
@@ -43,7 +43,7 @@
             <div class="footer">
                 <div class="row">
                     <div class="roll-dice-container">
-                        <audio id="dice-roll-sound" src="InD/assets/dice-roll.mp3"></audio>
+                        <!-- <audio id="dice-roll-sound" src="InD/assets/dice-roll.mp3"></audio> -->
                         <button id="dice-btn" class="btn btn-dice">Roll</button>
                         <div class="dice-cube">
                             <div class="dice-value"></div>
@@ -51,17 +51,15 @@
                     </div>
                     <button id="reset-btn" class="btn btn-reset">Reset</button>
                 </div>
-                <!-- <h2 class="active-player"><span></span>'s turn!</h2> -->
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="challenge-container">
         <h2>Integrals & Derivatives!</h2>
         <div class="content">
             <p class="word"></p>
             <div class="details">
-                <!-- <p class="hint">Hint: <span></span></p> -->
                 <p class="time">Time Left: <span><b>30</b>s</span></p>
             </div>
             <input type="text" class="input-field" placeholder="Enter the correct answer">
