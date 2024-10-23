@@ -137,6 +137,7 @@ h1#animated-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 32px;
     margin-bottom: 12px;
 }
 
@@ -188,6 +189,15 @@ h1#animated-text {
     border-radius: 12px;  
     overflow: hidden;  
     margin-top: 4px;
+}
+
+.materials-container {
+    padding: 20px; 
+    background: #fff; 
+    border-radius: 10px; 
+    border: 5px solid #000;
+    box-shadow: 0px 8px rgba(0, 0, 0); 
+    margin-bottom: 32px;
 }
 
 .game-container {
