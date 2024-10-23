@@ -116,7 +116,7 @@ export const COORDINATES_MAP = {
 };
 
 export const LADDERS = {
-    4: 23,
+    7: 23,
     13: 46,
     33: 52,
     42: 63,

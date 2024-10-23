@@ -156,39 +156,56 @@ export class UI {
         const checkBtn = document.querySelector('button#check-btn');
         const surrendBtn = document.querySelector('button#surrend-btn');
         const timeDisplay = document.querySelector('.time b');
+        const wordText = document.querySelector('.word');  // Element to display the correct answer
         let maxTime = 30;
-
+    
         timeDisplay.innerText = maxTime;
         let timer = setInterval(() => {
             if (maxTime > 0) {
                 maxTime--;
                 timeDisplay.innerText = maxTime;
             } else {
-                clearInterval(timer); 
-                callback(false);
-                UI.hideChallengePopup();  
+                clearInterval(timer);
+                wordText.innerText = `<strong>Time's Up!</strong> <br> Correct Answer: ${correctAnswer}`;
+                wordText.style.color = "red";  // Display the correct answer in red
+                setTimeout(() => {
+                    callback(false);
+                    UI.hideChallengePopup();
+                }, 3000);  // Wait for 3 seconds before hiding
             }
         }, 1000);
-
+    
         checkBtn.addEventListener('click', () => {
             const inputField = document.querySelector('.input-field');
             const userAnswer = inputField.value.toLowerCase();
-
+    
             if (userAnswer === correctAnswer) {
                 clearInterval(timer);  
-                callback(true); 
+                wordText.innerHTML = "<strong>Correct!</strong>";
+                wordText.style.color = "green";  // Highlight correct answer
+                setTimeout(() => {
+                    callback(true); 
+                    UI.hideChallengePopup(); 
+                }, 2000);  // Wait for 2 seconds before hiding
             } else {
                 clearInterval(timer);  
-                callback(false);  
+                wordText.innerHTML = `<strong>Wrong!</strong> <br> Correct Answer: ${correctAnswer}`;
+                wordText.style.color = "red";  // Highlight wrong answer
+                setTimeout(() => {
+                    callback(false);  
+                    UI.hideChallengePopup(); 
+                }, 3000);  // Wait for 3 seconds to show correct answer before hiding
             }
-
-            UI.hideChallengePopup(); 
         });
-
+    
         surrendBtn.addEventListener('click', () => {
             clearInterval(timer);  
-            callback(false);  
-            UI.hideChallengePopup();  
+            wordText.innerHTML = `Correct Answer: ${correctAnswer}`;
+            wordText.style.color = "red";  // Show correct answer if surrender
+            setTimeout(() => {
+                callback(false);  
+                UI.hideChallengePopup();  
+            }, 3000);  // Wait for 3 seconds before hiding
         });
     }
 
@@ -198,17 +215,14 @@ export class UI {
         const playerColorElement = document.querySelector('.win-text span');
         const winIconElement = document.querySelector('.win-icon');
     
-        // Set the player name in the win text
         playerColorElement.innerText = player === 'P1' ? 'Blue' : 'Green';
-    
-        // Set the win icon based on the player
+
         if (player === 'P1') {
             winIconElement.src = 'InD/assets/blue-win.png';
         } else {
             winIconElement.src = 'InD/assets/green-win.png';
         }
 
-        // Ensure the popup is hidden first
         container.style.display = 'none';
         container.classList.remove('show-popup');
         overlay.style.display = 'none';
