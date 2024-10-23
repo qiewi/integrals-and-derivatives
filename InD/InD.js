@@ -181,7 +181,6 @@ export class InD {
         const interval = setInterval(() => {
             const currentPosition = this.currentPositions[player][piece];
     
-            // Prevent the piece from moving beyond 100
             if (currentPosition + moveSteps > 100) {
                 clearInterval(interval);
                 console.log(`Cannot move beyond 100: ${currentPosition} + ${moveSteps}`);
@@ -189,14 +188,12 @@ export class InD {
                 return;
             }
     
-            // Move the piece incrementally
             this.incrementPiecePosition(player, piece);
             moveSteps--;
     
             if (moveSteps === 0) {
                 clearInterval(interval);
-    
-                // Wait for the CSS transition to complete 
+
                 pieceElement.addEventListener('transitionend', () => {
                     const finalPosition = this.currentPositions[player][piece];
     

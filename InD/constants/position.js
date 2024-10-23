@@ -146,7 +146,7 @@ export const BASE_POSITIONS = {
 }
 
 export const START_POSITIONS = {
-    P1: 1,
+    P1: 94,
     P2: 1
 }
 
