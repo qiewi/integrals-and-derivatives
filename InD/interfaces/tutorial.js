@@ -1,17 +1,19 @@
 let currentStep = 0;
 
 const tutorialSteps = [
-    'Welcome to the game! Let’s start with the basics.',
-    'This is your dice, press it to roll a number.',
-    'These are your player pieces, click on them to move based on the dice roll.',
+    'Welcome to the Integrals & Derivatives! Let’s start with the basics.',
+    'Roll the dice to make move (you need 6 for the first move).',
+    'Click your pieces to move based on the dice roll.',
     'If you land on a snake, you will slide down! If you land on a ladder, you will climb up.',
-    'You win by reaching the 100th tile!'
+    'However, there will be some challenges along the way that modifies the snake & ladder outcomes.',
+    'First one to reach the 100th tile wins the game!'
 ];
 
 const overlay = document.getElementById('tutorial-specific-overlay');
 const tutorialBox = document.getElementById('tutorial-popup');
 const tutorialText = document.getElementById('tutorial-step');
 const nextBtn = document.getElementById('next-tutorial-btn');
+const xBtn = document.getElementById('x-btn');
 
 // Function to show the current step of the tutorial
 function showStep(step) {
@@ -38,6 +40,11 @@ function startTutorial() {
 // Event listener for the "Next" button in the tutorial
 nextBtn.addEventListener('click', () => {
     currentStep++;
+    showStep(currentStep);
+});
+
+xBtn.addEventListener('click', () => {
+    currentStep = tutorialSteps.length;
     showStep(currentStep);
 });
 
