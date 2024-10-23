@@ -15,13 +15,13 @@
         <div class="menu">
             <img id="logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h1 id="animated-text">Integrals & Derivatives</h1>
-            <button id="start-btn" class="btn btn-menu">Start Game</button>
-            <button id="material-btn" class="btn btn-menu" onclick="window.location.href='materials.html'">Materials</button>
+            <button id="start-btn" class="btn btn-menu btn-start">Start Game</button>
+            <button id="material-btn" class="btn btn-menu btn-material" onclick="window.location.href='materials.html'">Materials</button>
         </div>
     </div>
 
     <div class="game-container hide">
-        <!-- <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio> -->
+        <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio>
         <div class="header">
             <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h2 class="active-player"><span></span>'s turn!</h2>
@@ -70,12 +70,12 @@
         </div>
     </div>
 
-    <div class="game-container">
+    <div id="win" class="win-container"> 
         <div class="content win-content">
-            <h2 class="win-text">Blue Won!</h2>
+            <h2 class="win-text"><span></span> Wins!</h2>
             <p class="word"></p>
             <div class="win-details">
-                <img class="win-icon" src="InD/assets/blue-win.png">
+                <img class="win-icon" src="">
             </div>
             <div class="buttons">
                 <button id="backToMenu-btn" class="backToMenu">Back to Menu</button>

@@ -1,5 +1,5 @@
 const wordText = document.querySelector(".word"),
-titleText = document.querySelector(".container h2"),
+titleText = document.querySelector(".challenge-container h2"),
 timeText = document.querySelector(".time b"),
 inputField = document.querySelector("input");
 

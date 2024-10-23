@@ -191,6 +191,71 @@ export class UI {
             UI.hideChallengePopup();  
         });
     }
+
+    static showWinPopup(player) {
+        const container = document.querySelector('div#win');
+        const overlay = document.querySelector('.overlay');
+        const playerColorElement = document.querySelector('.win-text span');
+        const winIconElement = document.querySelector('.win-icon');
+    
+        // Set the player name in the win text
+        playerColorElement.innerText = player === 'P1' ? 'Blue' : 'Green';
+    
+        // Set the win icon based on the player
+        if (player === 'P1') {
+            winIconElement.src = 'InD/assets/blue-win.png';
+        } else {
+            winIconElement.src = 'InD/assets/green-win.png';
+        }
+
+        // Ensure the popup is hidden first
+        container.style.display = 'none';
+        container.classList.remove('show-popup');
+        overlay.style.display = 'none';
+        overlay.classList.remove('show-overlay');
+
+        // Show after a delay 
+        setTimeout(() => {
+            overlay.style.display = 'block';
+            container.style.display = 'block';
+            setTimeout(() => {
+                overlay.classList.add('show-overlay');
+                container.classList.add('show-popup');
+            }, 100); 
+        }, 800);  
+    }
+
+    static hideWinPopup() {
+        const container = document.querySelector('div#win');
+        const overlay = document.querySelector('.overlay');
+
+        // Hide both popup and overlay
+        container.classList.remove('show-popup');
+        container.style.display = 'none';
+        overlay.classList.remove('show-overlay');
+        overlay.style.display = 'none';
+    }
+
+    static showWin(player) {
+        UI.showWinPopup(player);  
+        // initGame(type);  
+    }
+
+    static listenForWin(callback) {
+        const playAgainBtn = document.querySelector('button#playAgain-btn');
+        const backToMenuBtn = document.querySelector('button#backToMenu-btn');
+
+        playAgainBtn.addEventListener('click', () => {
+            callback(true);
+            UI.hideWinPopup(); 
+        });
+
+        backToMenuBtn.addEventListener('click', () => {
+            callback(false);  
+            UI.hideWinPopup();  
+        });
+    }
+
 }
 
 // UI.setPiecePosition('P1', 0, 0);

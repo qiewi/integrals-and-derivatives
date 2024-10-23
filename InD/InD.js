@@ -213,8 +213,8 @@ export class InD {
     
                     if (this.currentPositions[player][piece] === 100) {
                         if (this.hasPlayerWon(player)) {
-                            alert(`Player: ${player} has won!`);
-                            this.resetGame();
+                            // alert(`Player: ${player} has won!`);
+                            this.triggerWin(player);
                             return;
                         }
                     }
@@ -280,6 +280,22 @@ export class InD {
                     this.currentPositions[player][piece] =  currentPosition;
                     console.log("Player solved scramble! Staying on current tile.");
                 }
+            }
+        });
+    }
+
+    triggerWin(player) {
+        // Pause the game and show the word scramble challenge
+        UI.showWin(player);
+    
+        // Wait for the result of the word scramble
+        UI.listenForWin((isCorrect) => {
+            if (!isCorrect) {
+                this.resetGame();
+                document.querySelector('.menu-screen').classList.remove("hide");
+                document.querySelector('.game-container').classList.add("hide"); 
+            } else {
+                this.resetGame();
             }
         });
     }
