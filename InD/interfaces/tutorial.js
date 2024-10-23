@@ -2,7 +2,7 @@ let currentStep = 0;
 
 const tutorialSteps = [
     'Welcome to the Integrals & Derivatives! Let’s start with the basics.',
-    'Roll the dice to make move (you need 6 for the first move).',
+    'Roll the dice to make move \n(you need 6 for the first move).',
     'Click your pieces to move based on the dice roll.',
     'If you land on a snake, you will slide down! If you land on a ladder, you will climb up.',
     'However, there will be some challenges along the way that modifies the snake & ladder outcomes.',
