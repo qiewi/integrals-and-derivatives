@@ -58,6 +58,7 @@ export class InD {
     onStartClick() {
         document.querySelector('.menu-screen').classList.add("hide");
         document.querySelector('.game-container').classList.remove("hide"); 
+        startTutorial();
     }
 
     listenCloseClick() {

@@ -125,6 +125,66 @@ h1#animated-text {
     }
 }
 
+/* Dedicated overlay for the tutorial */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Blackened background for focus */
+    z-index: 9998; /* Below the tutorial box */
+    display: none; /* Hidden by default */
+}
+
+.tutorial-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Tutorial container styling */
+.tutorial-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border: 3px solid #000;
+    z-index: 9999; /* Above the overlay */
+    display: none;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tutorial-container.show-popup {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.tutorial-content {
+    max-width: 300px;
+}
+
+.btn-next {
+    background-color: #00b550;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-next:hover {
+    background-color: #00824f;
+}
+
+
+
 .hide {
     display: none;
 }
@@ -155,7 +215,7 @@ h1#animated-text {
 
     height: 450px;
     width: 100%;
-    background-image: url('./../assets/map.png');
+    background-image: url('./../assets/map-hd.png');
     background-size: contain;
     position: relative;
 }
@@ -524,6 +584,7 @@ h1#animated-text {
         opacity: 1;
     }
 }
+
 
 .win-icon {
     width: 150px;
