@@ -59,16 +59,23 @@ export class UI {
         }
         
         const player = PLAYERS[index];
+        const playerImage = document.getElementById('player-image');
 
         // Display player ID
         if (player === 'P1') {
-            document.querySelector('.active-player').classList.remove('green');
-            document.querySelector('.active-player').classList.add('blue');
-            document.querySelector('.active-player span').innerText = "Blue";
+            // document.querySelector('.active-player').classList.remove('green');
+            // document.querySelector('.active-player').classList.add('yellow');
+            document.querySelector('.active-player span').innerText = "Yellow";
+
+            playerImage.src = 'InD/assets/yellow-player.png';
+            document.getElementById('player-turn').style.backgroundColor = '#f7ca15'; // Optional: Blue background
         } else {
-            document.querySelector('.active-player').classList.remove('blue');
-            document.querySelector('.active-player').classList.add('green');
+            // document.querySelector('.active-player').classList.remove('yellow');
+            // document.querySelector('.active-player').classList.add('green');
             document.querySelector('.active-player span').innerText = "Green";
+
+            playerImage.src = 'InD/assets/green-player.png'; 
+            document.getElementById('player-turn').style.backgroundColor = '#00b550'; // Optional: Green background
         }
 
         const activePlayerBase = document.querySelector('.player-base.highlight');

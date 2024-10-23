@@ -76,7 +76,7 @@ export class InD {
 
     onDiceClick() {
         console.log('dice clicked!');
-        this.diceValue = 6 //1 + Math.floor(Math.random() * 6);
+        this.diceValue = 1 + Math.floor(Math.random() * 6);
         this.state = STATE.DICE_ROLLED;
         
         this.checkForEligiblePieces();
