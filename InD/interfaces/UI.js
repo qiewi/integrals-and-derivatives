@@ -176,12 +176,23 @@ export class UI {
     // }
 
     static listenForResult(callback) {
+        console.log('listenForResult called'); // Inside the function
+
         const checkBtn = document.querySelector('button#check-btn');
         const surrendBtn = document.querySelector('button#surrend-btn');
         const timeDisplay = document.querySelector('.time b');
-        const wordText = document.querySelector('.word');  // Element to display the correct answer
+        const wordText = document.querySelector('.word');
         let maxTime = 30;
     
+        // Clear previous timers and listeners
+        if (checkBtn.listener) {
+            checkBtn.removeEventListener('click', checkBtn.listener);
+        }
+        if (surrendBtn.listener) {
+            surrendBtn.removeEventListener('click', surrendBtn.listener);
+        }
+    
+        // Timer logic
         timeDisplay.innerText = maxTime;
         let timer = setInterval(() => {
             if (maxTime > 0) {
@@ -189,48 +200,58 @@ export class UI {
                 timeDisplay.innerText = maxTime;
             } else {
                 clearInterval(timer);
-                wordText.innerText = `<strong>Time's Up!</strong> <br> Correct Answer: ${correctAnswer}`;
-                wordText.style.color = "red";  // Display the correct answer in red
+                wordText.innerHTML = `<strong>Time's Up!</strong> <br> Correct Answer: ${correctAnswer}`;
+                wordText.style.color = "red";
                 setTimeout(() => {
                     callback(false);
                     UI.hideChallengePopup();
-                }, 3000);  // Wait for 3 seconds before hiding
+                }, 3000);
             }
         }, 1000);
     
-        checkBtn.addEventListener('click', () => {
+        // Create named listener for checkBtn
+        const checkBtnHandler = () => {
             const inputField = document.querySelector('.input-field');
             const userAnswer = inputField.value.toLowerCase();
     
             if (userAnswer === correctAnswer) {
-                clearInterval(timer);  
+                clearInterval(timer);
                 wordText.innerHTML = "<strong>Correct!</strong>";
-                wordText.style.color = "green";  // Highlight correct answer
+                wordText.style.color = "green";
                 setTimeout(() => {
-                    callback(true); 
-                    UI.hideChallengePopup(); 
-                }, 2000);  // Wait for 2 seconds before hiding
+                    callback(true);
+                    UI.hideChallengePopup();
+                }, 2000);
             } else {
-                clearInterval(timer);  
+                clearInterval(timer);
                 wordText.innerHTML = `<strong>Wrong!</strong> <br> Correct Answer: ${correctAnswer}`;
-                wordText.style.color = "red";  // Highlight wrong answer
+                wordText.style.color = "red";
                 setTimeout(() => {
-                    callback(false);  
-                    UI.hideChallengePopup(); 
-                }, 3000);  // Wait for 3 seconds to show correct answer before hiding
+                    callback(false);
+                    UI.hideChallengePopup();
+                }, 3000);
             }
-        });
+        };
     
-        surrendBtn.addEventListener('click', () => {
-            clearInterval(timer);  
+        const surrendBtnHandler = () => {
+            clearInterval(timer);
             wordText.innerHTML = `Correct Answer: ${correctAnswer}`;
-            wordText.style.color = "red";  // Show correct answer if surrender
+            wordText.style.color = "red";
             setTimeout(() => {
-                callback(false);  
-                UI.hideChallengePopup();  
-            }, 3000);  // Wait for 3 seconds before hiding
-        });
+                callback(false);
+                UI.hideChallengePopup();
+            }, 3000);
+        };
+    
+        // Add new listeners and store the references for removal later
+        checkBtn.listener = checkBtnHandler;
+        surrendBtn.listener = surrendBtnHandler;
+    
+        checkBtn.addEventListener('click', checkBtnHandler);
+        surrendBtn.addEventListener('click', surrendBtnHandler);
     }
+    
+    
 
     static showWinPopup(player) {
         const container = document.querySelector('div#win');

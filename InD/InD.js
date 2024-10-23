@@ -194,6 +194,7 @@ export class InD {
             moveSteps--;
     
             if (moveSteps === 0) {
+                console.log(player, this.currentPositions[player][piece]); // debug
                 clearInterval(interval);
 
                 pieceElement.addEventListener('transitionend', () => {
@@ -267,20 +268,26 @@ export class InD {
                     const newPosition = LADDERS[currentPosition];
                     this.setPiecePosition(player, piece, newPosition);
                     this.currentPositions[player][piece] = newPosition;
-                    console.log(`Player solved scramble! Moving to ${newPosition}`);
+                    console.log(`Player solved challenge! Moving to ${newPosition}`);
+                    console.log(player, this.currentPositions[player][piece]); // debug
                 } else {
                     this.currentPositions[player][piece] =  currentPosition;
-                    console.log("Player failed scramble! Staying on current tile.");
+                    console.log("Player failed challenge! Staying on current tile.");
+                    console.log(player, this.currentPositions[player][piece]); // debug
                 }
-            } else if (SNAKES.hasOwnProperty(currentPosition)) {
+            } 
+            
+            if (SNAKES.hasOwnProperty(currentPosition)) {
                 if (!isCorrect) {
                     const newPosition = SNAKES[currentPosition];
                     this.setPiecePosition(player, piece, newPosition);
                     this.currentPositions[player][piece] = newPosition;
-                    console.log(`Player failed scramble! Moving to ${newPosition}`);
+                    console.log(`Player failed challenge! Moving to ${newPosition}`);
+                    console.log(player, this.currentPositions[player][piece]); // debug
                 } else {
                     this.currentPositions[player][piece] =  currentPosition;
-                    console.log("Player solved scramble! Staying on current tile.");
+                    console.log("Player solved challenge! Staying on current tile.");
+                    console.log(player, this.currentPositions[player][piece]); // debug
                 }
             }
         });
