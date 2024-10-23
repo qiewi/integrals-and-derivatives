@@ -67,14 +67,14 @@ export class UI {
             // document.querySelector('.active-player').classList.add('yellow');
             document.querySelector('.active-player span').innerText = "Yellow";
 
-            playerImage.src = 'InD/assets/yellow-player.png';
+            playerImage.src = 'InD/assets/yellow-player.PNG';
             document.getElementById('player-turn').style.backgroundColor = '#f7ca15'; // Optional: Blue background
         } else {
             // document.querySelector('.active-player').classList.remove('yellow');
             // document.querySelector('.active-player').classList.add('green');
             document.querySelector('.active-player span').innerText = "Green";
 
-            playerImage.src = 'InD/assets/green-player.png'; 
+            playerImage.src = 'InD/assets/green-player.PNG'; 
             document.getElementById('player-turn').style.backgroundColor = '#00b550'; // Optional: Green background
         }
 
