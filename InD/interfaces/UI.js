@@ -113,8 +113,24 @@ export class UI {
     }
 
     static setDiceValue(value) {
-        document.querySelector('.dice-value').innerText = value;
+        const diceImages = {
+            0: './InD/assets/dice/0.png',
+            1: './InD/assets/dice/1.png',
+            2: './InD/assets/dice/2.png',
+            3: './InD/assets/dice/3.png',
+            4: './InD/assets/dice/4.png',
+            5: './InD/assets/dice/5.png',
+            6: './InD/assets/dice/6.png',
+        };
+
+        const diceImg = document.getElementById('dice-img');
+        if (value !== undefined) {
+            diceImg.src = diceImages[value];
+        } else {
+            console.error('Invalid dice value');
+        }
     }
+        
 
     static showChallengePopup() {
         const container = document.querySelector('.challenge-container');

@@ -77,6 +77,7 @@ export class InD {
     onDiceClick() {
         console.log('dice clicked!');
         this.diceValue = 1 + Math.floor(Math.random() * 6);
+        
         this.state = STATE.DICE_ROLLED;
         
         this.checkForEligiblePieces();
@@ -133,7 +134,7 @@ export class InD {
         });
 
         this.turn = 0;
-        this.diceValue = '';
+        this.diceValue = 0;
         this.state = STATE.DICE_NOT_ROLLED;
     }
 
