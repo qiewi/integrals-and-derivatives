@@ -35,7 +35,7 @@
 
     <div id="background" class="game-background">
         <div class="game-container hide">
-            <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio>
+            <audio id="background-audio" src="InD/assets/sound/background-music.mp3" loop></audio>
             <div class="header">
                 <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
                 <h2 class="game-title">Integrals & Derivatives</h2>
@@ -49,6 +49,7 @@
             </div>
             <div class="ind-container">
                 <div class="ind">
+                    <audio id="kill-sound" src="InD/assets/sound/kill.mp3"></audio>
                     <div class="player-pieces">
                         <div class="player-piece" player-id="P1" piece="0"></div>
                         <div class="player-piece" player-id="P2" piece="0"></div>
@@ -63,7 +64,7 @@
                 <div class="footer">
                     <div class="row">
                         <div class="roll-dice-container">
-                            <audio id="dice-roll-sound" src="InD/assets/dice-roll.mp3"></audio>
+                            <audio id="dice-roll-sound" src="InD/assets/sound/dice-roll.mp3"></audio>
                             <button id="dice-btn" class="btn btn-dice">Roll</button>
                             <div class="dice-cube">
                                 <!-- <div class="dice-value"></div> -->
@@ -80,7 +81,7 @@
     <div class="challenge-container">
         <h2>Integrals & Derivatives!</h2>
         <div class="content">
-            <audio id="challenge-sound" src="InD/assets/challenge.mp3"></audio>
+            <audio id="challenge-sound" src="InD/assets/sound/challenge.mp3"></audio>
             <p class="word"></p>
             <div class="details">
                 <p class="time">Time Left: <span><b>30</b>s</span></p>
@@ -95,7 +96,7 @@
 
     <div id="win" class="win-container"> 
         <div class="content win-content">
-            <audio id="win-sound" src="InD/assets/win.mp3"></audio>
+            <audio id="win-sound" src="InD/assets/sound/win.mp3"></audio>
             <h2 class="win-text"><span></span> Wins!</h2>
             <p class="word"></p>
             <div class="win-details">

@@ -319,6 +319,7 @@ export class InD {
     checkForKill(player, piece) {
         const currentPosition = this.currentPositions[player][piece];
         const opponent = player === 'P1' ? 'P2' : 'P1';
+        const audio = document.getElementById('kill-sound');
 
         let kill = false;
 
@@ -326,6 +327,7 @@ export class InD {
             const opponentPosition = this.currentPositions[opponent][piece];
 
             if(currentPosition === opponentPosition) {
+                audio.play();
                 this.setPiecePosition(opponent, piece, BASE_POSITIONS[opponent][piece]);
                 kill = true
             }
