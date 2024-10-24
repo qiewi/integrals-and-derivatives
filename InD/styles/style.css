@@ -299,7 +299,7 @@ h1#animated-text {
 
 .ind-container {
     width: 450px;
-    margin: 20px auto;
+    margin-bottom: auto;
     border-radius: 7px;
     background: #fff;
 }
@@ -357,7 +357,7 @@ h1#animated-text {
 }
 
 .active-player {
-    font-size: 36px;
+    font-size: 16px;
     font-weight: 600;
     margin-left: 20px;
 }
