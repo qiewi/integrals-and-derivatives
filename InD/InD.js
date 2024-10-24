@@ -76,7 +76,13 @@ export class InD {
 
     onDiceClick() {
         console.log('dice clicked!');
-        this.diceValue = 1 + Math.floor(Math.random() * 6);
+        const player = PLAYERS[this.turn];
+
+        if( BASE_POSITIONS[player].includes(this.currentPositions[player][0])) {
+            this.diceValue = 1;
+        } else {
+            this.diceValue = 1 + Math.floor(Math.random() * 6);
+        }
         
         this.state = STATE.DICE_ROLLED;
         
@@ -108,12 +114,12 @@ export class InD {
                 return false;
             }
 
-            if(
-                BASE_POSITIONS[player].includes(currentPosition)
-                && this.diceValue !== 6
-            ){
-                return false;
-            }
+            // if(
+            //     BASE_POSITIONS[player].includes(currentPosition)
+            //     && this.diceValue !== 6
+            // ){
+            //     return false;
+            // }
 
             return true;
         });
