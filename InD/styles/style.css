@@ -469,11 +469,11 @@ h2#animated-text {
     background-color: #00824f;
 }
 
-.btn-material {
+.btn-back-to-menu {
     background-color: #f7a815dc;
 }
 
-.btn-material:not(:disabled):hover {
+.btn-back-to-menu:not(:disabled):hover {
     background-color: rgb(203, 152, 11);
 }
 
@@ -783,30 +783,8 @@ h2#animated-text {
 }
 
 @media (max-width: 426px) {
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        min-height: 100vh;
-        background: #00b550;
-    }    
-
     .menu-screen {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
-    
-    .menu {
-        display: flex;
-        color: #fff;
-        flex-direction: column; 
-        align-items: center;
-        justify-content: center; 
-        text-align: center; 
+        margin-left: 48px;
     }
 
     .game-container {
