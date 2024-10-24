@@ -259,10 +259,10 @@ export class UI {
         const playerColorElement = document.querySelector('.win-text span');
         const winIconElement = document.querySelector('.win-icon');
     
-        playerColorElement.innerText = player === 'P1' ? 'Blue' : 'Green';
+        playerColorElement.innerText = player === 'P1' ? 'Yellow' : 'Green';
 
         if (player === 'P1') {
-            winIconElement.src = 'InD/assets/blue-win.png';
+            winIconElement.src = 'InD/assets/yellow-win.png';
         } else {
             winIconElement.src = 'InD/assets/green-win.png';
         }
