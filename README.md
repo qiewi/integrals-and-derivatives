@@ -5,9 +5,10 @@
     </a>
   <br />
 
+  <br>
   <div>
     <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
-    <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=whit" alt="HTML5" />
+    <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
     <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
   </div>
 
@@ -26,7 +27,6 @@
 4. 🚀 [Quick Start](#quick-start)
 
 ## <a name="introduction">🚨 Introduction</a>
-![4](https://github.com/user-attachments/assets/826dbcf9-e0d1-473a-aee3-3d2daf153eec)
 
 Integrals & Derivatives is a Virtual Lab focusing on calculus, specifically in Integrals and Derivatives. 
 
@@ -43,14 +43,18 @@ It applies the snakes and ladders mechanism but with unique challenges that spic
 ## <a name="features">🔋 Features</a>
 
 👉 **Learning Materials**: A page that contains the concept of integrals and derivatives wrapped in youtube videos.
+<br>
 ![5](https://github.com/user-attachments/assets/17b99b96-c41f-42f0-bdec-91be0612390f)
-![5](https://github.com/user-attachments/assets/097706fd-4c3a-437f-a365-1f1627ec3373)
-
+![6](https://github.com/user-attachments/assets/18acee0f-e33c-40e6-a9bb-f81817927ee8)
 
 👉 **Learning Game**: A modified snakes and ladders with Integrals and Derivatives challenges.
+<br>
 ![7](https://github.com/user-attachments/assets/87ae71f3-2283-429d-be81-06953e34e091)
+<br>
 ![8](https://github.com/user-attachments/assets/c50cb14a-2437-43ed-9ecb-ea55af079794)
+<br>
 ![9](https://github.com/user-attachments/assets/7aba4999-1ff8-4cb8-a711-2b559635fe35)
+<br>
 ![10](https://github.com/user-attachments/assets/61132f15-ad9d-4de8-8293-b8c5dd8bd397)
 
 and many more, including code architecture and reusability .
