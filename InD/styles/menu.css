@@ -200,7 +200,6 @@ body {
 
 @media (max-width: 426px) {
     .footer {
-        position: fixed;
         bottom: 0;
         width: 100%;
         background-color: #00b550;
@@ -225,7 +224,7 @@ body {
         align-content: space-around;
         gap: 20px;
         overflow: hidden;
-        margin: 150px auto;
+        margin: 50px auto;
     }
     
     .feature-details {
