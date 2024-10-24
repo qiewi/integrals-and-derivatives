@@ -6,6 +6,7 @@ const tutorialSteps = [
     'Click your pieces to move based on the dice roll.',
     'If you land on a snake, you will slide down! If you land on a ladder, you will climb up.',
     'However, there will be some challenges along the way that modifies the snake & ladder outcomes.',
+    'Fun Fact: \nDon’t be at the same tile with your opponents or you’ll get killed!',
     'First one to reach the 100th tile wins the game!'
 ];
 
