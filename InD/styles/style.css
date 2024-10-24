@@ -793,7 +793,6 @@ h2#animated-text {
     }    
 
     .menu-screen {
-        margin-left: 48px;
         display: flex;
         flex-direction: column;
         align-items: center;
