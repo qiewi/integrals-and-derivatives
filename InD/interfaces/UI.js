@@ -135,6 +135,7 @@ export class UI {
     static showChallengePopup() {
         const container = document.querySelector('.challenge-container');
         const overlay = document.querySelector('.overlay');
+        const audio = document.getElementById('challenge-sound'); 
 
         // Ensure the popup is hidden first
         container.style.display = 'none';
@@ -147,6 +148,7 @@ export class UI {
             overlay.style.display = 'block';
             container.style.display = 'block';
             setTimeout(() => {
+                audio.play();
                 overlay.classList.add('show-overlay');
                 container.classList.add('show-popup');
             }, 100); 
@@ -258,6 +260,7 @@ export class UI {
         const overlay = document.querySelector('.overlay');
         const playerColorElement = document.querySelector('.win-text span');
         const winIconElement = document.querySelector('.win-icon');
+        const audio = document.getElementById('win-sound'); 
     
         playerColorElement.innerText = player === 'P1' ? 'Yellow' : 'Green';
 
@@ -277,6 +280,7 @@ export class UI {
             overlay.style.display = 'block';
             container.style.display = 'block';
             setTimeout(() => {
+                audio.play();
                 overlay.classList.add('show-overlay');
                 container.classList.add('show-popup');
             }, 100); 
