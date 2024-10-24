@@ -198,3 +198,175 @@ body {
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
+@media (max-width: 426px) {
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #00b550;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+    }
+    
+    .footer p {
+        margin: 10px;
+    }
+    
+    
+    .ctr-accordion{
+        max-width: 1400px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: space-around;
+        gap: 20px;
+        overflow: hidden;
+        margin: 150px auto;
+    }
+    
+    .feature-details {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .game-text {
+        display: flex;
+        align-items: flex-end; /* Aligns subtitle to bottom */
+        color: white;
+        font-family: 'Poppins';
+    }
+    
+    .game-title {
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 1; /* Adjust the line height to make alignment tighter */
+    }
+    
+    .game-subtitle {
+        font-size: 12px;
+        margin-left: 10px;
+        position: relative;
+        bottom: 5px; /* Adjust this value to align it precisely */
+        white-space: nowrap;
+    }
+    
+    .badge-text {
+        color: white;
+        font-family: 'Poppins';
+    }
+    
+    /* Badge styles */
+    .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 8px;
+        font-weight: 600; /* Semi-bold */
+        color: black;
+        border-radius: 20px;
+        border: #000 2px solid;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .recommended {
+        background-color: #ffd700; 
+    }
+    
+    .learning {
+        background-color: #ffd700; 
+    }
+    
+    .videos {
+        background-color: #00b550;
+    }
+     
+    .tab{
+        position: relative;
+        width: 80vw;
+        height: 60vh;
+        height: inherit;
+        padding: 20px;
+        background: rgb(0, 0, 0);
+        cursor: pointer;
+        transition: width .5s ease;
+        border-radius: 30px;
+        border: 10px solid #000;
+    }
+
+    .tab img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: all 0.5s ease;
+        border-radius: 25px;
+        opacity: 0.5;
+    }
+     
+    .tab:hover{
+        position: relative;
+        width: 80vw;
+        height: 60vh;
+        height: inherit;
+        padding: 20px;
+        background: rgb(0, 0, 0);
+        cursor: pointer;
+        transition: width .5s ease;
+        border-radius: 30px;
+        border: 10px solid #000;
+    }
+    
+    .tab:hover img{
+        opacity: 1;
+    }
+    
+    .tab:nth-child(2) {
+        position: relative;
+        width: 80vw;
+        height: 60vh;
+        height: inherit;
+        padding: 20px;
+        background: rgb(0, 0, 0);
+        cursor: pointer;
+        transition: width .5s ease;
+        border-radius: 30px;
+        border: 10px solid #000;
+    }
+    
+    .tab:nth-child(2) img{
+        opacity: 1; /* Default expanded tab */
+    }
+    
+    .tab:nth-child(1):hover ~ .tab:nth-child(2) {
+        position: relative;
+        width: 80vw;
+        height: 60vh;
+        height: inherit;
+        padding: 20px;
+        background: rgb(0, 0, 0);
+        cursor: pointer;
+        transition: width .5s ease;
+        border-radius: 30px;
+        border: 10px solid #000;
+    }
+    
+    .tab:nth-child(1):hover ~ .tab:nth-child(2) img {
+        opacity: 0.5;
+    }
+    
+    .tab .feature-details {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+        transition: opacity 0.3s ease;
+    }
+    
+}
