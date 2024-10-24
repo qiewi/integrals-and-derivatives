@@ -3,112 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integrals & Derivatives by Qie</title>
-    <link rel="stylesheet" href="./InD/styles/style.css">
+    <link rel="stylesheet" href="./InD/styles/menu.css">
     <link rel="shortcut icon" href="./InD/assets/snake-icon.png" />
+    <title>Integrals and Derivatives</title>
 </head>
 <body>
-    <div class="overlay hide"></div>
-    <button id="sound-btn" class="btn-sound">🔊</button>
-    
-    <div class="menu-screen">
-        <div class="menu">
-            <img id="logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
-            <h1 id="animated-text">Integrals & Derivatives</h1>
-            <button id="start-btn" class="btn btn-menu btn-start">Start Game</button>
-            <button id="material-btn" class="btn btn-menu btn-material" onclick="window.location.href='materials.html'">Materials</button>
-        </div>
-    </div>
-
-    <div id="tutorial-specific-overlay" class="tutorial-overlay hide"></div>
-    <div id="tutorial-popup" class="tutorial-container hide">
-        <div class="tutorial-content">
-            <div class="tutorial-close">
-                <button id="x-btn" class="btn-x">x</button>
-            </div>
-            <h2>How to Play</h2>
-            <p id="tutorial-step">Welcome to the game! Let’s start with the basics.</p>
-            <button id="next-tutorial-btn" class="btn-next">Next</button>
-        </div>
-    </div>
-
-    <div id="background" class="game-background">
-        <div class="game-container hide">
-            <!-- <audio id="background-audio" src="InD/assets/background-music.mp3" loop></audio> -->
-            <div class="header">
-                <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
-                <h2 class="game-title">Integrals & Derivatives</h2>
-                <button id="close-btn" class="btn btn-close">X</button>
-            </div>
-            <div class="player-turn" id="player-turn">
-                <!-- <img id="player-image" class="player-icon" src="" alt="Player Icon"> -->
-                <div class="turn-text">
-                    <h2 class="active-player"><span></span>'s turn!</h2>
+    <div class="ctr-accordion">
+         <div class="tab" onclick="window.location.href='game.html'">
+             <img src="InD/assets/menu-tab/Game.png">
+             <div class="feature-details">
+                <div class="badge-text">
+                    <span class="badge recommended">Recommended</span>
+                    <span class="badge learning">Learning</span>
+                 </div>
+                 <div class="game-text">  
+                    <span class="game-title">Game</span>
+                    <span class="game-subtitle">Snakes & Ladders</span>
                 </div>
-            </div>
-            <div class="ind-container">
-                <div class="ind">
-                    <div class="player-pieces">
-                        <div class="player-piece" player-id="P1" piece="0"></div>
-                        <div class="player-piece" player-id="P2" piece="0"></div>
-                    </div>
-        
-                    <div class="player-bases">
-                        <div class="player-base" player-id="P1"></div>
-                        <div class="player-base" player-id="P2"></div>
-                    </div>
+             </div>
+         </div>
+         <div class="tab" onclick="window.location.href='materials.html'">
+             <img src="InD/assets/menu-tab/Materials.png">
+             <div class="feature-details">
+                <div class="badge-text">
+                    <span class="badge learning">Learning</span>
+                    <span class="badge videos">Videos</span>
+                 </div>
+                 <div class="game-text">  
+                    <span class="game-title">Learn</span>
+                    <span class="game-subtitle">Integrals & Derivatives</span>
                 </div>
-        
-                <div class="footer">
-                    <div class="row">
-                        <div class="roll-dice-container">
-                            <audio id="dice-roll-sound" src="InD/assets/dice-roll.mp3"></audio>
-                            <button id="dice-btn" class="btn btn-dice">Roll</button>
-                            <div class="dice-cube">
-                                <!-- <div class="dice-value"></div> -->
-                                <img id="dice-img" src="./InD/assets/dice/0.png" width="60px"/>
-                            </div>
-                        </div>
-                        <button id="reset-btn" class="btn btn-reset">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+             </div>
+         </div>
     </div>
-    
-    <div class="challenge-container">
-        <h2>Integrals & Derivatives!</h2>
-        <div class="content">
-            <p class="word"></p>
-            <div class="details">
-                <p class="time">Time Left: <span><b>30</b>s</span></p>
-            </div>
-            <input type="text" class="input-field" placeholder="Enter the correct answer">
-            <div class="buttons">
-                <button id="surrend-btn" class="surrender">Surrender</button>
-                <button id="check-btn" class="check">Check</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="win" class="win-container"> 
-        <div class="content win-content">
-            <h2 class="win-text"><span></span> Wins!</h2>
-            <p class="word"></p>
-            <div class="win-details">
-                <img class="win-icon" src="">
-            </div>
-            <div class="buttons">
-                <button id="backToMenu-btn" class="backToMenu">Back to Menu</button>
-                <button id="playAgain-btn" class="playAgain">Play Again</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="./main.js" type="module"></script>
-    <script src="./InD/challenge.js" defer></script>
-    <script src="./InD/constants/question.js" defer></script>
-    <script src="./InD/interfaces/sound.js" defer></script>
-    <script src="./InD/interfaces/tutorial.js" defer></script>
-</body>
+ </body>
 </html>
