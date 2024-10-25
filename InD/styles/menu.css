@@ -181,8 +181,16 @@ body {
     width: 20vw;
 }
 
-
 .tab:nth-child(1):hover ~ .tab:nth-child(3) img {
+    opacity: 0.5;
+}
+
+.tab:nth-child(2):hover ~ .tab:nth-child(3) {
+    width: 20vw;
+}
+
+
+.tab:nth-child(2):hover ~ .tab:nth-child(3) img {
     opacity: 0.5;
 }
 
@@ -195,6 +203,12 @@ body {
 }
 
 .tab:nth-child(1):hover ~ .tab:nth-child(3) .feature-details {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.tab:nth-child(2):hover ~ .tab:nth-child(3) .feature-details {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
