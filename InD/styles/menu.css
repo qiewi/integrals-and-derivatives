@@ -304,7 +304,7 @@ body {
     transition: opacity 0.3s ease, visibility 0s  0.3s;
 }
 
-@media (max-width: 426px) {
+@media (max-width: 769px) {
     .footer {
         bottom: 0;
         width: 100%;
