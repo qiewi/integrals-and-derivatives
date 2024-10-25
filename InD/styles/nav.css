@@ -1,9 +1,9 @@
-nav{
+nav {
     position: absolute;
     top: 20px;
-    right: 0;
+    right: 20px;
     width: 80px;
-    height: 300px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,14 +11,49 @@ nav{
     z-index: 2;
 }
 
-nav .nav-content{
+/* Mobile-specific adjustments */
+@media only screen and (max-width: 768px) {
+    nav {
+        position: fixed; /* Fixes it to the top-right on mobile */
+        top: 10px; /* Top padding for mobile */
+        right: 10px; /* Right padding for mobile */
+        width: 60px; /* Adjust width for mobile */
+        height: 60px; /* Adjust height for mobile */
+    }
+
+    .nav-content {
+        flex-direction: column;
+        transform: none; /* Remove rotation on mobile */
+    }
+
+    .nav-content .toggle-btn, .nav-content span a {
+        width: 50px; /* Adjust icon size */
+        height: 50px; /* Adjust icon size */
+    }
+
+    .nav-content .toggle-btn {
+        font-size: 28px; /* Adjust icon size */
+        transform: rotate(0); /* Reset rotation */
+    }
+
+    nav.open .nav-content span {
+        transform: none; /* Prevent rotation on mobile */
+        opacity: 1;
+    }
+
+    .nav-content span a i {
+        font-size: 20px; /* Adjust icon size */
+    }
+}
+
+nav .nav-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(-45deg);
+    transform: rotate(-45deg); /* Keep rotation for larger screens */
 }
 
-.nav-content .toggle-btn, .nav-content span a{
+.nav-content .toggle-btn, .nav-content span a {
     height: 60px;
     width: 60px;
     background: #f7ca15;
@@ -27,11 +62,10 @@ nav .nav-content{
     justify-content: center;
     border-radius: 50%;
     border: 5px solid #000;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-
-.nav-content .toggle-btn{
+.nav-content .toggle-btn {
     font-size: 35px;
     color: #0e2431;
     z-index: 100;
@@ -39,28 +73,28 @@ nav .nav-content{
     transform: rotate(-225deg);
     transition: all 0.6s ease;
 }
-  
-nav.open .toggle-btn{
+
+nav.open .toggle-btn {
     transform: rotate(0deg);
 }
 
-.nav-content span{
+.nav-content span {
     position: absolute;
     transition: all 0.6s ease;
     opacity: 0;
 }
-  
-nav.open .nav-content span{
+
+nav.open .nav-content span {
     transform: rotate(calc(var(--i) * (360deg/8))) translateY(120px);
     opacity: 1;
 }
 
-.nav-content span a{
+.nav-content span a {
     text-decoration: none;
     transform: rotate(45deg);
 }
 
-.nav-content span a i{
+.nav-content span a i {
     font-size: 24px;
     color: #0e2431;
     transform: rotate(calc(var(--i) * (360deg/ -8)));
@@ -68,7 +102,7 @@ nav.open .nav-content span{
     transition: 0.2s;
 }
 
-.nav-content span a:hover i{
+.nav-content span a:hover i {
     opacity: 1;
 }
 
