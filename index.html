@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./InD/styles/menu.css">
+    <link rel="stylesheet" href="./InD/styles/nav.css">
     <link rel="shortcut icon" href="./InD/assets/snake-icon.png" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <title>Integrals and Derivatives</title>
 </head>
 <body class="fade-in">
+    <nav>
+        <div class="nav-content">
+          <div class="toggle-btn">
+            <i class='bx bx-plus'></i>
+          </div>
+          <span style="--i:4;">
+            <a onclick="window.location.href='construction.html'"><i class='bx bxs-cog'></i></a>
+          </span>
+          <span style="--i:3;">
+            <a onclick="window.location.href='construction.html'"><i class='bx bxs-user'></i></a>
+          </span>
+        </div>
+    </nav>
     <div class="ctr-accordion">
         <div class="tab" onclick="window.location.href='construction.html'">
             <img src="InD/assets/menu-tab/Profile.png">
@@ -49,8 +64,24 @@
              </div>
          </div>
     </div>
+    <div class="wrapper">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
     <footer class="footer">
         <p>Made by Qie © 2024</p>
     </footer>
+
+    <script src="./InD/interfaces/nav.js" defer></script>
  </body>
 </html>
