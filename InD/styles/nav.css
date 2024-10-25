@@ -31,6 +31,11 @@ nav {
         height: 50px; /* Adjust icon size */
     }
 
+    nav.open .nav-content span {
+        transform: rotate(calc((var(--i)-1) * (360deg/8))) translateY(120px);
+        opacity: 1;
+    }
+
     .nav-content .toggle-btn {
         font-size: 28px; /* Adjust icon size */
         transform: rotate(0); /* Reset rotation */

@@ -19,8 +19,8 @@ function onDrag({movementY}) {
 
     // Change --i values when at the top
     if (navTop <= 70) { // Adjust 10px as the threshold for "at the top"
-        spans[0].style.setProperty("--i", "2");
-        spans[1].style.setProperty("--i", "1");
+        spans[0].style.setProperty("--i", "3");
+        spans[1].style.setProperty("--i", "2");
     } else {
         spans[0].style.setProperty("--i", "4"); // Reverting back to default
         spans[1].style.setProperty("--i", "3");
