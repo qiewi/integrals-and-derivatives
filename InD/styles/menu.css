@@ -343,7 +343,7 @@ body {
         opacity: 1;
     }
     
-    .tab:nth-child(2) {
+    .tab:nth-child(3) {
         position: relative;
         width: 80vw;
         height: 60vh;
@@ -356,11 +356,11 @@ body {
         border: 10px solid #000;
     }
     
-    .tab:nth-child(2) img{
+    .tab:nth-child(3) img{
         opacity: 1; /* Default expanded tab */
     }
     
-    .tab:nth-child(1):hover ~ .tab:nth-child(2) {
+    .tab:nth-child(1):hover ~ .tab:nth-child(3) {
         position: relative;
         width: 80vw;
         height: 60vh;
@@ -373,7 +373,24 @@ body {
         border: 10px solid #000;
     }
     
-    .tab:nth-child(1):hover ~ .tab:nth-child(2) img {
+    .tab:nth-child(1):hover ~ .tab:nth-child(3) img {
+        opacity: 0.5;
+    }
+
+    .tab:nth-child(2):hover ~ .tab:nth-child(3) {
+        position: relative;
+        width: 80vw;
+        height: 60vh;
+        height: inherit;
+        padding: 20px;
+        background: rgb(0, 0, 0);
+        cursor: pointer;
+        transition: width .5s ease;
+        border-radius: 30px;
+        border: 10px solid #000;
+    }
+    
+    .tab:nth-child(2):hover ~ .tab:nth-child(3) img {
         opacity: 0.5;
     }
     
