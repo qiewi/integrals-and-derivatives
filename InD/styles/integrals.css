@@ -31,10 +31,10 @@
 
   /*======= Card bg gradient colors =======*/
   --mercury-bg: #e7ba05;
-  --venus-bg: #f79915;
-  --earth-bg: #f77315;
-  --mars-bg: #f75115;
-  --jupiter-bg: #c81c19;
+  --venus-bg: #e7ba05;
+  --earth-bg: #e7ba05;
+  --mars-bg: #e7ba05;
+  --jupiter-bg: #e7ba05;
   /* --saturn-bg: linear-gradient(45deg, #a04b36, #d1977c);
   --uranus-bg: linear-gradient(45deg, #02396f, #0f81ad);
   --neptune-bg: linear-gradient(45deg, #09225a, #4ab5e1); */
@@ -158,7 +158,7 @@ header.hide{
 
 /*===== Main menu =====*/
 .menu-btn{
-  color: var(--first-color);
+  color: var(--second-color);
   font-size: 1.1em;
   font-weight: 400;
   cursor: pointer;
@@ -166,7 +166,7 @@ header.hide{
 }
 
 .menu-btn:hover{
-  color: var(--hover-dark-color);
+  color: #ccc;
 }
 
 .menu-btn i{
@@ -330,7 +330,6 @@ header.hide{
   height: 350px;
   border: 6px solid #000;
   border-radius: 25px;
-  box-shadow: var(--box-shadow);
   margin-bottom: 50px;
   user-select: none;
   transition: height .5s ease;
@@ -474,7 +473,7 @@ header.hide{
   color: var(--second-color);
   font-size: 12em;
   font-weight: 700;
-  opacity: .1;
+  opacity: .3;
 }
 
 .card-content{
@@ -506,7 +505,7 @@ header.hide{
 }
 
 .card-content .sub-info span{
-  color: var(--light-gray-font-color);
+  color: var(--first-color);
   font-weight: 300;
   margin-right: 10px;
 }
