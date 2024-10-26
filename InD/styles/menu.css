@@ -1,9 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+:root{
+    /*======= Main colors =======*/
+    --first-color: #222;
+    --second-color: #fff;
+    
+    /*======= Background colors =======*/
+    --body-bg-color: #fefefe;
+    --light-gray-bg-color: #eee;
+    
+    /*======= Other font colors =======*/
+    --light-gray-font-color: #dadcdd;
+    --dark-gray-font-color: #777;
+    
+    /*======= Hover colors =======*/
+    --hover-red-color: #fe5578;
+    --hover-dark-color: #010101;
+  
+    /*======= Transparent bg colors =======*/
+    --transparent-white-bg-color-01: rgba(255, 255, 255, .25);
+    --transparent-white-bg-color-02: rgba(255, 255, 255, .1);
+  
+    /*======= Border color =======*/
+    --gray-border-color: #ccc;
+  
+    /*======= Box shadow =======*/
+    --box-shadow: 0 5px 25px rgba(0, 0, 0, .35);
+  
+    /*======= Card bg gradient colors =======*/
+    --mercury-bg: linear-gradient(45deg, #394147, #767f85);
+    --venus-bg: linear-gradient(45deg, #ac1013, #e37b62);
+    --earth-bg: linear-gradient(45deg, #005192, #0ea7eb);
+    --mars-bg: linear-gradient(45deg, #ad1c1f, #e57a35);
+    --jupiter-bg: linear-gradient(45deg, #ae5f4e, #e28482);
+    --saturn-bg: linear-gradient(45deg, #a04b36, #d1977c);
+    --uranus-bg: linear-gradient(45deg, #02396f, #0f81ad);
+    --neptune-bg: linear-gradient(45deg, #09225a, #4ab5e1);
+  
+    /*======= Scroll bar colors =======*/
+    --scroll-bar-color: #f1f1f1;
+    --scroll-bar-thumb-color: #555;
+    --scroll-bar-thumb-hover-color: #444;
+}
+
 *{
     box-sizing: border-box;
 }
 
 body {
+    overflow: hidden; /* Prevents scrolling */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,8 +55,25 @@ body {
     min-height: 100vh;
     background: #00b550;
     padding-bottom: 50px; /* Adjust to footer height */
-    margin: 0;
-  
+    margin: 0;;
+}
+
+header {
+    position: fixed;
+    top: 20px; /* Adjust this value for spacing from the top */
+    left: 40px; /* Adjust this value for spacing from the left */
+    z-index: 999; /* Ensures the header is above other elements */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 128px;
+    height: 72px;
+    margin-right: 10px;
 }
 
 .fade-out {
@@ -45,7 +106,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #0a5f3e;
+    background-color: transparent;
     color: white;
     text-align: center;
     padding: 10px 0;
