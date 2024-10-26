@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integrals & Derivatives by Qie</title>
-    <link rel="stylesheet" href="./InD/styles/style.css">
-    <link rel="shortcut icon" href="./InD/assets/snake-icon.png" />
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="shortcut icon" href="../assets/snake-icon.png" />
 </head>
 <body class="fade-in">
     <div class="overlay hide"></div>
@@ -13,11 +13,11 @@
     
     <div class="menu-screen">
         <div class="menu">
-            <img id="logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
+            <img id="logo" src="../assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
             <h1 id="animated-text">Snakes & Ladders</h1>
             <h2 id="animated-text">Integrals & Derivatives Version</h2>
             <button id="start-btn" class="btn btn-menu btn-start">Start Game</button>
-            <button id="back-to-menu-btn" class="btn btn-menu btn-back-to-menu" onclick="window.location.href='index.html'">Back to Menu</button>
+            <button id="back-to-menu-btn" class="btn btn-menu btn-back-to-menu" onclick="window.location.href='../../index.html'">Back to Menu</button>
         </div>
     </div>
 
@@ -35,9 +35,9 @@
 
     <div id="background" class="game-background">
         <div class="game-container hide">
-            <audio id="background-audio" src="InD/assets/sound/background-music.mp3" loop></audio>
+            <audio id="background-audio" src="../assets/sound/background-music.mp3" loop></audio>
             <div class="header">
-                <img class="small-logo" src="./InD/assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
+                <img class="small-logo" src="../assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
                 <h2 class="game-title">Integrals & Derivatives</h2>
                 <button id="close-btn" class="btn btn-close">X</button>
             </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="ind-container">
                 <div class="ind">
-                    <audio id="kill-sound" src="InD/assets/sound/kill.mp3"></audio>
+                    <audio id="kill-sound" src="../assets/sound/kill.mp3"></audio>
                     <div class="player-pieces">
                         <div class="player-piece" player-id="P1" piece="0"></div>
                         <div class="player-piece" player-id="P2" piece="0"></div>
@@ -64,11 +64,11 @@
                 <div class="footer">
                     <div class="row">
                         <div class="roll-dice-container">
-                            <audio id="dice-roll-sound" src="InD/assets/sound/dice-roll.mp3"></audio>
+                            <audio id="dice-roll-sound" src="../assets/sound/dice-roll.mp3"></audio>
                             <button id="dice-btn" class="btn btn-dice">Roll</button>
                             <div class="dice-cube">
                                 <!-- <div class="dice-value"></div> -->
-                                <img id="dice-img" src="./InD/assets/dice/0.png"/>
+                                <img id="dice-img" src="../assets/dice/0.png"/>
                             </div>
                         </div>
                         <button id="reset-btn" class="btn btn-reset">Reset</button>
@@ -81,7 +81,7 @@
     <div class="challenge-container">
         <h2>Integrals & Derivatives!</h2>
         <div class="content">
-            <audio id="challenge-sound" src="InD/assets/sound/challenge.mp3"></audio>
+            <audio id="challenge-sound" src="../assets/sound/challenge.mp3"></audio>
             <p class="word"></p>
             <div class="details">
                 <p class="time">Time Left: <span><b>30</b>s</span></p>
@@ -96,7 +96,7 @@
 
     <div id="win" class="win-container"> 
         <div class="content win-content">
-            <audio id="win-sound" src="InD/assets/sound/win.mp3"></audio>
+            <audio id="win-sound" src="../assets/sound/win.mp3"></audio>
             <h2 class="win-text"><span></span> Wins!</h2>
             <p class="word"></p>
             <div class="win-details">
@@ -109,10 +109,10 @@
         </div>
     </div>
 
-    <script src="./main.js" type="module"></script>
-    <script src="./InD/challenge.js" defer></script>
-    <script src="./InD/constants/question.js" defer></script>
-    <script src="./InD/interfaces/sound.js" defer></script>
-    <script src="./InD/interfaces/tutorial.js" defer></script>
+    <script src="../../main.js" type="module"></script>
+    <script src="../challenge.js" defer></script>
+    <script src="../constants/question.js" defer></script>
+    <script src="../interfaces/sound.js" defer></script>
+    <script src="../interfaces/tutorial.js" defer></script>
 </body>
 </html>

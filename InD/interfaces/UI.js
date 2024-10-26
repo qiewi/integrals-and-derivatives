@@ -114,13 +114,13 @@ export class UI {
 
     static setDiceValue(value) {
         const diceImages = {
-            0: './InD/assets/dice/0.png',
-            1: './InD/assets/dice/1.png',
-            2: './InD/assets/dice/2.png',
-            3: './InD/assets/dice/3.png',
-            4: './InD/assets/dice/4.png',
-            5: './InD/assets/dice/5.png',
-            6: './InD/assets/dice/6.png',
+            0: '../assets/dice/0.png',
+            1: '../assets/dice/1.png',
+            2: '../assets/dice/2.png',
+            3: '../assets/dice/3.png',
+            4: '../assets/dice/4.png',
+            5: '../assets/dice/5.png',
+            6: '../assets/dice/6.png',
         };
 
         const diceImg = document.getElementById('dice-img');
