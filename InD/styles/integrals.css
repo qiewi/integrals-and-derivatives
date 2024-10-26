@@ -32,12 +32,12 @@
   /*======= Card bg gradient colors =======*/
   --mercury-bg: #e7ba05;
   --venus-bg: #f79915;
-  --earth-bg: rgb(247, 104, 21);
+  --earth-bg: #f77315;
   --mars-bg: #f75115;
   --jupiter-bg: #c81c19;
-  --saturn-bg: linear-gradient(45deg, #a04b36, #d1977c);
+  /* --saturn-bg: linear-gradient(45deg, #a04b36, #d1977c);
   --uranus-bg: linear-gradient(45deg, #02396f, #0f81ad);
-  --neptune-bg: linear-gradient(45deg, #09225a, #4ab5e1);
+  --neptune-bg: linear-gradient(45deg, #09225a, #4ab5e1); */
 
   /*======= Scroll bar colors =======*/
   --scroll-bar-color: #f1f1f1;
@@ -327,7 +327,7 @@ header.hide{
 .card{
   position: relative;
   width: 325px;
-  height: 250px;
+  height: 350px;
   border: 6px solid #000;
   border-radius: 25px;
   box-shadow: var(--box-shadow);
@@ -337,15 +337,15 @@ header.hide{
 }
 
 .swiper-slide-prev .card{
-  height: 225px;
+  height: 310px;
 }
 
 .swiper-slide-active .card{
-  height: 260px;
+  height: 330px;
 }
 
 .swiper-slide-next .card{
-  height: 295px;
+  height: 350px;
 }
 
 .mercury-bg{
