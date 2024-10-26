@@ -1,0 +1,1164 @@
+/*========== Google fonts ==========*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+
+:root{
+  /*======= Main colors =======*/
+  --first-color: #222;
+  --second-color: #fff;
+  
+  /*======= Background colors =======*/
+  --body-bg-color: #00b550;
+  --light-gray-bg-color: #eee;
+  
+  /*======= Other font colors =======*/
+  --light-gray-font-color: #dadcdd;
+  --dark-gray-font-color: #777;
+  
+  /*======= Hover colors =======*/
+  --hover-red-color: #fe5578;
+  --hover-dark-color: #010101;
+
+  /*======= Transparent bg colors =======*/
+  --transparent-white-bg-color-01: rgba(255, 255, 255, .25);
+  --transparent-white-bg-color-02: rgba(255, 255, 255, .1);
+
+  /*======= Border color =======*/
+  --gray-border-color: #ccc;
+
+  /*======= Box shadow =======*/
+  --box-shadow: 0 5px 25px rgba(0, 0, 0, .35);
+
+  /*======= Card bg gradient colors =======*/
+  --mercury-bg: #e7ba05;
+  --venus-bg: #f79915;
+  --earth-bg: rgb(247, 104, 21);
+  --mars-bg: #f75115;
+  --jupiter-bg: #c81c19;
+  --saturn-bg: linear-gradient(45deg, #a04b36, #d1977c);
+  --uranus-bg: linear-gradient(45deg, #02396f, #0f81ad);
+  --neptune-bg: linear-gradient(45deg, #09225a, #4ab5e1);
+
+  /*======= Scroll bar colors =======*/
+  --scroll-bar-color: #f1f1f1;
+  --scroll-bar-thumb-color: #555;
+  --scroll-bar-thumb-hover-color: #444;
+}
+
+/*========== Main CSS ==========*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  position: relative;
+  min-height: 100vh;
+  background: var(--body-bg-color);
+}
+
+.main{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/*========== Header CSS ==========*/
+header{
+  z-index: 888;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 100px;
+  transform: translateY(0);
+  opacity: 1;
+  transition: .5s ease;
+  transition-property: transform, opacity;
+}
+
+header.hide{
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+/*===== Logo =====*/
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 128px;
+    height: 72px;
+    margin-right: 10px;
+}
+
+/*===== Search box =====*/
+.search-container{
+  position: relative;
+}
+
+.search-box{
+  color: var(--dark-gray-font-color);
+  background: var(--light-gray-bg-color);
+  width: 310px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
+  border-radius: 30px;
+}
+
+.search-box i{
+  font-size: 1em;
+}
+
+.search-box input{
+  font-size: 1em;
+  background: none;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+
+.search-results{
+  display: none;
+  position: absolute;
+  background: var(--second-color);
+  border: 1px solid var(--gray-border-color);
+  width: 100%;
+  max-height: 250px;
+  border-radius: 5px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.search-results a{
+  display: block;
+  color: var(--first-color);
+  font-size: 1em;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.search-results a:hover{
+  background: var(--light-gray-bg-color);
+}
+
+/*===== Main menu =====*/
+.menu-btn{
+  color: var(--first-color);
+  font-size: 1.1em;
+  font-weight: 400;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.menu-btn:hover{
+  color: var(--hover-dark-color);
+}
+
+.menu-btn i{
+  margin-left: 5px;
+}
+
+.menu-container{
+  content-visibility: hidden;
+}
+
+.menu-container.active{
+  content-visibility: visible;
+}
+
+.menu-window{
+  position: absolute;
+  background: var(--transparent-white-bg-color-01);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.menu-window.active{
+  opacity: 1;
+}
+
+.menu-box{
+  position: relative;
+  background: var(--second-color);
+  box-shadow: var(--box-shadow);
+  width: 0;
+  height: 0;
+  min-height: 0;
+  opacity: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50px;
+}
+
+.menu-window.active .menu-box{
+  width: 600px;
+  height: fit-content;
+  min-height: 500px;
+  opacity: 1;
+  transition: opacity .3s, width .8s, height .8s, min-height .8s;
+}
+
+.menu-inner{
+  content-visibility: hidden;
+}
+
+.menu-inner.active{
+  content-visibility: visible;
+}
+
+.menu-close-btn{
+  position: absolute;
+  top: -40px;
+  right: 50px;
+  color: var(--first-color);
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.menu-close-btn:hover{
+  color: var(--hover-red-color);
+}
+
+.menu-close-btn i{
+  font-size: 1.3em;
+}
+
+.menu-close-btn span{
+  font-size: 1.1em;
+}
+
+.menu-bg-icon{
+  position: absolute;
+  font-size: 10em;
+  opacity: .03;
+  top: 10px;
+  left: 35px;
+  transform: rotate(-5deg);
+}
+
+.menu-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.menu-items a{
+  color: var(--first-color);
+  font-size: 1.05em;
+  font-weight: 400;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.menu-items a:hover{
+  color: var(--hover-dark-color);
+  transform: scale(1.05);
+}
+
+.menu-items a i{
+  font-size: 1.3em;
+  margin-right: 5px;
+}
+
+/*========== Slider main CSS ==========*/
+.slide-container{
+  z-index: 777;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.swiper{
+  position: relative;
+  width: 100%;
+  height: 540px;
+}
+
+.swiper-slide{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  transform: translateY(0);
+  opacity: 1;
+  transition: .5s ease;
+  transition-property: transform, opacity;
+  transition-delay: .25s;
+}
+
+.swiper-slide.hide{
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/*========== Slider cards CSS ==========*/
+.card{
+  position: relative;
+  width: 325px;
+  height: 250px;
+  border: 6px solid #000;
+  border-radius: 25px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 50px;
+  user-select: none;
+  transition: height .5s ease;
+}
+
+.swiper-slide-prev .card{
+  height: 225px;
+}
+
+.swiper-slide-active .card{
+  height: 260px;
+}
+
+.swiper-slide-next .card{
+  height: 295px;
+}
+
+.mercury-bg{
+  background: var(--mercury-bg);
+}
+
+.venus-bg{
+  background: var(--venus-bg);
+}
+
+.earth-bg{
+  background: var(--earth-bg);
+}
+
+.mars-bg{
+  background: var(--mars-bg);
+}
+
+.jupiter-bg{
+  background: var(--jupiter-bg);
+}
+
+.saturn-bg{
+  background: var(--saturn-bg);
+}
+
+.uranus-bg{
+  background: var(--uranus-bg);
+}
+
+.neptune-bg{
+  background: var(--neptune-bg);
+}
+
+.card-img img{
+  z-index: 777;
+  position: absolute;
+  transition: .5s ease;
+  transition-delay: .1s;
+}
+
+.mercury-img{
+  width: 180px;
+  top: -45px;
+  right: 40px;
+}
+
+.card:hover .mercury-img{
+  transform: translateY(-40px) scale(1.1);
+}
+
+.venus-img{
+  width: 200px;
+  top: -60px;
+  right: 40px;
+}
+
+.card:hover .venus-img{
+  transform: translateY(-40px) scale(1.1);
+}
+
+.earth-img{
+  width: 225px;
+  top: -80px;
+  right: 40px;
+}
+
+.card:hover .earth-img{
+  transform: translateY(-40px) scale(1.1);
+}
+
+.mars-img{
+  width: 240px;
+  top: -95px;
+  right: 30px;
+}
+
+.card:hover .mars-img{
+  transform: translateY(-45px) scale(1.1);
+}
+
+.jupiter-img{
+  width: 265px;
+  top: -125px;
+  right: 20px;
+}
+
+.card:hover .jupiter-img{
+  transform: translateY(-45px) scale(1.05);
+}
+
+.saturn-img{
+  width: 350px;
+  top: -150px;
+  right: -30px;
+}
+
+.card:hover .saturn-img{
+  transform: translateY(-45px) scale(1.1);
+}
+
+.uranus-img{
+  width: 275px;
+  top: -105px;
+  right: 10px;
+}
+
+.card:hover .uranus-img{
+  transform: translateY(-45px) scale(1.1);
+}
+
+.neptune-img{
+  width: 195px;
+  top: -60px;
+  right: 45px;
+}
+
+.card:hover .neptune-img{
+  transform: translateY(-45px) scale(1.1);
+}
+
+.card-img .planet-number{
+  z-index: 666;
+  position: absolute;
+  right: 0;
+  color: var(--second-color);
+  font-size: 12em;
+  font-weight: 700;
+  opacity: .1;
+}
+
+.card-content{
+  position: absolute;
+  bottom: 35px;
+  left: 30px;
+}
+
+.card-content .info{
+  transform: translateY(30px);
+  transition: transform .5s ease;
+}
+
+.card:hover .card-content .info{
+  transform: translateY(-10px);
+}
+
+.card-content .info h2{
+  color: var(--second-color);
+  font-size: 2.3em;
+  font-weight: 600;
+  line-height: 50px;
+}
+
+.card-content .sub-info{
+  display: flex;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.card-content .sub-info span{
+  color: var(--light-gray-font-color);
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.card-content .sub-info h4{
+  color: var(--second-color);
+  font-weight: 500;
+}
+
+.card-content .read-more-btn{
+  transform: translateY(35px);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition: .3s ease-out, .5s;
+}
+
+.card:hover .card-content .read-more-btn{
+  transform: translateY(-10px);
+  opacity: 1;
+}
+
+.card-content .read-more-btn a{
+  color: var(--second-color);
+  font-size: .9em;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.card-content .read-more-btn a i{
+  font-size: 1.2em;
+  margin-left: 2px;
+  transition: .3s ease;
+}
+
+.card-content .read-more-btn a:hover i{
+  margin-left: 5px;
+}
+
+/*========== Slider navigation CSS ==========*/
+.swiper-button-next:after,
+.swiper-button-prev:after{
+  content: '';
+}
+
+.slider-nav{
+  position: absolute;
+  width: 190px;
+  bottom: 65px;
+  right: 180px;
+  transform: translateY(0);
+  opacity: 1;
+  transition: .5s ease;
+  transition-property: transform, opacity;
+}
+
+.slider-nav.hide{
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+  color: var(--first-color);
+  font-size: 1.1em;
+  font-weight: 400;
+  user-select: none;
+}
+
+.slider-nav i{
+  font-size: 2.1em;
+}
+
+/*========== Main social media links CSS ==========*/
+.main-media-links{
+  z-index: 777;
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  column-gap: 50px;
+  transform: translateY(0);
+  opacity: 1;
+  transition: .5s ease;
+  transition-property: transform, opacity;
+}
+
+.main-media-links.hide{
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.main-media-links a{
+  color: var(--dark-gray-font-color);
+  text-decoration: none;
+  transition: .3s ease;
+}
+
+.main-media-links a:hover{
+  color: var(--hover-dark-color);
+}
+
+.main-media-links i{
+  font-size: 1.5em;
+}
+
+/*========== Modals CSS ==========*/
+.modal-container{
+  z-index: 111;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container.active{
+  z-index: 999;
+}
+
+.modal-box{
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 50px;
+  transform: translateY(15px);
+  transition: opacity .3s, height 0s, width 0s;
+  transition-delay: 0s, 1s, 1s;
+}
+
+.modal-box.active{
+  width: 90%;
+  height: 85%;
+  opacity: 1;
+  transition: opacity 0s, height .8s, width .8s;
+  transition-delay: 0s, 1s, 1s;
+}
+
+.modal-content{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  content-visibility: hidden;
+  transition: opacity .25s ease;
+  transition-delay: 2s;
+}
+
+.modal-box.active .modal-content{
+  opacity: 1;
+}
+
+.modal-content.active{
+  content-visibility: visible;
+}
+
+.modal-close-btn{
+  position: absolute;
+  top: -40px;
+  right: 50px;
+  color: var(--first-color);
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.modal-close-btn i{
+  font-size: 1.3em;
+}
+
+.modal-close-btn span{
+  font-size: 1.1em;
+}
+
+.modal-inner{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100%;
+  gap: 35px;
+  padding: 0 35px;
+}
+
+.modal-bg-title{
+  position: absolute;
+  width: 335px;
+  color: var(--second-color);
+  font-size: 5em;
+  font-weight: 800;
+  opacity: .15;
+  top: 50%;
+  left: 125px;
+  transform: rotate(-90deg) translateY(-50%);
+}
+
+.modal-media-icons{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  row-gap: 25px;
+}
+
+.modal-media-icons a{
+  color: var(--second-color);
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: .5s ease;
+}
+
+.modal-media-icons a:hover{
+  transform: scale(1.3);
+}
+
+.modal-image-area{
+  transform: translateY(-35px);
+}
+
+.modal-img{
+  width: 300px;
+}
+
+.modal-text-content{
+  position: relative;
+  max-height: 70vh;
+  overflow: hidden;
+  overflow-y: initial !important;
+  margin: auto 0;
+  padding-right: 15px;
+}
+
+.modal-text-content::-webkit-scrollbar{
+  background: var(--scroll-bar-color);
+  width: 10px;
+  border-radius: 50px;
+}
+
+.modal-text-content::-webkit-scrollbar-thumb{
+  background: var(--scroll-bar-thumb-color);
+  border-radius: 50px;
+}
+
+.modal-text-content::-webkit-scrollbar-thumb:hover{
+  background: var(--scroll-bar-thumb-hover-color);
+}
+
+.modal-title{
+  color: var(--second-color);
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.modal-title-sub{
+  display: flex;
+  transform: translateY(-6px);
+  margin-bottom: 12px;
+}
+
+.modal-title-sub span{
+  color: var(--light-gray-font-color);
+  font-size: 1em;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.modal-title-sub h4{
+  color: var(--second-color);
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.modal-text-content p{
+  color: var(--second-color);
+  font-size: 1em;
+  font-weight: 300;
+  max-width: 750px;
+}
+
+.modal-see-more{
+  color: var(--second-color);
+  text-decoration: none;
+  width: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-see-more span{
+  font-size: .85em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.modal-see-more i{
+  font-size: 1.3em;
+  margin-left: 2px;
+  transition: .3s ease;
+}
+
+.modal-see-more:hover i{
+  margin-left: 5px;
+}
+
+.planet-facts{
+  position: relative;
+  display: grid;
+  place-items: left;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 15px;
+  column-gap: 15px;
+  width: fit-content;
+  margin: 35px 0;
+}
+
+.planet-facts .fact{
+  color: var(--second-color);
+  background-color: var(--transparent-white-bg-color-02);
+  width: 200px;
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  padding-left: 25px;
+  border-radius: 10px;
+}
+
+.planet-facts .fact h5{
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.planet-facts .fact span{
+  font-size: 1em;
+  font-weight: 300;
+}
+
+/*========== Media queries (max-width: 1220px) ==========*/
+@media screen and (max-width: 1220px){
+  /*========== Modals CSS ==========*/
+  .planet-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*========== Media queries (max-width: 980px) ==========*/
+@media screen and (max-width: 980px){
+  /*===== Search box =====*/
+  .search-container {
+    position: absolute;
+    transform: translateY(90px);
+  }
+
+  /*========== Modals CSS ==========*/
+  .planet-facts {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/*========== Media queries (max-width: 926px) ==========*/
+@media screen and (max-width: 926px){
+  /*========== Slider navigation CSS ==========*/
+  .slider-nav {
+    right: 100px;
+  }
+
+  /*========== Main social media links CSS ==========*/
+  .main-media-links {
+    left: 80px;
+  }
+
+  /*========== Modals CSS ==========*/
+  .modal-inner {
+    align-items: center;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .modal-bg-title {
+    display: none;
+  }
+
+  .modal-media-icons {
+    top: 0;
+    left: unset;
+    right: 0;
+    transform: translateY(50px);
+    margin-right: 50px;
+  }
+
+  .modal-img {
+    width: 250px;
+  }
+
+  .modal-text-content {
+    margin: 0 0 50px 0;
+  }
+}
+
+/*========== Media queries (max-width: 750px) ==========*/
+@media screen and (max-width: 750px){
+  /*========== Header CSS ==========*/
+  header {
+    padding: 50px 30px;
+  }
+
+  /*===== Logo =====*/
+  .logo{
+    margin-bottom: 15px;
+  }
+
+  .logo .lg-font {
+    font-size: 3.5em;
+  }
+
+  .logo .sm-font {
+    font-size: 1.5em;
+  }
+
+  /*========== Modals CSS ==========*/
+  .modal-inner {
+    align-items: start;
+  }
+
+  .modal-text-content p {
+    font-size: .9em;
+  }
+}
+
+/*========== Media queries (max-width: 700px) ==========*/
+@media screen and (max-width: 700px){
+  /*===== Main menu =====*/
+  .menu-window.active .menu-box {
+    width: 90%;
+  }
+
+  /*========== Slider navigation CSS ==========*/
+  .slider-nav {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+
+  /*========== Main social media links CSS ==========*/
+  .main-media-links {
+    bottom: 15px;
+    left: 25px;
+    font-size: .9em;
+    column-gap: 25px;
+  }
+
+  /*========== Modals CSS ==========*/
+  .modal-inner {
+    padding: 0 25px;
+  }
+
+  .modal-media-icons {
+    margin-left: 40px;
+  }
+
+  .modal-img {
+    max-width: 100%;
+  }
+}
+
+/*========== Media queries (max-width: 450px) ==========*/
+@media screen and (max-width: 450px){
+  /*===== Logo =====*/
+  .logo a {
+    white-space: nowrap;
+  }
+
+  .logo .lg-font {
+    font-size: 3.2em;
+  }
+
+  .logo .sm-font {
+    font-size: 1.4em;
+  }
+
+  /*===== Search box =====*/
+  .search-container {
+    transform: translateY(80px) translateX(-50%);
+    left: 50%;
+  }
+
+  /*===== Main menu =====*/
+  .menu-btn {
+    font-size: 1em;
+  }
+
+  .menu-box {
+    border-radius: 35px;
+  }
+
+  .menu-close-btn {
+    right: 30px;
+  }
+
+  .menu-bg-icon {
+    font-size: 7em;
+  }
+
+  .menu-items {
+    row-gap: 35px;
+  }
+
+  /*========== Modals CSS ==========*/
+  .modal-box {
+    border-radius: 35px;
+  }
+
+  .modal-close-btn {
+    right: 30px;
+  }
+
+  .modal-media-icons {
+    transform: translateY(25px);
+    margin-right: 30px;
+    row-gap: 15px;
+  }
+
+  .modal-media-icons a {
+    font-size: 1.3em;
+  }
+
+  .modal-image-area {
+    margin-right: 70px;
+  }
+
+  .modal-title {
+    font-size: 2.3em;
+  }
+
+  .modal-title-sub span {
+    font-size: .9em;
+  }
+
+  .modal-title-sub h4 {
+    font-size: .9em;
+  }
+
+  .modal-text-content p {
+    font-size: .85em;
+  }
+
+  .planet-facts .fact h5 {
+    font-size: .9em;
+    font-weight: 600;
+  }
+
+  .planet-facts .fact span {
+    font-size: .9em;
+    font-weight: 400;
+  }
+}
+
+/*========== Media queries (max-width: 370px) ==========*/
+@media screen and (max-width: 370px){
+  /*========== Header CSS ==========*/
+  header {
+    padding: 50px 17px;
+  }
+  
+  /*===== Search box =====*/
+  .search-container {
+    width: 90%;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 80%;
+  }
+
+  /*===== Main menu =====*/
+  .menu-btn span{
+    display: none;
+  }
+
+  .menu-btn i {
+    font-size: 1.2em;
+  }
+
+  .menu-close-btn i {
+    font-size: 1.2em;
+  }
+
+  .menu-close-btn span {
+    font-size: 1em;
+  }
+
+  .menu-items a {
+    font-size: 1em;
+  }
+
+  .menu-items a i {
+    font-size: 1.2em;
+  }
+
+  /*========== Slider cards CSS ==========*/
+  .card {
+    width: 90%;
+  }
+
+  /*========== Modals CSS ==========*/
+  .modal-close-btn i {
+    font-size: 1.2em;
+  }
+
+  .modal-close-btn span {
+    font-size: 1em;
+  }
+
+  .modal-media-icons {
+    margin-right: 22px;
+  }
+
+  .modal-media-icons a {
+    font-size: 1.2em;
+  }
+
+  .modal-img {
+    max-width: none;
+    width: 200px;
+  }
+
+  .planet-facts {
+    width: 100%;
+  }
+
+  .planet-facts .fact {
+    width: 100%;
+    padding: 15px;
+  }
+}
