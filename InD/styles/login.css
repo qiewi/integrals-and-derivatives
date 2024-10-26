@@ -24,7 +24,7 @@ body{
 }
 
 .form-box{
-  z-index: 999;
+  z-index: 1;
   background: #fff;
   border: 5px solid #000;
   box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
@@ -49,7 +49,7 @@ body{
 }
 
 .form-box .field.active{
-  border-bottom: 2px solid #0065ff;
+  border-bottom: 2px solid #00b550;
   transition: 0.3s ease;
 }
 
@@ -70,7 +70,7 @@ body{
 }
 
 .form-box .field.active i{
-  color: #0065ff;
+  color: #00b550;
   transition: 0.3s ease;
 }
 
@@ -84,34 +84,56 @@ body{
 }
 
 .eye-btn i:hover{
-  color: #0065ff;
+  color: #00b550;
   transition: 0.3s ease;
 }
 
 .forgot-link{
-  text-align: right;
-  transform: translateY(-10px);
+	align-items: center;
+	text-align: left;
+	margin-top: 40px;
+	transform: translateY(-10px);
 }
 
 .forgot-link a{
-  color: #0065ff;
+  color: #00b550;
   font-size: 0.8em;
   text-decoration: none;
   font-weight: 500;
 }
 
-.submit-btn{
-  background: #0065ff;
-  color: #fff;
-  border: none;
-  outline: none;
-  width: 120px;
-  padding: 10px 30px;
-  border-radius: 5px;
-  font-size: 0.85em;
-  font-weight: 500;
-  margin-top: 5px;
-  cursor: pointer;
+.btn {
+	color: white;
+    width: 160px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    box-shadow: 0 3px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.btn:hover {
+	box-shadow: none;
+    transform: translateY(3px);
+}
+
+#sign-in-btn {
+	background-color: #009d60;
+}
+
+#sign-in-btn:hover {
+    background-color: #00824f;
+}
+
+#sign-up-btn {
+	background-color: #f7ca15;
+}
+
+#sign-up-btn:hover {
+	background-color: #e5b700;
 }
 
 .login-options{
@@ -156,14 +178,18 @@ body{
 
 .sliding-link{
   display: flex;
-  font-size: 0.8em;
-  margin-bottom: 25px;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9em;
+  margin-bottom: 15px;
 }
 
 .sliding-link span{
-  color: #0065ff;
-  font-weight: 600;
-  margin-left: 5px;
+  color: #000;
+  background-color: #fff;
+  font-weight: 400;
+  text-align: left;
   cursor: pointer;
 }
 
@@ -179,14 +205,14 @@ body{
 }
 
 .sign-in-imgBox{
-  background: #00b550;
+  background: #00824f;
   border: 5px solid #000;
   border-left: 0px;
   border-radius: 0 15px 15px 0;
 }
 
 .sign-up-imgBox{
-	background: #f7ca15;
+	background: #e5b700;
 	border: 5px solid #000;
 	border-right: 0px;
 	border-radius: 15px 0px 0px 15px;
@@ -231,12 +257,13 @@ body{
     flex-direction: column;
     top: 0;
     overflow: hidden;
-    padding: 30px;
+    padding: 60px;
   }
 
   .form-box{
     box-shadow: none;
-    padding: 0;
+    padding: 30px;
+	margin-bottom: 20px;
   }
 
   .imgBox img{
@@ -253,6 +280,18 @@ body{
 
   .sign-up-form{
     flex-direction: column-reverse;
+  }
+
+  .sign-in-imgBox{
+	background: #00824f;
+	border: 5px solid #000;
+	border-radius: 15px;
+  }
+  
+  .sign-up-imgBox{
+	  background: #f7ca15;
+	  border: 5px solid #000;
+	  border-radius: 15px;
   }
 }
 

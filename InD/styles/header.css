@@ -1,0 +1,18 @@
+header {
+    position: fixed;
+    top: 20px; /* Adjust this value for spacing from the top */
+    left: 40px; /* Adjust this value for spacing from the left */
+    margin-bottom: 50px;
+    z-index: 999; /* Ensures the header is above other elements */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 128px;
+    height: 72px;
+    margin-right: 10px;
+}
