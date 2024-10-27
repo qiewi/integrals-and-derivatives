@@ -258,12 +258,13 @@ body{
     top: 0;
     overflow: hidden;
     padding: 60px;
+    margin-top: 60px;
   }
 
   .form-box{
     box-shadow: none;
     padding: 30px;
-	margin-bottom: 20px;
+	  margin-bottom: 20px;
   }
 
   .imgBox img{
