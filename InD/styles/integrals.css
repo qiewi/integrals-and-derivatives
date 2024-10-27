@@ -336,15 +336,15 @@ header.hide{
 }
 
 .swiper-slide-prev .card{
-  height: 310px;
+  height: 225px;
 }
 
 .swiper-slide-active .card{
-  height: 330px;
+  height: 260px;
 }
 
 .swiper-slide-next .card{
-  height: 350px;
+  height: 295px;
 }
 
 .mercury-bg{
