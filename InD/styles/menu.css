@@ -478,10 +478,6 @@ body {
         border-radius: 30px;
         border: 10px solid #000;
     }
-    
-    .tab:nth-child(1):hover ~ .tab:nth-child(3) img {
-        opacity: 0.5;
-    }
 
     .tab:nth-child(2):hover ~ .tab:nth-child(3) {
         position: relative;
@@ -505,6 +501,18 @@ body {
         visibility: visible;
         transition-delay: 0s;
         transition: opacity 0.3s ease;
+    }
+
+    .tab:nth-child(1):hover ~ .tab:nth-child(3) .feature-details {
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+    }
+    
+    .tab:nth-child(2):hover ~ .tab:nth-child(3) .feature-details {
+        opacity: 1;
+        visibility: visible;
+        transition: none;
     }
     
 }
