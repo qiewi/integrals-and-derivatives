@@ -462,6 +462,14 @@ body {
         border-radius: 30px;
         border: 10px solid #000;
     }
+
+    .tab:nth-child(3) img{
+        opacity: 0.5; /* Default expanded tab */
+    }
+
+    .tab:nth-child(3):hover img{
+        opacity: 1; /* Default expanded tab */
+    }
     
     .tab:nth-child(1):hover ~ .tab:nth-child(3) {
         position: relative;
