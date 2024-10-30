@@ -7,32 +7,58 @@
     <link rel="shortcut icon" href="../assets/snake-icon.png" />
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/materials.css">
+    <link rel="stylesheet" href="../styles/nav.css">
+	<link rel="stylesheet" href="../styles/header.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="fade-in">
+    <header>
+        <div class="logo">
+          <img src="../assets/menu-background.png" onclick="window.location.href='../../index.html'">
+        </div>
+    </header>
+    <nav>
+        <div class="nav-content">
+        <div class="toggle-btn">
+            <i class='bx bx-plus'></i>
+        </div>
+        <span style="--i:3;">
+            <a onclick="window.location.href='construction.html'"><i class='bx bxs-cog'></i></a>
+        </span>
+        <span style="--i:2;">
+            <a onclick="window.location.href='../../index.html'"><i class='bx bxs-home'></i></a>
+        </span>
+        </div>
+      </nav>
+
     <div class="materials-body">
         <div class="header-container">
                 <img class="small-logo" src="../assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
                 <h1>Learn - Integral & Derivative</h1>
                 <button id="close-btn" class="btn btn-close" onclick="window.location.href='../../index.html'">X</button>
         </div>
-        <div class="materials-container" onclick="window.location.href='integral.html'">
+        <div class="materials-container">
             <div class="title-container">
-                <h2>Introduction to Integral</h2>
+                <h2>30% Completed</h2>
             </div>
-            <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/__Uw1SXPW7s?si=nKMJrQTxYb_39Mmj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-container" >
+                <div class="video-wrapper" onclick="window.location.href='integral.html'">
+                    <h1>Integral</h1>
+                    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/__Uw1SXPW7s?si=nKMJrQTxYb_39Mmj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
                 </div>
             </div>
             <div class="title-container">
-                <h2>Introduction to Derivative</h2>
+                <h2>40% Completed</h2>
             </div>
             <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/N2PpRnFqnqY?si=4b7lOGhT4iLsyQjn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="video-wrapper" onclick="window.location.href='integral.html'">
+                    <h1>Derivative</h1>
+                    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/N2PpRnFqnqY?si=4b7lOGhT4iLsyQjn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="../interfaces/nav.js" defer></script>
 </body>
 </html>
