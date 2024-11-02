@@ -340,7 +340,7 @@ body {
     
     .ctr-accordion{
         max-width: 80vw;
-        height: 65vh;
+        height: 60vh;
         display: flex;
         flex-direction: column;
         align-items: center;
