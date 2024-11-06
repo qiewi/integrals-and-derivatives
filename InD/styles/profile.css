@@ -17,18 +17,22 @@ body {
 
 .header-container {
     max-width: 50vw;
-    padding: 16px; 
-    background: #fff; 
-    border-radius: 10px; 
+    padding: 16px;
+    background: #00824f;
+    color: #fff;
+    border-radius: 10px;
     border: 5px solid #000;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     margin-top: 32px;
+    position: relative; /* Make the container the reference point */
 }
 
+
+
+
 .profile-details {
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 .small-logo {
@@ -39,42 +43,39 @@ body {
     animation: none;
 }
 
-.btn-close {
-    background-color: #f1492b;
-    color: white;
+.edit-btn {
+    background-color: #f7ca15;
+    color: #000;
     border-radius: 10px;
     border: 2px solid #000;
     box-shadow: 0 3px #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 5px 20px;
-    margin-left: 20px; 
+    font-size: 12px;
+    position: absolute; /* Position it absolutely */
+    top: 25px; /* Position from the top */
+    right: 25px; /* Position from the right */
 }
 
-.btn-close:not(:disabled):hover {
-    background-color: #d13c20;
+.edit-btn:not(:disabled):hover {
+    background-color: #e5b700;
     box-shadow: none;
     transform: translateY(3px);
 }
 
 .header-container h1 {
-    margin-left: 10px;
     font-size: 20px;
     font-weight: 600;
 }
 
 .header-container h2 {
-    margin-left: 10px;
     font-size: 12px;
     font-weight: 400;
 }
 
 .header-container h3 {
-    color: #9f9e9e;
-    margin-left: 10px;
+    color: #fff;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 16px;
 }    
 
@@ -103,7 +104,7 @@ body {
 }
 
 .stats-box {
-    width: 20vw;
+    width: 15vw;
     display: flex;
     background: #fff;
     border: 3px solid #000;
@@ -141,6 +142,116 @@ body {
     margin-left: 20px;
 }
 
+.card-list {
+    display: flex;
+    background: #fff;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.card {
+    width: 120px;
+    height: 220px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 36px;
+    perspective: 2500px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    background: #000;
+    border-radius: 10px;
+}
+
+.wrapper img {
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+
+.card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    /* box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75); */
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    border-radius: 30px;
+    position: absolute;
+    left: 0;
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+}
+
+.wrapper::before {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card:hover .wrapper::before,
+.wrapper::after {
+    opacity: 1;
+}
+
+.card:hover .wrapper::after {
+    height: 120px;
+}
+
+.card-logo {
+    width: 100%;
+    transition: transform 0.5s;
+    position: absolute;
+    bottom: 50px;
+}
+
+.card:hover .card-logo {
+    transform: translate3d(0%, -0px, 100px);
+}
+
+.card:hover .cover-image {
+    opacity: 0.3;
+}
+
+.character {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    filter: drop-shadow(2px 2px 2px #000);
+    position: absolute;
+    z-index: -1;
+}
+
+.card:hover .character {
+    opacity: 1;
+    transform: translate3d(5%, -20%, 670px);
+}
 
 @keyframes shine {
     0% {
