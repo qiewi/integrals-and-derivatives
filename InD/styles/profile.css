@@ -28,9 +28,6 @@ body {
     position: relative; /* Make the container the reference point */
 }
 
-
-
-
 .profile-details {
     margin-left: 30px;
 }
@@ -142,17 +139,49 @@ body {
     margin-left: 20px;
 }
 
-.card-list {
+.card-container {
     display: flex;
-    background: #fff;
+    flex-direction: column;
+    background: #f7ca15;
     padding: 20px;
     gap: 20px;
     justify-content: center;
     align-items: center;
-    border: 3px solid #000;
+    border: 5px solid #000;
     border-radius: 10px;
     margin-top: 20px;
 }
+
+.title-container {
+    padding: 8px 20px; 
+    background: #00b550; /* yellow color */
+    width: 100%;
+    border-radius: 10px; 
+    border: 5px solid #000;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Shiny effect without shadow */
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shine 2s infinite;
+    box-shadow: none;
+}
+
+.title-container h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
 .card {
     width: 120px;
     height: 220px;
