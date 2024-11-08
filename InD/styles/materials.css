@@ -66,6 +66,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .video-container h2 {

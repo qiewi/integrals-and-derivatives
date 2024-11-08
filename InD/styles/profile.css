@@ -40,23 +40,40 @@ body {
     animation: none;
 }
 
-.edit-btn {
-    background-color: #f7ca15;
-    color: #000;
+.btn {
+    color: #fff;
     border-radius: 10px;
     border: 2px solid #000;
     box-shadow: 0 3px #000;
+    width: 110px;
     padding: 5px 20px;
     font-size: 12px;
     position: absolute; /* Position it absolutely */
+}
+
+.btn:hover {
+    box-shadow: none;
+    transform: translateY(3px);
+}
+
+.edit-btn {
+    background-color: #f7ca15;
     top: 25px; /* Position from the top */
     right: 25px; /* Position from the right */
 }
 
 .edit-btn:not(:disabled):hover {
     background-color: #e5b700;
-    box-shadow: none;
-    transform: translateY(3px);
+}
+
+.sign-out-btn {
+    background-color: #f1492b;
+    top: 70px; /* Position from the top */
+    right: 25px; /* Position from the right */
+}
+
+.sign-out-btn:not(:disabled):hover {
+    background-color: #d13c20;
 }
 
 .header-container h1 {

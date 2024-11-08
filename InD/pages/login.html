@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles/login.css">
 	  <link rel="stylesheet" href="../styles/nav.css">
 	  <link rel="stylesheet" href="../styles/header.css">
+
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 	  <link rel="shortcut icon" href="../assets/snake-icon.png" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -47,7 +48,7 @@
           <div class="forgot-link">
             <a href="">Forgot password?</a>
           </div>
-          <input id="sign-in-btn" class="btn submit-btn" type="submit" value="Login" onclick="window.location.href='profile.html'">
+          <input id="sign-in-btn" class="btn submit-btn" type="submit" value="Login">
         </form>
         <!-- <div class="login-options">
           <p class="text"></p>
@@ -97,11 +98,13 @@
           <div class="field">
             <i class="uil uil-lock-alt"></i>
             <input type="password" placeholder="Password" required>
+            <div class="password-eye-btn"><i class="uil uil-eye-slash"></i></div>
           </div>
           <div class="field">
             <i class="uil uil-lock-access"></i>
             <input type="password" placeholder="Confirm password" required>
-          </div>
+            <div class="confirm-password-eye-btn"><i class="uil uil-eye-slash"></i></div>
+          </div>          
           <input id="sign-up-btn" class="btn submit-btn" type="submit" value="Sign up">
         </form>
       </div>
@@ -123,21 +126,6 @@
         });
       });
 
-      //password show/hide button
-      const passwordInput = document.querySelector(".password-input");
-      const eyeBtn = document.querySelector(".eye-btn");
-
-      eyeBtn.addEventListener("click", () => {
-        if(passwordInput.type === "password"){
-          passwordInput.type = "text";
-          eyeBtn.innerHTML = "<i class='uil uil-eye'></i>";
-        }
-        else{
-          passwordInput.type = "password";
-          eyeBtn.innerHTML = "<i class='uil uil-eye-slash'></i>";
-        }
-      });
-
       //sliding between sign-in form and sign-up form
       const signUpBtn = document.querySelector(".sign-up-btn");
       const signInBtn = document.querySelector(".sign-in-btn");
@@ -156,6 +144,7 @@
         signInForm.classList.add("show");
       });
     </script>
-	<script src="..//interfaces/nav.js" defer></script>
+	<script src="../interfaces/nav.js" defer></script>
+  <script type="module" src="../api/login.js" defer></script>
   </body>
 </html>
