@@ -3,6 +3,7 @@ node_modules/
 
 # Environment files
 .env
+.env.local
 
 # Firebase config
 InD/api/config/firebaseConfig.js
