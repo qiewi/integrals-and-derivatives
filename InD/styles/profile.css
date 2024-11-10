@@ -24,8 +24,26 @@ body {
     border: 5px solid #000;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Align items to left and right */
     margin-top: 32px;
-    position: relative; /* Make the container the reference point */
+}
+
+.profile-group {
+    display: flex;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: flex-end; /* Align buttons to the right */
+    gap: 10px; /* Space between buttons */
+}
+
+.button-group .btn {
+    width: 100%; /* Make buttons fill the width of .button-group */
+    max-width: 120px; /* Set a maximum width if you want to limit their size */
+    text-align: center; /* Center text in the buttons */
 }
 
 .profile-details {
@@ -299,6 +317,21 @@ body {
     transform: translate3d(5%, -20%, 670px);
 }
 
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px; /* Add some space above the buttons */
+}
+
+.btn {
+    position: static; /* Remove absolute positioning */
+    width: auto; /* Adjust width as needed */
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+
 @keyframes shine {
     0% {
       background-position: -200px;
@@ -309,11 +342,74 @@ body {
   }
  
 /* Responsive design for screens below 426px */
-@media (max-width: 426px) {
-    .header-container {
-        padding: 8px 10px;
-        margin: 16px;
+@media screen and (max-width: 735px) {  
+    .card-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two cards per row */
+        gap: 16px; /* Space between cards */
     }
+
+    .header-container,
+    .card-container {
+        max-width: 100%; /* Adjust percentage as needed */
+        margin: 0 auto; /* Center the container */
+        width: 100%; /* Ensure it takes the full width of its max-width */
+    }
+
+    .header-container {
+        padding: 16px;
+        background: #00824f;
+        color: #fff;
+        border-radius: 10px;
+        border: 5px solid #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 16vh;
+        position: relative;
+    }
+
+    .button-group {
+        width: 100%; /* Make button-group take full width */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Space buttons evenly */
+        gap: 10px; /* Add space between buttons */
+        margin-top: 20px;
+    }
+
+    .button-group .btn {
+        width: 100%; /* Make each button fill the width of its container */
+        padding: 10px; /* Adjust padding for a comfortable fit */
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        background: #f7ca15;
+        padding: 20px;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid #000;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .profile-details {
+        margin-left: 20px;
+    }
+    
+    .small-logo {
+        border: 3px solid #000;
+        border-radius: 90px;
+        width: 100px;
+        height: 100px;
+        animation: none;
+    } 
 
     .header-container h1 {
         font-size: 16px;
