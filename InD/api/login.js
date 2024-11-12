@@ -2,12 +2,14 @@
 import { auth, db, storage } from "./config/firebaseConfig.js";
 import { collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
+import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
 
 // Get elements for sign-in and sign-up forms
 const signInForm = document.querySelector(".sign-in-form form");
@@ -145,6 +147,45 @@ if (signUpForm) {
     }
   });
 }
+
+// Check if reset-password-form exists before adding an event listener
+// Event listener for the reset password form, with re-authentication
+// Event listener for the reset password form, with re-authentication using current password
+const resetPasswordForm = document.getElementById("reset-password-form");
+if (resetPasswordForm) {
+    resetPasswordForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const currentPassword = document.getElementById("current-password").value;
+        const newPassword = document.getElementById("new-password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+        
+        if (newPassword !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        const user = auth.currentUser;
+        if (!user) {
+            alert("No user is signed in.");
+            return;
+        }
+
+        try {
+            // Create credentials from the current password and re-authenticate
+            const credential = EmailAuthProvider.credential(user.email, currentPassword);
+            await reauthenticateWithCredential(user, credential);
+            await updatePassword(user, newPassword);
+
+            alert("Password reset successfully.");
+            window.location.href = "login.html"; // Redirect to login page
+        } catch (error) {
+            console.error("Error updating password:", error);
+            alert("Failed to reset password: " + error.message);
+        }
+    });
+}
+
 
 export const displayUserProfile = async () => {
   const user = auth.currentUser;
