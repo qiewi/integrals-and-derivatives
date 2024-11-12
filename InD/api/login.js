@@ -1,6 +1,7 @@
 // api/login.js
-import { auth, db } from "./config/firebaseConfig.js";
+import { auth, db, storage } from "./config/firebaseConfig.js";
 import { collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -82,7 +83,8 @@ const handleSignUp = async (email, password, username) => {
     await setDoc(doc(db, "users", user.uid), {
       username: username,
       email: email,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      profilePicture: "../assets/green-player.png" // Default profile picture
     });
 
     console.log("User signed up and details stored in Firestore:", user);
@@ -92,6 +94,7 @@ const handleSignUp = async (email, password, username) => {
     alert("Sign-up failed: " + error.message);
   }
 };
+
 
 
 // Sign-Out Function
@@ -156,9 +159,11 @@ export const displayUserProfile = async () => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
 
-        document.querySelector(".profile-details h1").textContent = userData.username;
-        document.querySelector(".profile-details h3").textContent = userData.email;
-        document.querySelector(".profile-details h2").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
+        // Display the profile picture, username, email, and join date
+        document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.png";
+        document.getElementById("username").value = userData.username;
+        document.getElementById("email").textContent = userData.email;
+        document.getElementById("join-date").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
       } else {
         console.log("User document not found in Firestore.");
       }
@@ -170,3 +175,72 @@ export const displayUserProfile = async () => {
     window.location.href = "login.html"; // Redirect to login if not signed in
   }
 };
+
+
+// Toggle username edit mode
+document.getElementById("edit-button").addEventListener("click", () => {
+  const editButton = document.getElementById("edit-button");
+  const usernameInput = document.getElementById("username");
+
+  if (editButton.textContent === "Edit Profile") {
+      // Enable username editing
+      usernameInput.disabled = false;
+      editButton.textContent = "Save Changes";
+  } else {
+      // Save username changes
+      saveUsername();
+      editButton.textContent = "Edit Profile";
+      usernameInput.disabled = true;
+  }
+});
+
+// Function to save updated username to Firestore
+const saveUsername = async () => {
+  const user = auth.currentUser;
+  const username = document.getElementById("username").value;
+
+  try {
+      await setDoc(doc(db, "users", user.uid), { username: username }, { merge: true });
+      console.log("Username updated successfully!");
+  } catch (error) {
+      console.error("Error updating username:", error);
+  }
+};
+
+let temporaryProfilePicture = null; // Variable to store Base64 data
+
+// Function to handle profile picture upload, preview, and save automatically
+document.getElementById("profile-picture-input").addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        
+        // When the file is read, update the profile picture preview and save it to Firestore
+        reader.onloadend = async () => {
+            temporaryProfilePicture = reader.result; // Store Base64 data
+            document.getElementById("profile-picture").src = temporaryProfilePicture; // Show preview
+
+            // Save the Base64 data to Firestore
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    await setDoc(doc(db, "users", user.uid), {
+                        profilePicture: temporaryProfilePicture
+                    }, { merge: true });
+
+                    console.log("Profile picture updated successfully in Firestore!");
+                    // Clear temporary profile picture after saving
+                    temporaryProfilePicture = null;
+                } catch (error) {
+                    console.error("Error updating profile picture:", error);
+                    alert("Error updating profile picture: " + error.message);
+                }
+            } else {
+                console.log("No user is signed in.");
+            }
+        };
+
+        // Start reading the file as a Base64 string
+        reader.readAsDataURL(file);
+    }
+});

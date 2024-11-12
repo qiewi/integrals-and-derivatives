@@ -27,23 +27,29 @@
         <span style="--i:2;">
             <a onclick="window.location.href='../../index.html'"><i class='bx bxs-home'></i></a>
         </span>
+        <span style="--i:1;">
+            <a class="sign-out-btn"><i class='bx bxs-log-out'></i></a>
+        </span>
         </div>
     </nav>
 
     <div class="materials-body">
         <div class="header-container">  
             <div class="profile-group">
-                <img class="small-logo" src="../assets/avatar.jfif">
+                <div class="profile-picture-container">
+                    <img class="small-logo" id="profile-picture" src="../assets/green_player.png">
+                    <i class="bx bxs-edit edit-icon" id="edit-picture-icon" onclick="document.getElementById('profile-picture-input').click()"></i>
+                    <input type="file" id="profile-picture-input" style="display: none;" accept="image/*">
+                </div>                
                 <div class="profile-details">
-                    <h1>Username</h1> <!-- Will be replaced with actual username -->
-                    <h3>Email</h3> <!-- Will be replaced with actual email -->
-                    <h2>🕗 Joined Date</h2> <!-- Will be replaced with actual join date -->
+                    <input type="text" id="username" disabled>
+                    <h3 id="email">Email</h3>
+                    <h2 id="join-date">🕗 Joined Date</h2>
                 </div>                  
-            </div>
-            <!-- New container for buttons -->
+            </div>            
             <div class="button-group">
-                <button class="btn edit-btn">Edit Profile</button>
-                <button class="btn sign-out-btn">Log Out</button>
+                <button class="btn edit-btn" id="edit-button">Edit Profile</button>
+                <button class="btn reset-pass-btn">Reset Password</button>
             </div>
         </div>
         
