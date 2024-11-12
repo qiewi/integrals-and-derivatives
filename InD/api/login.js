@@ -162,7 +162,7 @@ export const displayUserProfile = async () => {
         // Display the profile picture, username, email, and join date
         document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.png";
         document.getElementById("username").value = userData.username;
-        document.getElementById("email").textContent = userData.email;
+        document.getElementById("email").textContent = `${userData.email}`;
         document.getElementById("join-date").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
       } else {
         console.log("User document not found in Firestore.");
