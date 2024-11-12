@@ -42,12 +42,48 @@ body {
 
 .button-group .btn {
     width: 100%; /* Make buttons fill the width of .button-group */
-    max-width: 120px; /* Set a maximum width if you want to limit their size */
+    max-width: 150px; /* Set a maximum width if you want to limit their size */
     text-align: center; /* Center text in the buttons */
 }
 
 .profile-details {
     margin-left: 30px;
+}
+
+/* Style the username input to look like plain text when disabled */
+.profile-details input[type="text"] {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    pointer-events: none; /* Prevent interaction when disabled */
+}
+
+/* Enable editing styles when the input is enabled */
+.profile-details input[type="text"]:enabled {
+    background-color: #ffffff20; /* Light background when editing */
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    pointer-events: auto;
+}
+
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .small-logo {
@@ -74,25 +110,22 @@ body {
     transform: translateY(3px);
 }
 
-.edit-btn {
-    background-color: #f7ca15;
-    top: 25px; /* Position from the top */
-    right: 25px; /* Position from the right */
-}
-
-.edit-btn:not(:disabled):hover {
+.reset-pass-btn {
     background-color: #e5b700;
 }
 
-.sign-out-btn {
-    background-color: #f1492b;
-    top: 70px; /* Position from the top */
-    right: 25px; /* Position from the right */
+.reset-pass-btn:not(:disabled):hover {
+    background-color: #d0a806;
 }
 
-.sign-out-btn:not(:disabled):hover {
-    background-color: #d13c20;
+.edit-btn {
+    background-color: #009d60;
 }
+
+.edit-btn:not(:disabled):hover {
+    background-color: #00824f;
+}
+
 
 .header-container h1 {
     font-size: 20px;
@@ -410,6 +443,7 @@ body {
         height: 100px;
         animation: none;
     } 
+
 
     .header-container h1 {
         font-size: 16px;
