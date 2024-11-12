@@ -1,7 +1,9 @@
 # Node modules
 node_modules/
 
+# Ignore Firebase configuration
+InD/api/config/firebaseConfig.js
+
 # Environment files
 .env
 .env.local
-

@@ -30,19 +30,19 @@
         </div>
     </nav>
     <div class="ctr-accordion">
-        <div class="tab" onclick="window.location.href='InD/pages/login.html'">
+         <div class="tab" onclick="redirectToProfile()">
             <img src="InD/assets/menu-tab/Profile.png">
             <div class="feature-details">
-               <div class="badge-text">
-                   <span class="badge blue-badge">Personalize</span>
-                   <span class="badge yellow-badge">Progress</span>
+                <div class="badge-text">
+                    <span class="badge blue-badge">Personalize</span>
+                    <span class="badge yellow-badge">Progress</span>
                 </div>
                 <div class="game-text">  
-                   <span class="game-title">Profile</span>
-                   <span class="game-subtitle">Track Progress</span>
-               </div>
+                    <span class="game-title">Profile</span>
+                    <span class="game-subtitle">Track Progress</span>
+                </div>
             </div>
-        </div>
+         </div>
          <div class="tab" onclick="window.location.href='InD/pages/game.html'">
              <img src="InD/assets/menu-tab/Game.png">
              <div class="feature-details">
@@ -89,5 +89,24 @@
     </footer>
 
     <script src="./InD/interfaces/nav.js" defer></script>
- </body>
+    <script type="module">
+      import { auth } from "./InD/api/config/firebaseConfig.js";
+      import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+  
+      function redirectToProfile() {
+          onAuthStateChanged(auth, (user) => {
+              if (user) {
+                  // User is logged in, redirect to profile page
+                  window.location.href = "InD/pages/profile.html";
+              } else {
+                  // User is not logged in, redirect to login page
+                  window.location.href = "InD/pages/login.html";
+              }
+          });
+      }
+      
+      // Make the function accessible globally
+      window.redirectToProfile = redirectToProfile;
+    </script>
+</body>
 </html>

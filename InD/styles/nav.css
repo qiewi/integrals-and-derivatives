@@ -7,7 +7,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: grab;
+    cursor: pointer;
     z-index: 10;
 }
 
