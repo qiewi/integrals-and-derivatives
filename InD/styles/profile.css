@@ -84,6 +84,7 @@ body {
 .profile-details input[type="text"]:enabled {
     background-color: #ffffff20; /* Light background when editing */
     border: 1px solid #ccc;
+    border-radius: 12px;
     padding-left: 5px;
     pointer-events: auto;
 }
