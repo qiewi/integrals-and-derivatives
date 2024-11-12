@@ -1,5 +1,6 @@
 // api/login.js
-import { auth } from "./config/firebaseConfig.js";
+import { auth, db } from "./config/firebaseConfig.js";
+import { collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -72,16 +73,26 @@ const handleSignIn = async (email, password) => {
 };
 
 // Sign-Up Function
-const handleSignUp = async (email, password) => {
+const handleSignUp = async (email, password, username) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("User signed up:", userCredential.user);
+    const user = userCredential.user;
+
+    // Store user details in Firestore immediately after creating user
+    await setDoc(doc(db, "users", user.uid), {
+      username: username,
+      email: email,
+      createdAt: new Date().toISOString()
+    });
+
+    console.log("User signed up and details stored in Firestore:", user);
     window.location.href = "profile.html"; // Redirect on success
   } catch (error) {
     console.error("Error signing up:", error);
     alert("Sign-up failed: " + error.message);
   }
 };
+
 
 // Sign-Out Function
 const handleSignOut = async () => {
@@ -117,36 +128,45 @@ if (signInForm) {
 
 // Sign-Up Form Submission
 if (signUpForm) {
-    signUpForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = signUpForm.querySelector('input[type="email"]').value;
-      const password = signUpPassword.value;
-      const confirmPassword = confirmPasswordInput.value;
-  
-      if (password === confirmPassword) {
-        handleSignUp(email, password);
-      } else {
-        alert("Passwords do not match");
-      }
-    });
-  }
+  signUpForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = signUpForm.querySelector('input[type="email"]').value;
+    const username = signUpForm.querySelector('input[placeholder="Username"]').value; // Get username
+    const password = signUpPassword.value;
+    const confirmPassword = confirmPasswordInput.value;
 
-// Authentication Status Check
-const checkAuthStatus = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log("User is logged in");
-      if (window.location.pathname.endsWith("login.html")) {
-        window.location.href = "profile.html"; // Redirect if logged in
-      }
+    if (password === confirmPassword) {
+      handleSignUp(email, password, username); // Pass username to the function
     } else {
-      console.log("No user is logged in");
-      if (!window.location.pathname.endsWith("login.html")) {
-        window.location.href = "login.html"; // Redirect if not authenticated
-      }
+      alert("Passwords do not match");
     }
   });
-};
+}
 
-// Run authentication check on page load
-checkAuthStatus();
+export const displayUserProfile = async () => {
+  const user = auth.currentUser;
+
+  // Check if user is signed in
+  if (user) {
+    try {
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      // If the user document exists, display the user data
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+
+        document.querySelector(".profile-details h1").textContent = userData.username;
+        document.querySelector(".profile-details h3").textContent = userData.email;
+        document.querySelector(".profile-details h2").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
+      } else {
+        console.log("User document not found in Firestore.");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  } else {
+    console.log("No user is signed in.");
+    window.location.href = "login.html"; // Redirect to login if not signed in
+  }
+};

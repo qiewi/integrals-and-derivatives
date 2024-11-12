@@ -35,10 +35,10 @@
             <div class="profile-group">
                 <img class="small-logo" src="../assets/avatar.jfif">
                 <div class="profile-details">
-                    <h1>Rizqi Andhika</h1>
-                    <h3>qiewifruit@gmail.com</h3>
-                    <h2>🕗 Joined May 2024</h2>
-                </div>
+                    <h1>Username</h1> <!-- Will be replaced with actual username -->
+                    <h3>Email</h3> <!-- Will be replaced with actual email -->
+                    <h2>🕗 Joined Date</h2> <!-- Will be replaced with actual join date -->
+                </div>                  
             </div>
             <!-- New container for buttons -->
             <div class="button-group">
@@ -112,5 +112,20 @@
 
     <script src="../interfaces/nav.js" defer></script>
     <script type="module" src="../api/login.js" defer></script>
+    <script type="module">
+        import { auth } from "../api/config/firebaseConfig.js";
+        import { displayUserProfile } from "../api/login.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+      
+        // Check authentication status when profile page loads
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            displayUserProfile(); // Fetch and display user profile details if authenticated
+          } else {
+            console.log("User not logged in. Redirecting to login page.");
+            window.location.href = "login.html"; // Redirect if no user is signed in
+          }
+        });
+    </script>  
 </body>
 </html>
