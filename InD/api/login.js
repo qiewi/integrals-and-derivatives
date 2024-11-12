@@ -223,14 +223,14 @@ document.getElementById("edit-button").addEventListener("click", () => {
   const editButton = document.getElementById("edit-button");
   const usernameInput = document.getElementById("username");
 
-  if (editButton.textContent === "Edit Profile") {
+  if (editButton.textContent === "Edit Username") {
       // Enable username editing
       usernameInput.disabled = false;
       editButton.textContent = "Save Changes";
   } else {
       // Save username changes
       saveUsername();
-      editButton.textContent = "Edit Profile";
+      editButton.textContent = "Edit Username";
       usernameInput.disabled = true;
   }
 });
