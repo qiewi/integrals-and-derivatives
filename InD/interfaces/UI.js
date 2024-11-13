@@ -265,9 +265,9 @@ export class UI {
         playerColorElement.innerText = player === 'P1' ? 'Yellow' : 'Green';
 
         if (player === 'P1') {
-            winIconElement.src = 'InD/assets/yellow-win.png';
+            winIconElement.src = 'assets/yellow-win.png';
         } else {
-            winIconElement.src = 'InD/assets/green-win.png';
+            winIconElement.src = 'assets/green-win.png';
         }
 
         container.style.display = 'none';

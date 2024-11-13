@@ -23,6 +23,27 @@ const confirmPasswordInput = signUpForm?.querySelector('input[placeholder="Confi
 const eyeBtn = document.querySelector(".eye-btn"); // For sign-in form
 const signUpPasswordEyeBtn = signUpForm?.querySelector('.password-eye-btn');
 const confirmPasswordEyeBtn = signUpForm?.querySelector('.confirm-password-eye-btn');
+const usernameInput = document.querySelector('input[placeholder="Username"]');
+
+// Password input restriction (no emojis)
+if (signUpPassword) {
+    signUpPassword.addEventListener("input", (event) => {
+        event.target.value = event.target.value.replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, "");
+    });
+}
+
+// Username input restriction (only letters and numbers)
+if (usernameInput) {
+  usernameInput.addEventListener("input", (event) => {
+      // Restrict to letters and numbers only
+      event.target.value = event.target.value.replace(/[^a-zA-Z0-9]/g, "");
+
+      // Limit to maximum of 20 characters
+      if (event.target.value.length > 20) {
+          event.target.value = event.target.value.slice(0, 20);
+      }
+  });
+}
 
 // Toggle password visibility for sign-in form
 if (eyeBtn && passwordInput) {

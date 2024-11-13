@@ -17,7 +17,8 @@ export const displayUserProfile = async () => {
                 const progressPercentage = (unlockedCards.length / totalCards) * 100;
   
                 document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.png";
-                document.getElementById("username").value = userData.username;
+                const usernameInput = document.getElementById("username");
+                usernameInput.value = userData.username;
                 document.getElementById("email").textContent = `📧 ${userData.email}`;
                 document.getElementById("join-date").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
   
@@ -44,7 +45,7 @@ export const displayUserProfile = async () => {
         console.log("No user is signed in.");
         window.location.href = "login.html";
     }
-  };
+};
 
 // Toggle username edit mode
 document.getElementById("edit-button").addEventListener("click", () => {
@@ -54,6 +55,7 @@ document.getElementById("edit-button").addEventListener("click", () => {
     if (editButton.textContent === "Edit Username") {
         // Enable username editing
         usernameInput.disabled = false;
+        usernameInput.focus();
         editButton.textContent = "Save Changes";
     } else {
         // Save username changes
@@ -61,7 +63,19 @@ document.getElementById("edit-button").addEventListener("click", () => {
         editButton.textContent = "Edit Username";
         usernameInput.disabled = true;
     }
-  });
+});
+
+// Add input restriction to username field
+const usernameInput = document.getElementById("username");
+usernameInput.addEventListener("input", (event) => {
+    // Restrict to letters only
+    event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
+  
+    // Limit to maximum of 20 characters
+    if (event.target.value.length > 20) {
+        event.target.value = event.target.value.slice(0, 20);
+    }
+});
 
 // Save Username and Set Flag
 const saveUsername = async () => {
@@ -74,43 +88,42 @@ const saveUsername = async () => {
     } catch (error) {
         console.error("Error updating username:", error);
     }
-  };
+};
 
 let temporaryProfilePicture = null; // Variable to store Base64 data
 
 // Function to handle profile picture upload, preview, and save automatically
 document.getElementById("profile-picture-input").addEventListener("change", async (event) => {
-const file = event.target.files[0];
-if (file) {
-    const reader = new FileReader();
-    
-    reader.onloadend = async () => {
-        temporaryProfilePicture = reader.result;
-        document.getElementById("profile-picture").src = temporaryProfilePicture;
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onloadend = async () => {
+            temporaryProfilePicture = reader.result;
+            document.getElementById("profile-picture").src = temporaryProfilePicture;
 
-        const user = auth.currentUser;
-        if (user) {
-            try {
-                await setDoc(doc(db, "users", user.uid), {
-                    profilePicture: temporaryProfilePicture
-                }, { merge: true });
+            const user = auth.currentUser;
+            if (user) {
+                try {
+                    await setDoc(doc(db, "users", user.uid), {
+                        profilePicture: temporaryProfilePicture
+                    }, { merge: true });
 
-                console.log("Profile picture updated successfully in Firestore!");
-                temporaryProfilePicture = null;
+                    console.log("Profile picture updated successfully in Firestore!");
+                    temporaryProfilePicture = null;
 
-                // Unlock card 1 when photo is updated
-                await unlockCard(1);
-
-            } catch (error) {
-                console.error("Error updating profile picture:", error);
-                alert("Error updating profile picture: " + error.message);
+                    // Unlock card 1 when photo is updated
+                    await unlockCard(1);
+                    window.location.reload(); // Refresh the page to update the UI
+                } catch (error) {
+                    console.error("Error updating profile picture:", error);
+                    alert("Error updating profile picture: " + error.message);
+                }
+            } else {
+                console.log("No user is signed in.");
             }
-        } else {
-            console.log("No user is signed in.");
-        }
-    };
+        };
 
-    reader.readAsDataURL(file);
-}
+        reader.readAsDataURL(file);
+    }
 });
-

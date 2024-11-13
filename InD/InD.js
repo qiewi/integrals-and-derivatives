@@ -1,5 +1,6 @@
 import { BASE_POSITIONS, HOME_POSITIONS, PLAYERS, START_POSITIONS, STATE, LADDERS, SNAKES } from './constants/position.js';
 import { UI } from './interfaces/UI.js';
+import { unlockCard } from "./api/card.js";
 
 export class InD {
     currentPositions = {
@@ -224,6 +225,7 @@ export class InD {
                         if (this.hasPlayerWon(player)) {
                             // alert(`Player: ${player} has won!`);
                             this.triggerWin(player);
+                            unlockCard(2);
                             return;
                         }
                     }

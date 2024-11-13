@@ -16,7 +16,6 @@ export const unlockCard = async (cardNumber) => {
                 unlockedCards.push(cardNumber); // Add the card to the unlocked array
                 await setDoc(userDocRef, { unlockedCards: unlockedCards }, { merge: true });
                 console.log(`Card ${cardNumber} unlocked!`);
-                window.location.reload(); // Refresh the page to update the UI
             }
         }
     }
