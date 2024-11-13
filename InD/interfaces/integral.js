@@ -1,5 +1,6 @@
 import { auth, db } from "../api/config/firebaseConfig.js";
 import { doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import { unlockCard } from "../api/card.js";
 
 const levelCardsOrder = [5, 1, 2, 3, 4]; // Order of levels based on the array
 
@@ -23,7 +24,7 @@ async function displayLevels() {
             const watchVideoButton = cardElement.querySelector(".watch-video");
             const levelUpButton = cardElement.querySelector(".level-up");
 
-            if ((index > completedLevels) || (index === 0 && completedLevels < 4)) {
+            if ((index > completedLevels) || (index === 0 && completedLevels < 5)) {
                 // Apply locked overlay for levels beyond the user's completed level count
                 const overlay = document.createElement("div");
                 overlay.classList.add("lock-overlay");
@@ -153,6 +154,7 @@ const closeFeedbackBtn = document.querySelector(".close-feedback-btn");
 const feedbackImage = document.getElementById("feedbackImage");
 const feedbackTitle = document.getElementById("feedbackTitle");
 const feedbackMessage = document.getElementById("feedbackMessage");
+let correctAnswer = false;
 
 // Function to check the answer and show feedback
 async function checkAnswer(selected, correct, quizIndex) {
@@ -166,10 +168,13 @@ async function checkAnswer(selected, correct, quizIndex) {
         feedbackTitle.textContent = "Jawaban Benar!";
         
         // Check if it's the last quiz (Level 5)
-        if (quizIndex === 4) {
+        if (quizIndex === 0) {
             feedbackMessage.textContent = "Congratulations! kamu sudah menamatkan module integral!";
+            unlockCard(3);
+            correctAnswer = true;
         } else {
             feedbackMessage.textContent = `Congrats, kamu sudah level up ke level ${quizIndex + 1}!`;
+            correctAnswer = true;
         }
         
         feedbackTitle.style.backgroundColor = "#4CAF50"; // Green for correct answer
@@ -209,7 +214,10 @@ async function checkAnswer(selected, correct, quizIndex) {
 // Close feedback modal and return to default view
 closeFeedbackBtn.onclick = function() {
     feedbackModal.style.display = "none";
-    window.location.reload(); // Reload the page to reflect the updated progress
+    if (correctAnswer) {
+        window.location.reload();
+        correctAnswer = false;
+    }
 };
 
 // Close feedback modal when clicking outside the modal content
