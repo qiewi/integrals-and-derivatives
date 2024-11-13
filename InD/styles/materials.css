@@ -1,7 +1,8 @@
 /* General styling */
 .header-container {
+    width: 30vw;
     padding: 8px 20px; 
-    background: #fff; 
+    background:#03863e; 
     border-radius: 10px; 
     border: 5px solid #000;
     display: flex;
@@ -16,6 +17,7 @@
 }
 
 .header-container h1 {
+    color: #fff;
     margin-left: 10px;
     font-size: 20px;
     font-weight: 600;
@@ -36,26 +38,44 @@
   }
   
 .title-container {
-    padding: 8px 20px; 
-    background: #f7ca15; /* yellow color */
+    background: #fff; 
+    width: 100%;
     border-radius: 10px; 
     border: 5px solid #000;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    overflow: hidden; /* Ensure that the progress bar does not overflow */
     margin-bottom: 12px;
-
-    /* Shiny effect without shadow */
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
-    background-size: 200px 100%;
-    background-repeat: no-repeat;
-    animation: shine 2s infinite;
-    box-shadow: none;
 }
 
 .title-container h2 {
     color: #fff;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px; /* Reduced font size */
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    margin-left: 8px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." if text overflows */
+}
+
+.progress-bar.integral{
+    background-color: #f7ca15; /* Background color for the progress bar */
+    height: 100%;
+    width: 0; /* Start with 0 width and expand dynamically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.4s ease; /* Smooth transition effect */
+
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shine 2s infinite;
+    box-shadow: none;
 }
 
 .video-container {

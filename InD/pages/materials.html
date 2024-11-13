@@ -34,13 +34,15 @@
     <div class="materials-body">
         <div class="header-container">
                 <img class="small-logo" src="../assets/Snakes-N-Ladders.png" alt="Snakes-N-Ladders">
-                <h1>Learn - Integral & Derivative</h1>
+                <h1>Learning Modules</h1>
                 <button id="close-btn" class="btn btn-close" onclick="window.location.href='../../index.html'">X</button>
         </div>
         <div class="materials-container">
             <div class="title-container">
-                <h2>30% Completed</h2>
-            </div>
+                <div class="progress-bar integral">
+                    <h2><b id="progress-text-integral">0% Completed</b></h2>
+                </div>
+            </div>   
             <div class="video-container" >
                 <div class="video-wrapper" onclick="window.location.href='integral.html'">
                     <h1>Integral</h1>
@@ -48,8 +50,10 @@
                 </div>
             </div>
             <div class="title-container">
-                <h2>40% Completed</h2>
-            </div>
+                <div class="progress-bar derivative">
+                    <h2><b id="progress-text-derivative">0% Completed</b></h2>
+                </div>
+            </div> 
             <div class="video-container">
                 <div class="video-wrapper" onclick="window.location.href='integral.html'">
                     <h1>Derivative</h1>
@@ -60,5 +64,22 @@
     </div>
 
     <script src="../interfaces/nav.js" defer></script>
+    <script type="module" src="../api/auth.js" defer></script>
+
+    <script type="module">
+        import { auth } from "../api/config/firebaseConfig.js";
+        import { displayUserProgress } from "../api/materials.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+      
+        // Check authentication status when profile page loads
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            displayUserProgress(); // Fetch and display user profile details if authenticated
+          } else {
+            console.log("User not logged in. Redirecting to login page.");
+            window.location.href = "login.html"; // Redirect if no user is signed in
+          }
+        });
+    </script> 
 </body>
 </html>
