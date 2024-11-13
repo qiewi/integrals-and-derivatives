@@ -41,7 +41,14 @@
                     <div class="name">Aplikasi Integral</div>
                     <div class="des">Usaha, Kerja, dan Momen.</div>
                     <div class="buttons">
-                        <a class="btn" href="https://www.youtube.com/watch?v=W78iK5y80fo&list=PLXz9cUd9nygMizYgPjfVHbQxSoPgjiXfI&index=4">Watch Video</a>
+                        <a 
+                            class="btn watch-video" 
+                            data-title="Level 4 - Luas Daerah dan Volume Bidang" 
+                            data-videos=
+                            '[{"title": "Usaha / Kerja", "url": "https://www.youtube.com/embed/W78iK5y80fo"},
+                            {"title": "Momen dan Centroid", "url": "https://www.youtube.com/embed/6gO_dor08lE"}
+                            ]'
+                        >Watch Video</a>
                         <button class="btn">Level Up</button>
                     </div>
                 </div>
@@ -54,7 +61,11 @@
                     <div class="name">Integral Tentu</div>
                     <div class="des">Hubungannya dengan Notasi Sigma.</div>
                     <div class="buttons">
-                        <a class="btn" href="https://www.youtube.com/watch?v=Aj3qM5UsWAM&list=PLXz9cUd9nygMX6eJbxriJevffQR9Dqzai&index=1">Watch Video</a>
+                        <a 
+                            class="btn watch-video" 
+                            data-title="Level 1 - Integral Tentu" 
+                            data-videos='[{"title": "Apa Hubungannya dengan Notasi Sigma?", "url": "https://www.youtube.com/embed/Aj3qM5UsWAM"}]'
+                        >Watch Video</a>
                         <button class="btn">Level Up</button>
                     </div>
                 </div>
@@ -68,7 +79,11 @@
                     <div class="name">Integral Tentu</div>
                     <div class="des">Teorema Dasar Kalkulus.</div>
                     <div class="buttons">
-                        <a class="btn" href="https://www.youtube.com/watch?v=ZIhtM6fwoGw&list=PLXz9cUd9nygMX6eJbxriJevffQR9Dqzai&index=2">Watch Video</a>
+                        <a 
+                            class="btn watch-video" 
+                            data-title="Level 2 - Integral Tentu" 
+                            data-videos='[{"title": "Teorema Dasar Kalkulus 1", "url": "https://www.youtube.com/embed/ZIhtM6fwoGw"}, {"title": "Teorema Dasar Kalkulus 2", "url": "https://www.youtube.com/embed/unvg41k9G0Y"}, {"title": "Teorema Nilai Rata-Rata", "url": "https://www.youtube.com/embed/6aumweXEWRs"}]'
+                        >Watch Video</a>
                         <button class="btn">Level Up</button>
                     </div>
                 </div>
@@ -82,7 +97,11 @@
                     <div class="name">Integral Tentu</div>
                     <div class="des">Integrasi Numerik.</div>
                     <div class="buttons">
-                        <a class="btn" href="https://www.youtube.com/watch?v=RtwecqeufhU&list=PLXz9cUd9nygMX6eJbxriJevffQR9Dqzai&index=5">Watch Video</a>
+                        <a 
+                            class="btn watch-video" 
+                            data-title="Level 3 - Integrasi Numerik" 
+                            data-videos='[{"title": "Integrasi Numerik", "url": "https://www.youtube.com/embed/RtwecqeufhU"}]'
+                        >Watch Video</a>
                         <button class="btn">Level Up</button>
                     </div>
                 </div>
@@ -96,9 +115,18 @@
                     <div class="name">Aplikasi Integral</div>
                     <div class="des">Luas Daerah dan Volume Bidang</div>
                     <div class="buttons">
-                        <a class="btn" href="https://www.youtube.com/watch?v=-2DEifoJS88&list=PLXz9cUd9nygMizYgPjfVHbQxSoPgjiXfI&index=1">Watch Video</a>
+                        <a 
+                            class="btn watch-video" 
+                            data-title="Level 4 - Luas Daerah dan Volume Bidang" 
+                            data-videos=
+                            '[{"title": "Luas Daerah pada Bidang", "url": "https://www.youtube.com/embed/-2DEifoJS88"},
+                            {"title": "Volume: Lempeng, Cakram, Cincin", "url": "https://www.youtube.com/embed/atZM4TTNzak"},
+                            {"title": "Volume: Metode Kulit Tabung", "url": "https://www.youtube.com/embed/c7QpSftSnGM"}
+                            ]'
+                        >Watch Video</a>
                         <button class="btn">Level Up</button>
                     </div>
+                    
                 </div>
 
             </div>
@@ -112,7 +140,36 @@
         </div>
 
 
-        <!-- time running -->
+        <!-- Video Modal -->
+        <div id="videoModal" class="modal">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 id="videoTitle" class="video-title">Video Playlist</h2>
+                    <span class="close-btn">&times;</span>
+                </div>
+                <div class="modal-content">
+                    <div id="videoList" class="video-list">
+                        <!-- Video items will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Modal -->
+        <div id="quizModal" class="modal">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 id="quizTitle" class="quiz-title">Quiz Time</h2>
+                    <span class="close-quiz-btn">&times;</span>
+                </div>
+                <div class="modal-content">
+                    <p id="quizQuestion" class="quiz-question">Question goes here</p>
+                    <div id="quizOptions" class="quiz-options">
+                        <!-- Answer options will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <footer class="footer">
@@ -121,5 +178,6 @@
 
     <script src="../interfaces/modules.js"></script>
     <script src="../interfaces/nav.js" defer></script>
+    <script src="../interfaces/integral.js" defer></script>
 </body>
 </html>

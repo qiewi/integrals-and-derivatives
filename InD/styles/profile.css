@@ -168,68 +168,7 @@ body {
 }
 
 
-.stats-container {
-    max-width: 50vw;
-    padding: 16px;
-    background: #f7ca15;
-    border-radius: 10px;
-    border: 5px solid #000;
-    margin-top: 10px;
-}
 
-.stats-container h2 {
-    font-size: 36px;
-    font-weight: 600;
-    color: #000;
-    margin-left: 10px;
-    margin-bottom: 15px;
-}
-
-.stats-block {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.stats-box {
-    width: 15vw;
-    display: flex;
-    background: #fff;
-    border: 3px solid #000;
-    border-radius: 8px;
-    text-align: center;
-    padding: 15px;
-}
-
-.stat-icon {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 8px;
-}
-
-.stats-box h1 {
-    font-size: 2.5rem;
-}
-
-.stats-box h3 {
-    font-size: 22px;
-    color: #333;
-    margin: 0;
-}
-
-.stats-box p {
-    font-size: 14px;
-    color: #777;
-    margin-top: 4px;
-}
-
-.stats-detail {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 20px;
-}
 
 .card-container {
     display: flex;
