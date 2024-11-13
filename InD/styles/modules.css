@@ -539,7 +539,82 @@ img#feedbackImage {
 
 }
 
-@media screen and (max-width: 690px){
+@media screen and (max-width: 768px){
+    .modal-body {
+        width: 90%;
+    }
+    
+    .modal-body.feedback {
+        width: 90%;
+    }
+    
+    /* Modal content */
+    .modal-content {
+        position: relative;
+        padding: 20px;
+        width: 100%;
+        background: #f7ca15;
+        border: 5px solid #000;
+        border-radius: 20px;
+    }
+    
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        margin-bottom: 16px;
+        margin-top: 10vh;
+    }
+    
+    .video-title {
+        font-size: 16px;
+    }
+    
+    .close-btn {
+        font-size: 28px;
+        background-color: #f1492b;
+        color: white;
+        padding: 0 12px; /* Adjust padding for width consistency */
+        margin-left: 10px; /* Add spacing from the title */
+    }
+
+    
+    .video-item h3 {
+        font-size: small;
+    }
+    
+    .video-item iframe {
+        height: 20%;
+    }
+
+    .quiz-title {
+        font-size: 16px;
+    }
+    
+    .close-quiz-btn {
+        font-size: 28px;
+        background-color: #f1492b;
+        color: white;
+        padding: 0 12px; /* Adjust padding for width consistency */
+        margin-left: 10px; /* Add spacing from the title */
+    }
+    
+    .modal-content p {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+    }
+    
+    .quiz-options button {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #fff;
+        border: 5px solid #000;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
     .list .item .content{
         position: absolute;
         top: 60%;
