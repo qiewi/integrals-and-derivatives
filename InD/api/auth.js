@@ -83,12 +83,39 @@ if (confirmPasswordEyeBtn && confirmPasswordInput) {
     });
   }
 
+  // Function to fetch user progress from Firestore
+const fetchUserProgress = async (userId) => {
+  try {
+    const userRef = doc(db, "Integral", userId);
+    const docSnap = await getDoc(userRef);
+
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      console.log(`User ${userId} has completed ${userData.completedLevels} levels.`);
+      return userData.completedLevels;
+    } else {
+      console.log("No progress found for user.");
+      return 0; // Return 0 if no progress found
+    }
+  } catch (error) {
+    console.error("Error fetching user progress:", error);
+    return 0; // Default to 0 if an error occurs
+  }
+};
+
 // Sign-In Function
 const handleSignIn = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    console.log("User signed in:", userCredential.user);
-    window.location.href = "profile.html"; // Redirect on success
+    const user = userCredential.user;
+    console.log("User signed in:", user);
+
+    // Fetch and log user progress after signing in
+    const completedLevels = await fetchUserProgress(user.uid);
+    console.log(`User progress: ${completedLevels} levels completed`);
+
+    // Redirect or use progress as needed
+    window.location.href = "profile.html"; // Example redirect on success
   } catch (error) {
     console.error("Error signing in:", error);
     alert("Login failed: " + error.message);
@@ -101,12 +128,19 @@ const handleSignUp = async (email, password, username) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
+    // Initialize user data in the "users" collection
     await setDoc(doc(db, "users", user.uid), {
       username: username,
       email: email,
       createdAt: new Date().toISOString(),
       profilePicture: "../assets/green-player.png",
-      unlockedCards: [] // Initialize with no cards unlocked
+      unlockedCards: []
+    });
+
+    // Initialize user progress in the "Integral" collection
+    await setDoc(doc(db, "Integral", user.uid), {
+      userId: user.uid,
+      completedLevels: 0 // Start progress at level 0
     });
 
     console.log("User signed up and details stored in Firestore:", user);

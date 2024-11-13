@@ -35,26 +35,19 @@
 
         <div class="list">
 
-            <div class="item" style="background-image: url(../assets/modules-bg/5.png);">
+            <div class="item level-card" id="level-card-5" style="background-image: url(../assets/modules-bg/5.png);">
                 <div class="content">
                     <div class="title">LEVEL 5</div>
                     <div class="name">Aplikasi Integral</div>
                     <div class="des">Usaha, Kerja, dan Momen.</div>
                     <div class="buttons">
-                        <a 
-                            class="btn watch-video" 
-                            data-title="Level 4 - Luas Daerah dan Volume Bidang" 
-                            data-videos=
-                            '[{"title": "Usaha / Kerja", "url": "https://www.youtube.com/embed/W78iK5y80fo"},
-                            {"title": "Momen dan Centroid", "url": "https://www.youtube.com/embed/6gO_dor08lE"}
-                            ]'
-                        >Watch Video</a>
-                        <button class="btn">Level Up</button>
+                        <a class="btn watch-video" data-title="Level 5" data-videos='[{"title": "Usaha / Kerja", "url": "https://www.youtube.com/embed/W78iK5y80fo"}, {"title": "Momen dan Centroid", "url": "https://www.youtube.com/embed/6gO_dor08lE"}]'>Watch Video</a>
+                        <button class="btn level-up">Level Up</button>
                     </div>
                 </div>
             </div>
 
-            <div class="item" style="background-image: url(../assets/modules-bg/1.png);">
+            <div class="item level-card" id="level-card-1" style="background-image: url(../assets/modules-bg/1.png);">
                 
                 <div class="content">
                     <div class="title">LEVEL 1</div>
@@ -72,7 +65,7 @@
 
             </div>
 
-            <div class="item" style="background-image: url(../assets/modules-bg/2.png);">
+            <div class="item level-card" id="level-card-2" style="background-image: url(../assets/modules-bg/2.png);">
 
                 <div class="content">
                     <div class="title">LEVEL 2</div>
@@ -90,7 +83,7 @@
 
             </div>
 
-            <div class="item" style="background-image: url(../assets/modules-bg/3.png);">
+            <div class="item level-card" id="level-card-3" style="background-image: url(../assets/modules-bg/3.png);">
                 
                 <div class="content">
                     <div class="title">LEVEL 3</div>
@@ -108,7 +101,7 @@
 
             </div>
 
-            <div class="item" style="background-image: url(../assets/modules-bg/4.png);">
+            <div class="item level-card" id="level-card-4" style="background-image: url(../assets/modules-bg/4.png);">
                 
                 <div class="content">
                     <div class="title">LEVEL 4</div>
@@ -171,6 +164,21 @@
             </div>
         </div>
 
+        <!-- Feedback Modal -->
+        <div id="feedbackModal" class="modal">
+            <div class="modal-body feedback">
+                <div class="modal-header">
+                    <h2 id="feedbackTitle" class="feedback-title">Feedback</h2>
+                </div>
+                <div class="modal-content feedback">
+                    <img src="../assets/green-player.png" id="feedbackImage">
+                    <p id="feedbackMessage">Message goes here</p>
+                    <span class="close-feedback-btn">Continue</span>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <footer class="footer">
         <p>Made by Qie © 2024</p>
@@ -178,6 +186,6 @@
 
     <script src="../interfaces/modules.js"></script>
     <script src="../interfaces/nav.js" defer></script>
-    <script src="../interfaces/integral.js" defer></script>
+    <script type="module" src="../interfaces/integral.js" defer></script>
 </body>
 </html>

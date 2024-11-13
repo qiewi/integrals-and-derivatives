@@ -271,6 +271,15 @@ body {
     max-width: 700px;
 }
 
+.modal-body.feedback {
+    position: relative;
+    padding: 20px;
+    width: 80%;
+    align-items: center;
+    vertical-align: middle;
+    max-width: 700px;
+}
+
 /* Modal content */
 .modal-content {
     position: relative;
@@ -410,7 +419,7 @@ body {
     padding: 8px 20px; 
     color: #fff;
     font-weight: 500;
-    background: #00b550; /* yellow color */
+    background: #00b550; 
     border-radius: 10px; 
     border: 5px solid #000;
     justify-content: center;
@@ -440,7 +449,77 @@ body {
     background-color: #ccc;
 }
 
+/* Feedback Modal */
+.feedback-title {
+    color: #fff;
+    padding: 8px 20px;
+    background: #00824f;
+    border-radius: 10px;
+    border: 5px solid #000;
+    flex-grow: 1;
+    text-align: center;
+}
 
+p#feedbackMessage {
+    text-align: center;
+    color: #000;
+}
+
+.modal-content.feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+}
+
+img#feedbackImage {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.close-feedback-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #00b550;
+    color: white;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.close-feedback-btn:hover {
+    background-color: #00824f;
+}
+
+.level-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Gray overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 10px;
+    z-index: 1;
+    text-align: center;
+}
 
 /* Responsive Design */
 
