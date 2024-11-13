@@ -74,8 +74,10 @@
         </div>    -->
         <div class="card-container">
             <div class="title-container">
-                <h2><b>4/4 Cards</b> Collected</h2>
-            </div>
+                <div class="progress-bar">
+                    <h2><b id="progress-text">0/4 Cards</b></h2>
+                </div>
+            </div>            
             <div class="card-list">
                 <div class="card">
                     <div class="wrapper">
@@ -118,10 +120,11 @@
     </div>
 
     <script src="../interfaces/nav.js" defer></script>
-    <script type="module" src="../api/login.js" defer></script>
+    <script type="module" src="../api/auth.js" defer></script>
+
     <script type="module">
         import { auth } from "../api/config/firebaseConfig.js";
-        import { displayUserProfile } from "../api/login.js";
+        import { displayUserProfile } from "../api/auth.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
       
         // Check authentication status when profile page loads

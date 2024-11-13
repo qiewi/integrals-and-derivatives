@@ -224,8 +224,7 @@ body {
 }
 
 .title-container {
-    padding: 8px 20px; 
-    background: #00b550; /* yellow color */
+    background: #fff; /* yellow color */
     width: 100%;
     border-radius: 10px; 
     border: 5px solid #000;
@@ -238,6 +237,32 @@ body {
     background-repeat: no-repeat;
     animation: shine 2s infinite;
     box-shadow: none;
+
+    position: relative;
+    overflow: hidden; /* Ensure that the progress bar does not overflow */
+}
+
+.title-container h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 14px; /* Reduced font size */
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    margin-left: 8px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." if text overflows */
+}
+
+.progress-bar {
+    background-color: #00b550; /* Background color for the progress bar */
+    height: 100%;
+    width: 0; /* Start with 0 width and expand dynamically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.4s ease; /* Smooth transition effect */
 }
 
 .title-container h2 {
@@ -245,6 +270,8 @@ body {
     text-align: center;
     font-size: 16px;
     font-weight: 500;
+    position: relative;
+    z-index: 1; /* Place text above the progress bar */
 }
 
 .card-list {
@@ -265,6 +292,27 @@ body {
     cursor: pointer;
     border-radius: 30px;
 }
+
+.card.locked {
+    position: relative;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+.card.locked .cover-image {
+    opacity: 0.2; /* Dim the card */
+}
+
+.card.locked::after {
+    content: "🔒";
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 .cover-image {
     width: 100%;

@@ -1,4 +1,4 @@
-// api/login.js
+// api/lauth.js
 import { auth, db, storage } from "./config/firebaseConfig.js";
 import { collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
@@ -81,23 +81,21 @@ const handleSignUp = async (email, password, username) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Store user details in Firestore immediately after creating user
     await setDoc(doc(db, "users", user.uid), {
       username: username,
       email: email,
       createdAt: new Date().toISOString(),
-      profilePicture: "../assets/green-player.png" // Default profile picture
+      profilePicture: "../assets/green-player.png",
+      unlockedCards: [] // Initialize with no cards unlocked
     });
 
     console.log("User signed up and details stored in Firestore:", user);
-    window.location.href = "profile.html"; // Redirect on success
+    window.location.href = "profile.html";
   } catch (error) {
     console.error("Error signing up:", error);
     alert("Sign-up failed: " + error.message);
   }
 };
-
-
 
 // Sign-Out Function
 const handleSignOut = async () => {
@@ -190,33 +188,46 @@ if (resetPasswordForm) {
 export const displayUserProfile = async () => {
   const user = auth.currentUser;
 
-  // Check if user is signed in
   if (user) {
-    try {
-      const userDocRef = doc(db, "users", user.uid);
-      const userDoc = await getDoc(userDocRef);
+      try {
+          const userDocRef = doc(db, "users", user.uid);
+          const userDoc = await getDoc(userDocRef);
 
-      // If the user document exists, display the user data
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
+          if (userDoc.exists()) {
+              const userData = userDoc.data();
+              const unlockedCards = userData.unlockedCards || [];
+              const totalCards = 4; // Assuming there are 4 collectible cards
+              const progressPercentage = (unlockedCards.length / totalCards) * 100;
 
-        // Display the profile picture, username, email, and join date
-        document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.png";
-        document.getElementById("username").value = userData.username;
-        document.getElementById("email").textContent = `📧 ${userData.email}`;
-        document.getElementById("join-date").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
-      } else {
-        console.log("User document not found in Firestore.");
+              document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.png";
+              document.getElementById("username").value = userData.username;
+              document.getElementById("email").textContent = `📧 ${userData.email}`;
+              document.getElementById("join-date").textContent = `🕗 Joined ${new Date(userData.createdAt).toLocaleDateString()}`;
+
+              // Update progress bar width and text
+              const progressText = document.getElementById("progress-text");
+              progressText.innerHTML = `<b>${unlockedCards.length}/${totalCards}`;
+              document.querySelector(".progress-bar").style.width = `${progressPercentage}%`;
+
+              // Display cards based on unlocked status
+              const cards = document.querySelectorAll('.card');
+              cards.forEach((card, index) => {
+                  const cardNumber = index + 1;
+                  if (unlockedCards.includes(cardNumber)) {
+                      card.classList.remove("locked");
+                  } else {
+                      card.classList.add("locked");
+                  }
+              });
+          }
+      } catch (error) {
+          console.error("Error fetching user data:", error);
       }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
   } else {
-    console.log("No user is signed in.");
-    window.location.href = "login.html"; // Redirect to login if not signed in
+      console.log("No user is signed in.");
+      window.location.href = "login.html";
   }
 };
-
 
 // Toggle username edit mode
 document.getElementById("edit-button").addEventListener("click", () => {
@@ -235,7 +246,28 @@ document.getElementById("edit-button").addEventListener("click", () => {
   }
 });
 
-// Function to save updated username to Firestore
+const unlockCard = async (cardNumber) => {
+  const user = auth.currentUser;
+  
+  if (user) {
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+      
+      if (userDoc.exists()) {
+          const unlockedCards = userDoc.data().unlockedCards || [];
+
+          // Check if the card is not already unlocked
+          if (!unlockedCards.includes(cardNumber)) {
+              unlockedCards.push(cardNumber); // Add the card to the unlocked array
+              await setDoc(userDocRef, { unlockedCards: unlockedCards }, { merge: true });
+              console.log(`Card ${cardNumber} unlocked!`);
+              window.location.reload(); // Refresh the page to update the UI
+          }
+      }
+  }
+};
+
+// Save Username and Set Flag
 const saveUsername = async () => {
   const user = auth.currentUser;
   const username = document.getElementById("username").value;
@@ -248,40 +280,42 @@ const saveUsername = async () => {
   }
 };
 
+
 let temporaryProfilePicture = null; // Variable to store Base64 data
 
 // Function to handle profile picture upload, preview, and save automatically
 document.getElementById("profile-picture-input").addEventListener("change", async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        
-        // When the file is read, update the profile picture preview and save it to Firestore
-        reader.onloadend = async () => {
-            temporaryProfilePicture = reader.result; // Store Base64 data
-            document.getElementById("profile-picture").src = temporaryProfilePicture; // Show preview
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      
+      reader.onloadend = async () => {
+          temporaryProfilePicture = reader.result;
+          document.getElementById("profile-picture").src = temporaryProfilePicture;
 
-            // Save the Base64 data to Firestore
-            const user = auth.currentUser;
-            if (user) {
-                try {
-                    await setDoc(doc(db, "users", user.uid), {
-                        profilePicture: temporaryProfilePicture
-                    }, { merge: true });
+          const user = auth.currentUser;
+          if (user) {
+              try {
+                  await setDoc(doc(db, "users", user.uid), {
+                      profilePicture: temporaryProfilePicture
+                  }, { merge: true });
 
-                    console.log("Profile picture updated successfully in Firestore!");
-                    // Clear temporary profile picture after saving
-                    temporaryProfilePicture = null;
-                } catch (error) {
-                    console.error("Error updating profile picture:", error);
-                    alert("Error updating profile picture: " + error.message);
-                }
-            } else {
-                console.log("No user is signed in.");
-            }
-        };
+                  console.log("Profile picture updated successfully in Firestore!");
+                  temporaryProfilePicture = null;
 
-        // Start reading the file as a Base64 string
-        reader.readAsDataURL(file);
-    }
+                  // Unlock card 1 when photo is updated
+                  await unlockCard(1);
+
+              } catch (error) {
+                  console.error("Error updating profile picture:", error);
+                  alert("Error updating profile picture: " + error.message);
+              }
+          } else {
+              console.log("No user is signed in.");
+          }
+      };
+
+      reader.readAsDataURL(file);
+  }
 });
+
