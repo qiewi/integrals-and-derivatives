@@ -37,7 +37,7 @@
         <div class="header-container">  
             <div class="profile-group">
                 <div class="profile-picture-container">
-                    <img class="small-logo" id="profile-picture" src="../assets/green_player.png">
+                    <img class="small-logo" id="profile-picture">
                     <i class="bx bxs-edit edit-icon" id="edit-picture-icon" onclick="document.getElementById('profile-picture-input').click()"></i>
                     <input type="file" id="profile-picture-input" style="display: none;" accept="image/*">
                 </div>                
@@ -84,36 +84,32 @@
                         <img src="../assets/card-cover-1.png" class="cover-image">
                     </div>
         
-                    <!-- <img src="../assets/menu-background.png" class="card-logo"> -->
-        
                     <img src="../assets/green-player.png" class="character">
+                    <div class="tooltip"><b>How to Unlock:</b><br>Change your Profile Picture</div>
                 </div>    
                 <div class="card">
                     <div class="wrapper">
                         <img src="../assets/card-cover-2.png" class="cover-image">
                     </div>
-        
-                    <!-- <img src="../assets/menu-background.png" class="card-logo"> -->
-        
+
                     <img src="../assets/blue-player.png" class="character">
+                    <div class="tooltip"><b>How to Unlock:</b><br>Finish a Snakes & Ladders Game</div>
                 </div>  
                 <div class="card">
                     <div class="wrapper">
                         <img src="../assets/card-cover-3.png" class="cover-image">
                     </div>
         
-                    <!-- <img src="../assets/menu-background.png" class="card-logo"> -->
-        
                     <img src="../assets/yellow-player.png" class="character">
+                    <div class="tooltip"><b>How to Unlock:</b><br>Complete the Integral Module</div>
                 </div>  
                 <div class="card">
                     <div class="wrapper">
                         <img src="../assets/card-cover-4.png" class="cover-image">
                     </div>
         
-                    <!-- <img src="../assets/menu-background.png" class="card-logo"> -->
-        
                     <img src="../assets/red-player.png" class="character">
+                    <div class="tooltip"><b>How to Unlock:</b><br>Complete the Derivative Module</div>
                 </div> 
             </div>
         </div> 
@@ -124,7 +120,7 @@
 
     <script type="module">
         import { auth } from "../api/config/firebaseConfig.js";
-        import { displayUserProfile } from "../api/auth.js";
+        import { displayUserProfile } from "../api/profile.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
       
         // Check authentication status when profile page loads

@@ -295,11 +295,10 @@ body {
 
 .card.locked {
     position: relative;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
+    cursor: not-allowed; 
+}
   
-.card.locked .cover-image {
+.card.locked .cover-image{
     opacity: 0.2; /* Dim the card */
 }
 
@@ -311,6 +310,43 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.card.locked {
+    position: relative;
+    cursor: not-allowed;
+}
+
+.card.locked:hover .character{
+    opacity: 0; /* Hide the character image */
+}
+
+.card.locked:hover .wrapper {
+    transform: none;
+}
+
+.card .tooltip {
+    display: none; /* Hide by default */
+    position: absolute;
+    bottom: -30px; /* Position it below the card */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    padding: 8px;
+    border: 3px solid #000;
+    border-radius: 12px;
+    font-size: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10; /* Ensure it appears on top */
+    text-align: center;
+    width: max-content;
+    white-space: normal;
+    max-width: 140px;
+}
+
+.card.locked:hover .tooltip {
+    display: block; /* Show on hover */
 }
 
 
