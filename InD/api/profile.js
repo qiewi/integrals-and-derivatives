@@ -23,7 +23,7 @@ export const displayUserProfile = async () => {
   
                 // Update progress bar width and text
                 const progressText = document.getElementById("progress-text");
-                progressText.innerHTML = `<b>${unlockedCards.length}/${totalCards}`;
+                progressText.innerHTML = `<b>${progressPercentage.toFixed(0)}%`;
                 document.querySelector(".progress-bar").style.width = `${progressPercentage}%`;
   
                 // Display cards based on unlocked status

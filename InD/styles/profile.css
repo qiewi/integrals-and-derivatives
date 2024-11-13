@@ -15,17 +15,38 @@ body {
     background: #00b550;
 }
 
+.section-title {
+    max-width: 100%; /* Adjust percentage as needed */
+    width: 100%; 
+    padding: 8px;
+    background: #00824f;
+    color: #fff;
+    border-radius: 10px;
+    border: 5px solid #000;
+    display: flex;
+    font-size: 24px;
+    font-weight: 600;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    position: relative;
+}
+
+.section-title.card-section {
+    margin-top: 2vh;
+}
+
 .header-container {
     max-width: 50vw;
     padding: 16px;
-    background: #00824f;
+    background: #ffff;
     color: #fff;
     border-radius: 10px;
     border: 5px solid #000;
     display: flex;
     align-items: center;
     justify-content: space-between; /* Align items to left and right */
-    margin-top: 32px;
+    margin-top: 12px;
 }
 
 .profile-group {
@@ -54,7 +75,7 @@ body {
 .profile-details input[type="text"] {
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: #000;
     background-color: transparent;
     border: none;
     outline: none;
@@ -64,13 +85,13 @@ body {
 }
 
 .profile-line {
-    border-bottom: 2px solid #ffffff; /* Adjust color as needed */
+    border-bottom: 2px solid #000; /* Adjust color as needed */
     width: 100%;
     margin: 8px 0; /* Adjust spacing as needed */
 }
 
 .profile-details h3, .profile-details h2 {
-    color: #fff;
+    color: #000;
     font-size: 12px;
     font-weight: 400;
     max-width: 200px; /* Optional: Match the max width for a consistent look */
@@ -220,24 +241,16 @@ body {
     align-items: center;
     border: 5px solid #000;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 .title-container {
-    background: #fff; /* yellow color */
+    background: #fff; 
     width: 100%;
     border-radius: 10px; 
     border: 5px solid #000;
     justify-content: space-between;
     align-items: center;
-
-    /* Shiny effect without shadow */
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
-    background-size: 200px 100%;
-    background-repeat: no-repeat;
-    animation: shine 2s infinite;
-    box-shadow: none;
-
     position: relative;
     overflow: hidden; /* Ensure that the progress bar does not overflow */
 }
@@ -263,6 +276,12 @@ body {
     align-items: center;
     justify-content: center;
     transition: width 0.4s ease; /* Smooth transition effect */
+
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shine 2s infinite;
+    box-shadow: none;
 }
 
 .title-container h2 {
@@ -469,6 +488,10 @@ body {
         gap: 16px; /* Space between cards */
     }
 
+    .section-title {
+        margin-top: 16vh;
+    }
+
     .header-container,
     .card-container {
         max-width: 100%; /* Adjust percentage as needed */
@@ -478,15 +501,13 @@ body {
 
     .header-container {
         padding: 16px;
-        background: #00824f;
-        color: #fff;
         border-radius: 10px;
         border: 5px solid #000;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 16vh;
         position: relative;
+        margin-top: 8px;
     }
 
     .button-group {
@@ -542,5 +563,18 @@ body {
         height: 36px;
         font-size: 20px;
         padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-details input[type="text"] {
+        max-width: 120px; /* Set a smaller max-width for mobile */
+        font-size: 16px; /* Optionally reduce font size */
+    }
+
+    .button-group .btn {
+        width: 140px; /* Set a fixed width for buttons */
+        padding: 10px; /* Adjust padding if needed */
+        font-size: 14px; /* Ensure consistent font size */
     }
 }
