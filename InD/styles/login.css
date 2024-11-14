@@ -7,6 +7,15 @@
   font-family: 'Poppins', sans-serif;
 }
 
+@keyframes shine {
+  0% {
+      background-position: -200px;
+  }
+  100% {
+      background-position: 450px;
+  }
+}
+
 body{
   min-height: 100vh;
   background: #00b550;
@@ -268,6 +277,156 @@ body{
 
 .submit-btn {
   cursor: pointer;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Black overlay with opacity */
+  overflow: auto;
+}
+
+.modal-body {
+  position: relative;
+  margin: 5% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 40vw;
+}
+
+.modal-body.feedback {
+  position: relative;
+  padding: 20px;
+  width: 80%;
+  align-items: center;
+  vertical-align: middle;
+  max-width: 700px;
+}
+
+/* Modal content */
+
+.modal-content {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  background: #fff;
+  border: 5px solid #000;
+  border-radius: 20px;
+  border-bottom: 10px solid #000;
+  align-items: center;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 16px;
+}
+
+#send-email-btn {
+  background: #00b550;
+  display: flex; 
+  margin: 0 auto;
+}
+
+#send-email-btn:hover {
+  background: #00824f;
+  display: flex; 
+  margin: 0 auto;
+}
+
+.email-send-title {
+  color: #fff;
+  padding: 8px 20px;
+  background: #00824f;
+  border-radius: 10px;
+  border: 5px solid #000;
+  flex-grow: 1;
+  text-align: center;
+  align-items: center;
+
+  /* Shiny effect without shadow */
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  animation: shine 2s infinite;
+  box-shadow: none;
+}
+
+.email-send-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.email-send-item h3 {
+  padding: 8px 20px; 
+  color: #fff;
+  font-weight: 500;
+  background: #00b550; /* yellow color */
+  border-radius: 10px; 
+  border: 5px solid #000;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.email-send-item iframe {
+  width: 100%;
+  height: 315px;
+  border: 5px solid #000;
+  border-radius: 20px;
+  box-shadow: #000 0px 5px;
+}
+
+.email-send-item iframe:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+
+.field.active{
+  border-bottom: 2px solid #00b550;
+  transition: 0.3s ease;
+}
+
+.field input{
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-size: 1em;
+  padding-bottom: 5px;
+}
+
+.field i{
+  color: #828da0;
+  font-size: 1.3em;
+  margin-right: 10px;
+  padding-bottom: 5px;
+}
+
+.field.active i{
+  color: #00b550;
+  transition: 0.3s ease;
+}
+
+::placeholder{
+  color: #828da0;
+  font-size: 0.85em;
 }
 
 @media screen and (max-width: 735px){

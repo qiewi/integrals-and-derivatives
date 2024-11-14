@@ -27,6 +27,8 @@ const confirmPasswordEyeBtn = signUpForm?.querySelector('.confirm-password-eye-b
 const usernameInput = document.querySelector('input[placeholder="Username"]');
 
 // Get elements for the forgot password link
+const modal = document.getElementById("email-sendModal");
+const sendEmailButton = document.getElementById("send-email-btn");
 const forgotPasswordLink = document.querySelector(".forgot-link a");
 
 // Event listener for the forgot password link
@@ -38,19 +40,36 @@ if (forgotPasswordLink) {
 
   forgotPasswordLink.addEventListener("click", async (e) => {
       e.preventDefault();
-      const email = prompt("Please enter your email address to reset your password:");
 
-      if (email) {
-          try {
-              await sendPasswordResetEmail(auth, email, actionCodeSettings);
-              alert("Password reset email sent! Please check your inbox.");
-          } catch (error) {
-              console.error("Error sending password reset email:", error);
-              alert("Failed to send password reset email: " + error.message);
+      modal.style.display = "block"; // Hide the video modal if it's open
+
+      sendEmailButton.onclick = async () => {
+          const email = modal.querySelector('input[type="email"]').value;
+          if (!email) {
+              alert("Please enter an email address.");
           }
-      }
+
+          if (email) {
+            try {
+                await sendPasswordResetEmail(auth, email, actionCodeSettings);
+                modal.style.display = "none";
+                alert("Password reset email sent! Please check your inbox.");
+            } catch (error) {
+               modal.style.display = "none";
+                console.error("Error sending password reset email:", error);
+                alert("Failed to send password reset email: " + error.message);
+            }
+        }
+      } 
+      // const email = prompt("Please enter your email address to reset your password:");
   });
 }
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+      modal.style.display = "none";
+  }
+};
 
 // Password input restriction (no emojis)
 if (signUpPassword) {
