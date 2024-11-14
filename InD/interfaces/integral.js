@@ -165,15 +165,15 @@ async function checkAnswer(selected, correct, quizIndex) {
     // Show feedback based on answer correctness
     if (selected === correct) {
         feedbackImage.src = "../assets/green-player.png";
-        feedbackTitle.textContent = "Jawaban Benar!";
+        feedbackTitle.textContent = "Correct Answer!";
         
         // Check if it's the last quiz (Level 5)
         if (quizIndex === 0) {
-            feedbackMessage.textContent = "Congratulations! kamu sudah menamatkan module integral!";
+            feedbackMessage.textContent = "CONGRATULATIONS! YOU HAVE COMPLETED THE INTEGRAL MODULE";
             unlockCard(3);
             correctAnswer = true;
         } else {
-            feedbackMessage.textContent = `Congrats, kamu sudah level up ke level ${quizIndex + 1}!`;
+            feedbackMessage.textContent = `CONGRATS, YOU HAVE LEVELED UP TO LEVEL ${quizIndex + 1}!`;
             correctAnswer = true;
         }
         
@@ -202,8 +202,8 @@ async function checkAnswer(selected, correct, quizIndex) {
         }
     } else {
         feedbackImage.src = "../assets/red-player.png";
-        feedbackTitle.textContent = "Jawaban Salah!";
-        feedbackMessage.textContent = "Oops! Coba lagi untuk level up!";
+        feedbackTitle.textContent = "Wrong Answer!";
+        feedbackMessage.textContent = "OOPS! REVIEW YOUR ANSWER AND TRY AGAIN!";
         feedbackTitle.style.backgroundColor = "#f44336"; // Red for incorrect answer
     }
 
