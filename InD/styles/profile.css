@@ -315,14 +315,14 @@ body {
     text-align: center;
     width: max-content;
     white-space: normal;
-    max-width: 140px;
+    max-width: 160px;
 }
 
-.card:hover .info {
+.card:not(.locked):hover .info {
     display: block; /* Show on hover */
 }
 
-.card:hover .info span{
+.card:not(.locked):hover .info span{
     color:#00b550; /* Show on hover */
 }
 

@@ -9,7 +9,7 @@ async function displayLevels() {
     const user = auth.currentUser;
     if (user) {
         // Fetch user progress
-        const userRef = doc(db, "Integral", user.uid);
+        const userRef = doc(db, "Derivative", user.uid);
         const docSnap = await getDoc(userRef);
         const completedLevels = docSnap.exists() ? docSnap.data().completedLevels : 0;
 
@@ -66,61 +66,62 @@ const levelUpButtons = document.querySelectorAll(".buttons .btn:nth-child(2)");
 // Sample quiz data
 const quizData = [
     {
-        title: "Level 5 - Level Up",
-        question: "Hitung usaha, W, dalam memindahkan objek di bawah gaya F(x) = 5x dari x = 0 hingga x = 3: W = ∫₀³ 5x dx.",
+        title: "Level 5 - Anti Turunan",
+        question: "Hitung ∫ 3x² dx.",
         options: [
-            "15 J",
-            "22.5 J",
-            "30 J",
-            "45 J"
-        ],
-        correct: 1
-    },
-    {
-        title: "Level 1 - Level Up",
-        question: "Konversikan jumlah berikut menjadi integral tentu saat n → ∞: ∑ᵢ₌₁ⁿ i / n²",
-        options: [
-            "∫₀¹ x dx",
-            "∫₀¹ x² dx",
-            "∫₀¹ x³ dx",
-            "∫₀¹ √x dx"
+            "x³ + C",
+            "3x³ + C",
+            "x² + C",
+            "3x + C"
         ],
         correct: 0
     },
     {
-        title: "Level 2 - Level Up",
-        question: "Gunakan Teorema Dasar Kalkulus untuk menemukan turunan dari fungsi F(x) = ∫₀ˣ sin(t²) dt.",
+        title: "Level 1 - Turunan",
+        question: "Jika f(x) = x², berapakah f'(x)?",
         options: [
-            "sin(x²)",
-            "cos(x²)",
-            "2x sin(x²)",
-            "-sin(x²)"
-        ],
-        correct: 0
-    },
-    {
-        title: "Level 3 - Level Up",
-        question: "Jika f(x) = x² pada interval [1, 3], hitung perkiraan luas di bawah kurva menggunakan metode titik tengah dengan 2 subinterval.",
-        options: [
-            "8",
-            "8.5",
-            "9",
-            "9.5"
+            "x²",
+            "2x",
+            "x",
+            "2"
         ],
         correct: 1
     },
     {
-        title: "Level 4 - Level Up",
-        question: "Temukan volume yang dihasilkan dengan memutar area di bawah y = x² dari x = 0 hingga x = 2 di sekitar sumbu x.",
+        title: "Level 2 - Turunan Implisit",
+        question: "Jika y² + x² = 25, berapakah dy/dx?",
         options: [
-            "8π/5",
-            "8π/10",
-            "16π/5",
-            "32π/5",
+            "-x/y",
+            "y/x",
+            "-y/x",
+            "x/y"
         ],
         correct: 2
     },
+    {
+        title: "Level 3 - Titik Maksimum dan Minimum",
+        question: "Jika f(x) = -x² + 4x pada interval [0, 4], berapakah nilai maksimum f(x)?",
+        options: [
+            "4",
+            "5",
+            "6",
+            "8"
+        ],
+        correct: 3
+    },
+    {
+        title: "Level 4 - Sketsa Grafik dengan Kalkulus",
+        question: "Jika f(x) = x³ - 3x, berapakah interval dimana f(x) meningkat?",
+        options: [
+            "x < -1",
+            "-1 < x < 1",
+            "x > 1",
+            "Semua x"
+        ],
+        correct: 1
+    }
 ];
+
 
 // Show quiz modal when "Level Up" is clicked
 levelUpButtons.forEach((button, index) => {
@@ -169,8 +170,8 @@ async function checkAnswer(selected, correct, quizIndex) {
         
         // Check if it's the last quiz (Level 5)
         if (quizIndex === 0) {
-            feedbackMessage.textContent = "CONGRATULATIONS! YOU HAVE COMPLETED THE INTEGRAL MODULE";
-            unlockCard(3);
+            feedbackMessage.textContent = "CONGRATULATIONS! YOU HAVE COMPLETED THE DERIVATIVE MODULE";
+            unlockCard(4);
             correctAnswer = true;
         } else {
             feedbackMessage.textContent = `CONGRATS, YOU HAVE LEVELED UP TO LEVEL ${quizIndex + 1}!`;
@@ -182,7 +183,7 @@ async function checkAnswer(selected, correct, quizIndex) {
         // Update user's progress in Firestore if this level is higher than completedLevels
         const user = auth.currentUser;
         if (user) {
-            const userRef = doc(db, "Integral", user.uid);
+            const userRef = doc(db, "Derivative", user.uid);
             
             try {
                 // Fetch the current completed levels

@@ -84,7 +84,7 @@ if (confirmPasswordEyeBtn && confirmPasswordInput) {
   }
 
   // Function to fetch user progress from Firestore
-const fetchUserProgress = async (userId) => {
+const fetchUserProgressIntegral = async (userId) => {
   try {
     const userRef = doc(db, "Integral", userId);
     const docSnap = await getDoc(userRef);
@@ -103,6 +103,26 @@ const fetchUserProgress = async (userId) => {
   }
 };
 
+  // Function to fetch user progress from Firestore
+  const fetchUserProgressDerivative = async (userId) => {
+    try {
+      const userRef = doc(db, "Derivative", userId);
+      const docSnap = await getDoc(userRef);
+  
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        console.log(`User ${userId} has completed ${userData.completedLevels} levels.`);
+        return userData.completedLevels;
+      } else {
+        console.log("No progress found for user.");
+        return 0; // Return 0 if no progress found
+      }
+    } catch (error) {
+      console.error("Error fetching user progress:", error);
+      return 0; // Default to 0 if an error occurs
+    }
+  };
+
 // Sign-In Function
 const handleSignIn = async (email, password) => {
   try {
@@ -111,8 +131,11 @@ const handleSignIn = async (email, password) => {
     console.log("User signed in:", user);
 
     // Fetch and log user progress after signing in
-    const completedLevels = await fetchUserProgress(user.uid);
-    console.log(`User progress: ${completedLevels} levels completed`);
+    const completedIntegralLevels = await fetchUserProgressIntegral(user.uid);
+    console.log(`User progress: ${completedIntegralLevels} integral levels completed`);
+
+    const completedDerivativeLevels = await fetchUserProgressDerivative(user.uid);
+    console.log(`User progress: ${completedDerivativeLevels} derivative levels completed`);
 
     // Redirect or use progress as needed
     window.location.href = "profile.html"; // Example redirect on success
@@ -139,6 +162,11 @@ const handleSignUp = async (email, password, username) => {
 
     // Initialize user progress in the "Integral" collection
     await setDoc(doc(db, "Integral", user.uid), {
+      userId: user.uid,
+      completedLevels: 0 // Start progress at level 0
+    });
+
+    await setDoc(doc(db, "Derivative", user.uid), {
       userId: user.uid,
       completedLevels: 0 // Start progress at level 0
     });
