@@ -1,7 +1,7 @@
 // api/lauth.js
 import { auth, db } from "./config/firebaseConfig.js";
 import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { getAuth, EmailAuthProvider, reauthenticateWithCredential, updatePassword, sendPasswordResetEmail, confirmPasswordReset } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -18,12 +18,39 @@ const signUpForm = document.querySelector(".sign-up-form form");
 const passwordInput = document.querySelector(".password-input");
 const signUpPassword = signUpForm?.querySelector('input[placeholder="Password"]');
 const confirmPasswordInput = signUpForm?.querySelector('input[placeholder="Confirm password"]');
+const errorMessage = document.querySelector(".signup-error-message"); // Select error message element
 
 // Eye buttons for password toggle
 const eyeBtn = document.querySelector(".eye-btn"); // For sign-in form
 const signUpPasswordEyeBtn = signUpForm?.querySelector('.password-eye-btn');
 const confirmPasswordEyeBtn = signUpForm?.querySelector('.confirm-password-eye-btn');
 const usernameInput = document.querySelector('input[placeholder="Username"]');
+
+// Get elements for the forgot password link
+const forgotPasswordLink = document.querySelector(".forgot-link a");
+
+// Event listener for the forgot password link
+if (forgotPasswordLink) {
+  const actionCodeSettings = {
+    url: 'http://127.0.0.1:5501/InD/pages/forgotpass.html', // Update with your custom page URL
+    handleCodeInApp: true,
+  };
+
+  forgotPasswordLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const email = prompt("Please enter your email address to reset your password:");
+
+      if (email) {
+          try {
+              await sendPasswordResetEmail(auth, email, actionCodeSettings);
+              alert("Password reset email sent! Please check your inbox.");
+          } catch (error) {
+              console.error("Error sending password reset email:", error);
+              alert("Failed to send password reset email: " + error.message);
+          }
+      }
+  });
+}
 
 // Password input restriction (no emojis)
 if (signUpPassword) {
@@ -171,11 +198,17 @@ const handleSignUp = async (email, password, username) => {
       completedLevels: 0 // Start progress at level 0
     });
 
+    errorMessage.style.display = "none";
     console.log("User signed up and details stored in Firestore:", user);
     window.location.href = "profile.html";
   } catch (error) {
-    console.error("Error signing up:", error);
-    alert("Sign-up failed: " + error.message);
+    if (error.code === "auth/email-already-in-use") {
+      errorMessage.style.display = "block";
+      errorMessage.textContent = "⚠️ The email is already registered. Please use a different email or log in.";
+    } else {
+      console.error("Error signing up:", error);
+      alert("Sign-up failed: " + error.message);
+    }
   }
 };
 
@@ -212,18 +245,23 @@ if (signInForm) {
   }
 
 // Sign-Up Form Submission
+// Sign-Up Form Submission
 if (signUpForm) {
   signUpForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = signUpForm.querySelector('input[type="email"]').value;
-    const username = signUpForm.querySelector('input[placeholder="Username"]').value; // Get username
+    const username = signUpForm.querySelector('input[placeholder="Username"]').value;
     const password = signUpPassword.value;
     const confirmPassword = confirmPasswordInput.value;
 
-    if (password === confirmPassword) {
-      handleSignUp(email, password, username); // Pass username to the function
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      errorMessage.style.display = "block"; // Show error message if passwords do not match
+      errorMessage.textContent = "⚠️ Passwords do not match. Please check again.";
+      return;
     } else {
-      alert("Passwords do not match");
+      errorMessage.style.display = "none"; // Hide error message if passwords match
+      handleSignUp(email, password, username); // Proceed with sign-up
     }
   });
 }

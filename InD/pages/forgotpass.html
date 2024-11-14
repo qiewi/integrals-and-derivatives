@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/nav.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="shortcut icon" href="../assets/snake-icon.png" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../assets/menu-background.png" onclick="window.location.href='../../index.html'">
+        </div>
+    </header>
+    <nav>
+        <div class="nav-content">
+            <div class="toggle-btn">
+                <i class='bx bx-plus'></i>
+            </div>
+            <span style="--i:3;">
+                <a onclick="window.location.href='profile.html'"><i class='bx bxs-user'></i></a>
+            </span>
+            <span style="--i:2;">
+                <a onclick="window.location.href='../../index.html'"><i class='bx bxs-home'></i></a>
+            </span>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <div class="form-box">
+            <h2>Reset Password</h2>
+            <form id="forgot-password-form">
+                <div class="field">
+                    <i class="uil uil-lock-alt"></i>
+                    <input type="password" id="new-password" placeholder="New Password" required>
+                    <div class="eye-btn new-password-eye-btn"><i class="uil uil-eye-slash"></i></div>
+                </div>
+                <div class="field">
+                    <i class="uil uil-lock-access"></i>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                    <div class="eye-btn confirm-password-eye-btn"><i class="uil uil-eye-slash"></i></div>
+                </div>
+                <button type="submit" id="reset-password-btn" class="btn reset-pass-btn submit-btn">Reset Password</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../interfaces/nav.js" defer></script>
+    <script type="module" src="../api/auth.js" defer></script>
+    <script type="module" src="../api/forgotpassword.js" defer></script>
+
+    <script>
+        // Toggle password visibility for reset-password fields
+        const toggleVisibility = (inputId, eyeBtn) => {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                eyeBtn.innerHTML = "<i class='uil uil-eye'></i>";
+            } else {
+                input.type = "password";
+                eyeBtn.innerHTML = "<i class='uil uil-eye-slash'></i>";
+            }
+        };
+
+        document.querySelector(".new-password-eye-btn").addEventListener("click", () => toggleVisibility("new-password", document.querySelector(".new-password-eye-btn")));
+        document.querySelector(".confirm-password-eye-btn").addEventListener("click", () => toggleVisibility("confirm-password", document.querySelector(".confirm-password-eye-btn")));
+    </script>
+</body>
+</html>

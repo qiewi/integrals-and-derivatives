@@ -136,6 +136,12 @@ body{
 	background-color: #e5b700;
 }
 
+.signup-error-message {
+  display: none;
+  font-size: 12px;
+  color:#f1492b;
+}
+
 .reset-pass-btn {
   background-color: #e5b700;
 }
