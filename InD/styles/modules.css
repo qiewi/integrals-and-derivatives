@@ -616,6 +616,10 @@ img#feedbackImage {
         font-weight: 500;
         color: #fff;
     }
+
+    .quiz-options {
+        flex-direction: column;
+    }
     
     .quiz-options button {
         padding: 10px;

@@ -486,6 +486,20 @@ body{
 	  border: 5px solid #000;
 	  border-radius: 15px;
   }
+
+  .modal-body {
+    max-width: 75vw;
+    width: 95%;
+    padding: 10px;
+  }
+  
+  .modal-content {
+    padding: 15px;
+  }
+  
+  h2#email-sendTitle {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 450px){

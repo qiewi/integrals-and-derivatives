@@ -62,7 +62,7 @@
     text-overflow: ellipsis; /* Adds "..." if text overflows */
 }
 
-.progress-bar.integral{
+.progress-bar.integral, .progress-bar.derivative{
     background-color: #f7ca15; /* Background color for the progress bar */
     height: 100%;
     width: 0; /* Start with 0 width and expand dynamically */
@@ -120,6 +120,7 @@
 /* Responsive design for screens below 426px */
 @media (max-width: 426px) {
     .header-container {
+        width: 80vw;
         padding: 8px 10px;
         margin: 16px;
     }
@@ -130,19 +131,15 @@
 
     
     .title-container {
-        padding: 8px 20px; 
-        background: #f7ca15; /* yellow color */
+        background: #fff; 
+        width: 100%;
         border-radius: 10px; 
         border: 5px solid #000;
         justify-content: space-between;
         align-items: center;
+        position: relative;
+        overflow: hidden; /* Ensure that the progress bar does not overflow */
         margin-bottom: 12px;
-
-        background-image: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.1) 100%);
-        background-size: 200px 100%;
-        background-repeat: no-repeat;
-        animation: shine 2s infinite;
-        box-shadow: none;
     }
 
     .title-container h2 {
