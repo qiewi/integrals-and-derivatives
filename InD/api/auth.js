@@ -18,7 +18,9 @@ const signUpForm = document.querySelector(".sign-up-form form");
 const passwordInput = document.querySelector(".password-input");
 const signUpPassword = signUpForm?.querySelector('input[placeholder="Password"]');
 const confirmPasswordInput = signUpForm?.querySelector('input[placeholder="Confirm password"]');
-const errorMessage = document.querySelector(".signup-error-message"); // Select error message element
+const errorMessageSignUp = document.querySelector(".signup-error-message");
+const errorMessageSignIn = document.querySelector(".signin-error-message");
+const errorMessageForgotPass = document.querySelector(".-error-message"); // Select error message element
 
 // Eye buttons for password toggle
 const eyeBtn = document.querySelector(".eye-btn"); // For sign-in form
@@ -61,7 +63,7 @@ if (forgotPasswordLink) {
             }
         }
       } 
-      // const email = prompt("Please enter your email address to reset your password:");
+ 
   });
 }
 
@@ -186,8 +188,16 @@ const handleSignIn = async (email, password) => {
     // Redirect or use progress as needed
     window.location.href = "profile.html"; // Example redirect on success
   } catch (error) {
-    console.error("Error signing in:", error);
-    alert("Login failed: " + error.message);
+    if (error.code === "auth/invalid-login-credentials") {
+      errorMessageSignIn.style.display = "block";
+      errorMessageSignIn.textContent = "⚠️ The email address or password is not valid. Please check and try again.";
+    } else if (error.code === "auth/weak-password") {
+      errorMessageSignIn.style.display = "block";
+      errorMessageSignIn.textContent = "⚠️ The password is too weak. Please enter a stronger password.";
+    }else {
+      console.error("Error signing up:", error);
+      alert("Sign-in failed: " + error.message);
+    }
   }
 };
 
@@ -217,13 +227,13 @@ const handleSignUp = async (email, password, username) => {
       completedLevels: 0 // Start progress at level 0
     });
 
-    errorMessage.style.display = "none";
+    errorMessageSignUp.style.display = "none";
     console.log("User signed up and details stored in Firestore:", user);
     window.location.href = "profile.html";
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
-      errorMessage.style.display = "block";
-      errorMessage.textContent = "⚠️ The email is already registered. Please use a different email or log in.";
+      errorMessageSignUp.style.display = "block";
+      errorMessageSignUp.textContent = "⚠️ The email is already registered. Please use a different email or log in.";
     } else {
       console.error("Error signing up:", error);
       alert("Sign-up failed: " + error.message);
@@ -275,11 +285,11 @@ if (signUpForm) {
 
     // Check if passwords match
     if (password !== confirmPassword) {
-      errorMessage.style.display = "block"; // Show error message if passwords do not match
-      errorMessage.textContent = "⚠️ Passwords do not match. Please check again.";
+      errorMessageSignUp.style.display = "block"; // Show error message if passwords do not match
+      errorMessageSignUp.textContent = "⚠️ Passwords do not match. Please check again.";
       return;
     } else {
-      errorMessage.style.display = "none"; // Hide error message if passwords match
+      errorMessageSignUp.style.display = "none"; // Hide error message if passwords match
       handleSignUp(email, password, username); // Proceed with sign-up
     }
   });
