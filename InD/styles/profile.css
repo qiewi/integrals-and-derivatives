@@ -443,7 +443,7 @@ body {
     .card-list {
         display: grid;
         grid-template-columns: 1fr 1fr; /* Two cards per row */
-        gap: 16px; /* Space between cards */
+        gap: 20px; /* Space between cards */
     }
 
     .section-title {

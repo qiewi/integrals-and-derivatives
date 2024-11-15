@@ -167,20 +167,53 @@ async function checkAnswer(selected, correct, quizIndex) {
         feedbackImage.src = "../assets/green-player.PNG";
         feedbackTitle.textContent = "Correct Answer!";
         
-        // Check if it's the last quiz (Level 5)
-        if (quizIndex === 0) {
-            feedbackMessage.textContent = "CONGRATULATIONS! YOU HAVE COMPLETED THE INTEGRAL MODULE";
-            unlockCard(3);
-            correctAnswer = true;
-        } else {
-            feedbackMessage.textContent = `CONGRATS, YOU HAVE LEVELED UP TO LEVEL ${quizIndex + 1}!`;
-            correctAnswer = true;
+        const user = auth.currentUser;
+        if (user) {
+            const userRef = doc(db, "Integral", user.uid);
+            
+            try {
+                // Fetch the current completed levels
+                const docSnap = await getDoc(userRef);
+                const currentCompletedLevels = docSnap.exists() ? docSnap.data().completedLevels : 0;
+                
+                // Update only if this level is higher than the current completed level
+                if (quizIndex + 1 > currentCompletedLevels) {
+                    await updateDoc(userRef, {
+                        completedLevels: quizIndex // Update to the highest level completed
+                    });
+                    console.log("User progress updated in Firestore to level:", quizIndex);
+                }
+                if (quizIndex === 0) {
+                    await updateDoc(userRef, {
+                        completedLevels: 5 // Update to the highest level completed
+                    });
+                    console.log("User progress updated in Firestore to level:", 5);
+                }
+                if (quizIndex === 0) {
+                    if (currentCompletedLevels === 5) {
+                        feedbackMessage.textContent = "CONGRATS, YOU ANSWERED CORRECTLY AGAIN!";
+                    } else {
+                        feedbackMessage.textContent = "CONGRATULATIONS! YOU HAVE COMPLETED THE INTEGRAL MODULE";
+                        unlockCard(3);
+                    }
+                    correctAnswer = true;
+                } else {
+                    if (quizIndex <= currentCompletedLevels) {
+                        feedbackMessage.textContent = "CONGRATS, YOU ANSWERED CORRECTLY AGAIN!";
+                    } else {
+                        feedbackMessage.textContent = `CONGRATS, YOU LEVELED UP TO LEVEL ${quizIndex + 1}!`;
+                    }
+                    
+                    correctAnswer = true;
+                }
+            } catch (error) {
+                console.error("Error updating progress:", error);
+            }
         }
         
         feedbackTitle.style.backgroundColor = "#4CAF50"; // Green for correct answer
 
         // Update user's progress in Firestore if this level is higher than completedLevels
-        const user = auth.currentUser;
         if (user) {
             const userRef = doc(db, "Integral", user.uid);
             
