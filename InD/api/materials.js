@@ -27,8 +27,8 @@ export const displayUserProgress = async () => {
                 document.querySelector(".progress-bar.integral").style.width = `${progressPercentageIntegral}%`;
 
                 const progressTextDerivative = document.getElementById("progress-text-derivative");
-                progressTextDerivative.innerHTML = `<b>${progressPercentageIntegral.toFixed(0)}%`;
-                document.querySelector(".progress-bar.derivative").style.width = `${progressPercentageIntegral}%`;
+                progressTextDerivative.innerHTML = `<b>${progressPercentageDerivative.toFixed(0)}%`;
+                document.querySelector(".progress-bar.derivative").style.width = `${progressPercentageDerivative}%`;
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
