@@ -212,7 +212,7 @@ const handleSignUp = async (email, password, username) => {
       username: username,
       email: email,
       createdAt: new Date().toISOString(),
-      profilePicture: "../assets/green-player.png",
+      profilePicture: "../assets/green-player.PNG",
       unlockedCards: []
     });
 

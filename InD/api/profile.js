@@ -16,7 +16,7 @@ export const displayUserProfile = async () => {
                 const totalCards = 4; // Assuming there are 4 collectible cards
                 const progressPercentage = (unlockedCards.length / totalCards) * 100;
   
-                document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.png";
+                document.getElementById("profile-picture").src = userData.profilePicture || "../assets/green_player.PNG";
                 const usernameInput = document.getElementById("username");
                 usernameInput.value = userData.username;
                 document.getElementById("email").textContent = `📧 ${userData.email}`;

@@ -165,7 +165,7 @@ async function checkAnswer(selected, correct, quizIndex) {
 
     // Show feedback based on answer correctness
     if (selected === correct) {
-        feedbackImage.src = "../assets/green-player.png";
+        feedbackImage.src = "../assets/green-player.PNG";
         feedbackTitle.textContent = "Correct Answer!";
         
         // Check if it's the last quiz (Level 5)
@@ -208,7 +208,7 @@ async function checkAnswer(selected, correct, quizIndex) {
             }
         }
     } else {
-        feedbackImage.src = "../assets/red-player.png";
+        feedbackImage.src = "../assets/red-player.PNG";
         feedbackTitle.textContent = "Wrong Answer!";
         feedbackMessage.textContent = "OOPS! REVIEW YOUR ANSWER AND TRY AGAIN!";
         feedbackTitle.style.backgroundColor = "#f44336"; // Red for incorrect answer
