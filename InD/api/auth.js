@@ -36,7 +36,7 @@ const forgotPasswordLink = document.querySelector(".forgot-link a");
 // Event listener for the forgot password link
 if (forgotPasswordLink) {
   const actionCodeSettings = {
-    url: 'http://127.0.0.1:5501/InD/pages/forgotpass.html', // Update with your custom page URL
+    url: 'http://www.intrive.space/InD/pages/forgotpass.html', // Update with your custom page URL
     handleCodeInApp: true,
   };
 
