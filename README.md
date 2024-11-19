@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-    <a href="https://integrals-and-derivatives.vercel.app" target="_blank">
+    <a href="https://intrive.space" target="_blank">
       <img src="https://github.com/user-attachments/assets/33210117-cc61-4a1c-a26a-a7192d5d2f2b" alt="Project Banner">
     </a>
   <br />
