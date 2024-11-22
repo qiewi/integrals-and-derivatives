@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-    <a href="https://integrals-and-derivatives.vercel.app" target="_blank">
+    <a href="https://intrive.space" target="_blank">
       <img src="https://github.com/user-attachments/assets/33210117-cc61-4a1c-a26a-a7192d5d2f2b" alt="Project Banner">
     </a>
   <br />
@@ -29,9 +29,12 @@
 ## <a name="introduction">🚨 Introduction</a>
 
 Integrals & Derivatives is a Virtual Lab focusing on calculus, specifically in Integrals and Derivatives. 
-
 It applies the snakes and ladders mechanism but with unique challenges that spice up the game!
-
+<br/>
+![3](https://github.com/user-attachments/assets/349463d1-b14e-42ea-bc78-6ccd362f159a)
+<br/>
+![4](https://github.com/user-attachments/assets/79e32ebb-b6d1-491c-8c2b-043d88a31148)
+<br/>
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -42,20 +45,31 @@ It applies the snakes and ladders mechanism but with unique challenges that spic
 
 ## <a name="features">🔋 Features</a>
 
-👉 **Learning Materials**: A page that contains the concept of integrals and derivatives wrapped in youtube videos.
-<br>
-![5](https://github.com/user-attachments/assets/17b99b96-c41f-42f0-bdec-91be0612390f)
-![6](https://github.com/user-attachments/assets/18acee0f-e33c-40e6-a9bb-f81817927ee8)
+👉 **Authentication**
+<br/>
+![33](https://github.com/user-attachments/assets/d400c6d5-f129-45dc-a96c-2c526510827d)
 
-👉 **Learning Game**: A modified snakes and ladders with Integrals and Derivatives challenges.
-<br>
-![7](https://github.com/user-attachments/assets/87ae71f3-2283-429d-be81-06953e34e091)
-<br>
-![8](https://github.com/user-attachments/assets/c50cb14a-2437-43ed-9ecb-ea55af079794)
-<br>
-![9](https://github.com/user-attachments/assets/7aba4999-1ff8-4cb8-a711-2b559635fe35)
-<br>
-![10](https://github.com/user-attachments/assets/61132f15-ad9d-4de8-8293-b8c5dd8bd397)
+👉 **Landing Page**
+<br/>
+![34](https://github.com/user-attachments/assets/635e60d2-33b1-4270-a0ac-7264bc8e6b63)
+
+👉 **Profile**
+<br/>
+![35](https://github.com/user-attachments/assets/7ee8100a-0df6-4e9a-8a58-a2413e8f8ebe)
+
+👉 **Learning Game**
+<br/>
+![36](https://github.com/user-attachments/assets/5616b77c-a345-4c0d-a577-753a105b842a)
+<br/>
+![37](https://github.com/user-attachments/assets/5671481b-7221-45a7-9e57-405975339e9b)
+
+👉 **Learning Modules**
+<br/>
+![38](https://github.com/user-attachments/assets/d101e7f3-8230-42ea-a40e-dc79fec52c11)
+<br/>
+![39](https://github.com/user-attachments/assets/b463053a-983a-47e1-9fd9-18aecd1b9b98)
+<br/>
+![40](https://github.com/user-attachments/assets/aff90314-a3b1-46ef-9a0e-2d54d2c08111)
 
 and many more, including code architecture and reusability .
 
